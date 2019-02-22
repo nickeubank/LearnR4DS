@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Merging &#8212; R for Data Science  documentation</title>
+    <title>Merging &amp; Appending &#8212; R for Data Science  documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -19,7 +19,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Overview" href="tables-in-r.html" />
-    <link rel="prev" title="Writing a for loop" href="for-loops.html" />
+    <link rel="prev" title="For Loops" href="for-loops.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -236,11 +236,14 @@ div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
+<div class="section" id="Merging-&amp;-Appending">
+<h1>Merging &amp; Appending<a class="headerlink" href="#Merging-&-Appending" title="Permalink to this headline">¶</a></h1>
+<p>summary: This tutorial explains how to combine datasets by merging or appending them. Merging means transferring <em>columns</em> from one dataset to another, while appending means transferring <em>rows</em> from one dataset to another. These are two important tasks since datasets only very rarely come with all the information we need.</p>
 <div class="section" id="Merging">
-<h1>Merging<a class="headerlink" href="#Merging" title="Permalink to this headline">¶</a></h1>
+<h2>Merging<a class="headerlink" href="#Merging" title="Permalink to this headline">¶</a></h2>
 <p>Say you’re interested in how economic development affects democracy across countries, but all you have are two separate datasets on these two factors. What you need to do is to combine the two. When you’re done with this, you also need information on what world region each country is located in. These tasks can be accomplished with one-to-one merging and one-to-many merging.</p>
 <div class="section" id="One-to-one-merging">
-<h2>One-to-one merging<a class="headerlink" href="#One-to-one-merging" title="Permalink to this headline">¶</a></h2>
+<h3>One-to-one merging<a class="headerlink" href="#One-to-one-merging" title="Permalink to this headline">¶</a></h3>
 <p>To illustrate, say you had two datasets that look like this:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -350,15 +353,15 @@ div.rendered_html tbody tr:hover {
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>democracy_score</th></tr></thead>
 <tbody>
-    <tr><td>USA  </td><td>1994 </td><td>11   </td></tr>
-    <tr><td>China</td><td>1994 </td><td> 2   </td></tr>
-    <tr><td>Sudan</td><td>1994 </td><td>15   </td></tr>
-    <tr><td>USA  </td><td>1995 </td><td>18   </td></tr>
-    <tr><td>China</td><td>1995 </td><td> 0   </td></tr>
-    <tr><td>Sudan</td><td>1995 </td><td>18   </td></tr>
-    <tr><td>USA  </td><td>1996 </td><td>14   </td></tr>
-    <tr><td>China</td><td>1996 </td><td> 2   </td></tr>
-    <tr><td>Sudan</td><td>1996 </td><td> 1   </td></tr>
+    <tr><td>USA  </td><td>1994 </td><td> 4   </td></tr>
+    <tr><td>China</td><td>1994 </td><td> 0   </td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td>18   </td></tr>
+    <tr><td>USA  </td><td>1995 </td><td>11   </td></tr>
+    <tr><td>China</td><td>1995 </td><td>16   </td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td>13   </td></tr>
+    <tr><td>USA  </td><td>1996 </td><td>12   </td></tr>
+    <tr><td>China</td><td>1996 </td><td>19   </td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td> 8   </td></tr>
 </tbody>
 </table></div>
 </div>
@@ -369,15 +372,15 @@ div.rendered_html tbody tr:hover {
 <table>
 <thead><tr><th scope=col>year</th><th scope=col>country</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>1994 </td><td>USA  </td><td>17828</td></tr>
-    <tr><td>1995 </td><td>USA  </td><td> 3113</td></tr>
-    <tr><td>1996 </td><td>USA  </td><td> 1979</td></tr>
-    <tr><td>1994 </td><td>China</td><td> 7238</td></tr>
-    <tr><td>1995 </td><td>China</td><td> 9429</td></tr>
-    <tr><td>1996 </td><td>China</td><td>15688</td></tr>
-    <tr><td>1994 </td><td>Sudan</td><td> 9732</td></tr>
-    <tr><td>1995 </td><td>Sudan</td><td>12522</td></tr>
-    <tr><td>1996 </td><td>Sudan</td><td>15906</td></tr>
+    <tr><td>1994 </td><td>USA  </td><td> 3008</td></tr>
+    <tr><td>1995 </td><td>USA  </td><td> 9607</td></tr>
+    <tr><td>1996 </td><td>USA  </td><td>17985</td></tr>
+    <tr><td>1994 </td><td>China</td><td> 8168</td></tr>
+    <tr><td>1995 </td><td>China</td><td>17672</td></tr>
+    <tr><td>1996 </td><td>China</td><td> 5137</td></tr>
+    <tr><td>1994 </td><td>Sudan</td><td> 4683</td></tr>
+    <tr><td>1995 </td><td>Sudan</td><td> 1814</td></tr>
+    <tr><td>1996 </td><td>Sudan</td><td>16546</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -388,15 +391,15 @@ div.rendered_html tbody tr:hover {
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>democracy_score</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>China</td><td>1994 </td><td> 2   </td><td> 7238</td></tr>
-    <tr><td>China</td><td>1995 </td><td> 0   </td><td> 9429</td></tr>
-    <tr><td>China</td><td>1996 </td><td> 2   </td><td>15688</td></tr>
-    <tr><td>Sudan</td><td>1994 </td><td>15   </td><td> 9732</td></tr>
-    <tr><td>Sudan</td><td>1995 </td><td>18   </td><td>12522</td></tr>
-    <tr><td>Sudan</td><td>1996 </td><td> 1   </td><td>15906</td></tr>
-    <tr><td>USA  </td><td>1994 </td><td>11   </td><td>17828</td></tr>
-    <tr><td>USA  </td><td>1995 </td><td>18   </td><td> 3113</td></tr>
-    <tr><td>USA  </td><td>1996 </td><td>14   </td><td> 1979</td></tr>
+    <tr><td>China</td><td>1994 </td><td> 0   </td><td> 8168</td></tr>
+    <tr><td>China</td><td>1995 </td><td>16   </td><td>17672</td></tr>
+    <tr><td>China</td><td>1996 </td><td>19   </td><td> 5137</td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td>18   </td><td> 4683</td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td>13   </td><td> 1814</td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td> 8   </td><td>16546</td></tr>
+    <tr><td>USA  </td><td>1994 </td><td> 4   </td><td> 3008</td></tr>
+    <tr><td>USA  </td><td>1995 </td><td>11   </td><td> 9607</td></tr>
+    <tr><td>USA  </td><td>1996 </td><td>12   </td><td>17985</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -424,13 +427,13 @@ div.rendered_html tbody tr:hover {
 <table>
 <thead><tr><th></th><th scope=col>year</th><th scope=col>country</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><th scope=row>1</th><td>1994 </td><td>USA  </td><td>17828</td></tr>
-    <tr><th scope=row>2</th><td>1995 </td><td>USA  </td><td> 3113</td></tr>
-    <tr><th scope=row>3</th><td>1996 </td><td>USA  </td><td> 1979</td></tr>
-    <tr><th scope=row>4</th><td>1994 </td><td>China</td><td> 7238</td></tr>
-    <tr><th scope=row>6</th><td>1996 </td><td>China</td><td>15688</td></tr>
-    <tr><th scope=row>7</th><td>1994 </td><td>Sudan</td><td> 9732</td></tr>
-    <tr><th scope=row>8</th><td>1995 </td><td>Sudan</td><td>12522</td></tr>
+    <tr><th scope=row>1</th><td>1994 </td><td>USA  </td><td> 3008</td></tr>
+    <tr><th scope=row>2</th><td>1995 </td><td>USA  </td><td> 9607</td></tr>
+    <tr><th scope=row>3</th><td>1996 </td><td>USA  </td><td>17985</td></tr>
+    <tr><th scope=row>4</th><td>1994 </td><td>China</td><td> 8168</td></tr>
+    <tr><th scope=row>6</th><td>1996 </td><td>China</td><td> 5137</td></tr>
+    <tr><th scope=row>7</th><td>1994 </td><td>Sudan</td><td> 4683</td></tr>
+    <tr><th scope=row>8</th><td>1995 </td><td>Sudan</td><td> 1814</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -459,13 +462,13 @@ div.rendered_html tbody tr:hover {
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>democracy_score</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>China</td><td>1994 </td><td> 2   </td><td> 7238</td></tr>
-    <tr><td>China</td><td>1996 </td><td> 2   </td><td>15688</td></tr>
-    <tr><td>Sudan</td><td>1994 </td><td>15   </td><td> 9732</td></tr>
-    <tr><td>Sudan</td><td>1995 </td><td>18   </td><td>12522</td></tr>
-    <tr><td>USA  </td><td>1994 </td><td>11   </td><td>17828</td></tr>
-    <tr><td>USA  </td><td>1995 </td><td>18   </td><td> 3113</td></tr>
-    <tr><td>USA  </td><td>1996 </td><td>14   </td><td> 1979</td></tr>
+    <tr><td>China</td><td>1994 </td><td> 0   </td><td> 8168</td></tr>
+    <tr><td>China</td><td>1996 </td><td>19   </td><td> 5137</td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td>18   </td><td> 4683</td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td>13   </td><td> 1814</td></tr>
+    <tr><td>USA  </td><td>1994 </td><td> 4   </td><td> 3008</td></tr>
+    <tr><td>USA  </td><td>1995 </td><td>11   </td><td> 9607</td></tr>
+    <tr><td>USA  </td><td>1996 </td><td>12   </td><td>17985</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -476,21 +479,21 @@ div.rendered_html tbody tr:hover {
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>democracy_score</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>USA  </td><td>1994 </td><td>11   </td><td>17828</td></tr>
-    <tr><td>USA  </td><td>1995 </td><td>18   </td><td> 3113</td></tr>
-    <tr><td>USA  </td><td>1996 </td><td>14   </td><td> 1979</td></tr>
-    <tr><td>China</td><td>1994 </td><td> 2   </td><td> 7238</td></tr>
-    <tr><td>China</td><td>1995 </td><td> 0   </td><td>   NA</td></tr>
-    <tr><td>China</td><td>1996 </td><td> 2   </td><td>15688</td></tr>
-    <tr><td>Sudan</td><td>1994 </td><td>15   </td><td> 9732</td></tr>
-    <tr><td>Sudan</td><td>1995 </td><td>18   </td><td>12522</td></tr>
-    <tr><td>Sudan</td><td>1996 </td><td> 1   </td><td>   NA</td></tr>
+    <tr><td>USA  </td><td>1994 </td><td> 4   </td><td> 3008</td></tr>
+    <tr><td>USA  </td><td>1995 </td><td>11   </td><td> 9607</td></tr>
+    <tr><td>USA  </td><td>1996 </td><td>12   </td><td>17985</td></tr>
+    <tr><td>China</td><td>1994 </td><td> 0   </td><td> 8168</td></tr>
+    <tr><td>China</td><td>1995 </td><td>16   </td><td>   NA</td></tr>
+    <tr><td>China</td><td>1996 </td><td>19   </td><td> 5137</td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td>18   </td><td> 4683</td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td>13   </td><td> 1814</td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td> 8   </td><td>   NA</td></tr>
 </tbody>
 </table></div>
 </div>
 </div>
 <div class="section" id="One-to-many-merging">
-<h2>One-to-many merging<a class="headerlink" href="#One-to-many-merging" title="Permalink to this headline">¶</a></h2>
+<h3>One-to-many merging<a class="headerlink" href="#One-to-many-merging" title="Permalink to this headline">¶</a></h3>
 <p>In the previous examples the ID variables we used for merging uniquely identified observations in each data frame. This is called one-to-one merging.</p>
 <p>Sometimes we need to do things slightly differently, using one-to-many merging. Say, for example, we have the following two data frames:</p>
 <div class="nbinput docutils container">
@@ -519,14 +522,14 @@ div.rendered_html tbody tr:hover {
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>democracy_score</th></tr></thead>
 <tbody>
-    <tr><td>USA  </td><td>1994 </td><td> 1   </td></tr>
-    <tr><td>China</td><td>1994 </td><td>20   </td></tr>
-    <tr><td>Sudan</td><td>1994 </td><td>20   </td></tr>
-    <tr><td>USA  </td><td>1995 </td><td> 8   </td></tr>
-    <tr><td>China</td><td>1995 </td><td> 9   </td></tr>
-    <tr><td>Sudan</td><td>1995 </td><td> 8   </td></tr>
-    <tr><td>USA  </td><td>1996 </td><td>17   </td></tr>
-    <tr><td>China</td><td>1996 </td><td>15   </td></tr>
+    <tr><td>USA  </td><td>1994 </td><td> 3   </td></tr>
+    <tr><td>China</td><td>1994 </td><td> 6   </td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td> 3   </td></tr>
+    <tr><td>USA  </td><td>1995 </td><td> 3   </td></tr>
+    <tr><td>China</td><td>1995 </td><td>10   </td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td>19   </td></tr>
+    <tr><td>USA  </td><td>1996 </td><td> 4   </td></tr>
+    <tr><td>China</td><td>1996 </td><td>10   </td></tr>
     <tr><td>Sudan</td><td>1996 </td><td>13   </td></tr>
 </tbody>
 </table></div>
@@ -561,22 +564,22 @@ div.rendered_html tbody tr:hover {
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>democracy_score</th><th scope=col>region</th></tr></thead>
 <tbody>
-    <tr><td>China  </td><td>1994   </td><td>20     </td><td>Asia   </td></tr>
-    <tr><td>China  </td><td>1995   </td><td> 9     </td><td>Asia   </td></tr>
-    <tr><td>China  </td><td>1996   </td><td>15     </td><td>Asia   </td></tr>
-    <tr><td>Sudan  </td><td>1995   </td><td> 8     </td><td>Africa </td></tr>
-    <tr><td>Sudan  </td><td>1994   </td><td>20     </td><td>Africa </td></tr>
+    <tr><td>China  </td><td>1994   </td><td> 6     </td><td>Asia   </td></tr>
+    <tr><td>China  </td><td>1995   </td><td>10     </td><td>Asia   </td></tr>
+    <tr><td>China  </td><td>1996   </td><td>10     </td><td>Asia   </td></tr>
+    <tr><td>Sudan  </td><td>1995   </td><td>19     </td><td>Africa </td></tr>
+    <tr><td>Sudan  </td><td>1994   </td><td> 3     </td><td>Africa </td></tr>
     <tr><td>Sudan  </td><td>1996   </td><td>13     </td><td>Africa </td></tr>
-    <tr><td>USA    </td><td>1994   </td><td> 1     </td><td>America</td></tr>
-    <tr><td>USA    </td><td>1996   </td><td>17     </td><td>America</td></tr>
-    <tr><td>USA    </td><td>1995   </td><td> 8     </td><td>America</td></tr>
+    <tr><td>USA    </td><td>1994   </td><td> 3     </td><td>America</td></tr>
+    <tr><td>USA    </td><td>1996   </td><td> 4     </td><td>America</td></tr>
+    <tr><td>USA    </td><td>1995   </td><td> 3     </td><td>America</td></tr>
 </tbody>
 </table></div>
 </div>
 </div>
 </div>
 <div class="section" id="Appending">
-<h1>Appending<a class="headerlink" href="#Appending" title="Permalink to this headline">¶</a></h1>
+<h2>Appending<a class="headerlink" href="#Appending" title="Permalink to this headline">¶</a></h2>
 <p>Appending means matching datasets vertically. We can do this in R using <code class="docutils literal notranslate"><span class="pre">rbind()</span></code>. The two dataframes you’re appending must have identical variable names. Here’s an example:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
@@ -652,7 +655,7 @@ The following objects are masked from ‘package:base’:
 </div>
 </div>
 <div class="section" id="Exercises">
-<h1>Exercises<a class="headerlink" href="#Exercises" title="Permalink to this headline">¶</a></h1>
+<h2>Exercises<a class="headerlink" href="#Exercises" title="Permalink to this headline">¶</a></h2>
 <p><strong>Warm-up:</strong> Merge the three data frames defined below. Your final data frame should have 9 rows and 5 columns. Hint: merge only two data frames at a time.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
@@ -691,6 +694,7 @@ The following objects are masked from ‘package:base’:
 <li>The Total Tax and Total Income Tax variables from the tax dataset have commas in them, and are therefore not numeric. Remove the commas and convert the variables to numeric. Hint: <code class="docutils literal notranslate"><span class="pre">gsub()</span></code>.</li>
 </ol>
 </div>
+</div>
 
 
           </div>
@@ -711,46 +715,18 @@ The following objects are masked from ‘package:base’:
 <h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html#Packages">Packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html#Style">Style</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html#Trouble-shooting">Trouble shooting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectors.html">Creating vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectors.html#Subsetting-vectors">Subsetting vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectors.html#Modifying-vectors">Modifying vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectors.html#Summarizing-vectors">Summarizing vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectors.html#Exercises">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html">Creating datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Dataset-structure">Dataset structure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Basic-commands">Basic commands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Reading-data">Reading data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Exercises">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Subsetting">Subsetting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Sorting">Sorting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Dropping">Dropping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Renaming">Renaming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Unique-values">Unique values</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#New-variables">New variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Chaining">Chaining</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Exercises">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html">One grouping variable</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Several-grouping-variables">Several grouping variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Additional-manipulation">Additional manipulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Different-functions">Different functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Exercises">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="for-loops.html">Writing a for loop</a></li>
-<li class="toctree-l1"><a class="reference internal" href="for-loops.html#An-appliction">An appliction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vectors.html">Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modifying-data.html">Manipulating Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html">Collapsing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="for-loops.html">For Loops</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Merging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Appending">Appending</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Exercises">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html#Crosstabs">Crosstabs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html#Summary-statistics">Summary statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html#Regression-tables">Regression tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html">Wide versus long data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html#A-case-for-long-data">A case for long data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html">Wide &amp; Long Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wide-and-long.html#Wide-to-long-conversion">Wide-to-long conversion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html#Exercises">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="writing-functions.html">Motivation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="writing-functions.html#Building-blocks">Building blocks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="writing-functions.html#Applications">Applications</a></li>
@@ -761,7 +737,7 @@ The following objects are masked from ‘package:base’:
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="for-loops.html" title="previous chapter">Writing a for loop</a></li>
+      <li>Previous: <a href="for-loops.html" title="previous chapter">For Loops</a></li>
       <li>Next: <a href="tables-in-r.html" title="next chapter">Overview</a></li>
   </ul></li>
 </ul>

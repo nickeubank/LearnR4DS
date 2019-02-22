@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Creating vectors &#8212; R for Data Science  documentation</title>
+    <title>Vectors &#8212; R for Data Science  documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -18,7 +18,7 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Creating datasets" href="dataset-basics.html" />
+    <link rel="next" title="Dataset Basics" href="dataset-basics.html" />
     <link rel="prev" title="Introduction" href="introduction.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -236,8 +236,11 @@ div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
+<div class="section" id="Vectors">
+<h1>Vectors<a class="headerlink" href="#Vectors" title="Permalink to this headline">¶</a></h1>
+<p>summary: This tutorial introduces a key object in R: vectors. Vectors have one dimension that represents some concept or fact about the world. Examples include age, height, eye color, GDP per capita, and war initiation. The tutorial explains how to create different types of vectors, how to subset them, how to modify them, and how to summarize them.</p>
 <div class="section" id="Creating-vectors">
-<h1>Creating vectors<a class="headerlink" href="#Creating-vectors" title="Permalink to this headline">¶</a></h1>
+<h2>Creating vectors<a class="headerlink" href="#Creating-vectors" title="Permalink to this headline">¶</a></h2>
 <p>We’ll create three types of vectors: numeric, character, and logical. Here are examples of each type:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -260,11 +263,11 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>Note that vectors can consist of one or many <em>elements</em>. Three common ways to create vectors with more than one element is to use <code class="docutils literal notranslate"><span class="pre">c()</span></code>, <code class="docutils literal notranslate"><span class="pre">seq()</span></code>, or <code class="docutils literal notranslate"><span class="pre">rep()</span></code>.</p>
 <div class="section" id="c()">
-<h2>c()<a class="headerlink" href="#c()" title="Permalink to this headline">¶</a></h2>
+<h3>c()<a class="headerlink" href="#c()" title="Permalink to this headline">¶</a></h3>
 <p>As illustrated above, one very common way to create vectors with more than one element is to use <code class="docutils literal notranslate"><span class="pre">c()</span></code> (“concatenate”), which simply combines whatever values you specify in the parentheses.</p>
 </div>
 <div class="section" id="seq()">
-<h2>seq()<a class="headerlink" href="#seq()" title="Permalink to this headline">¶</a></h2>
+<h3>seq()<a class="headerlink" href="#seq()" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">seq()</span></code> applies to numeric vectors only:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -342,7 +345,7 @@ div.rendered_html tbody tr:hover {
 
 General note about argument names: A function’s argument names need not be specified, as illustrated when we created ``n3``. If they are not specified, R uses arguments based on a default order. One way to learn about this order is to use ``?`` (e.g., ``?seq``). If you specify the argument names, the order doesn’t matter. Putting all this together, hopefully it’s obvious why ``seq(by = -1, from = 10, to = 2)`` is the same as ``seq(10, 2, -1)``.</div></div>
 <div class="section" id="rep()">
-<h2>rep()<a class="headerlink" href="#rep()" title="Permalink to this headline">¶</a></h2>
+<h3>rep()<a class="headerlink" href="#rep()" title="Permalink to this headline">¶</a></h3>
 <p>Vectors can also be created using <code class="docutils literal notranslate"><span class="pre">rep()</span></code>. As the name implies, this function is useful if you want to <em>repeat</em> an element or elements.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
@@ -391,7 +394,7 @@ General note about argument names: A function’s argument names need not be spe
 <p>As should be obvious, the first parameter in the function specifies the element to repeat, and the second the number of times to repeat it.</p>
 </div>
 <div class="section" id="Using-more-than-one-function">
-<h2>Using more than one function<a class="headerlink" href="#Using-more-than-one-function" title="Permalink to this headline">¶</a></h2>
+<h3>Using more than one function<a class="headerlink" href="#Using-more-than-one-function" title="Permalink to this headline">¶</a></h3>
 <p>Perhaps the most powerful use of these functions comes from combining them. Here are a two examples:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
@@ -468,12 +471,12 @@ General note about argument names: A function’s argument names need not be spe
 </div>
 </div>
 <div class="section" id="Subsetting-vectors">
-<h1>Subsetting vectors<a class="headerlink" href="#Subsetting-vectors" title="Permalink to this headline">¶</a></h1>
+<h2>Subsetting vectors<a class="headerlink" href="#Subsetting-vectors" title="Permalink to this headline">¶</a></h2>
 <p>Extracting a subset of elements from a vector is an extremely important task, not least because it generalizes nicely to datasets (which are at the heart of data science). This process — whether applied to a vector or a dataset — is often referred to as “taking a subset”, “subsetting”, or “filtering”. If there is one skill you need to master as quickly as possible, it’s this.</p>
 <p>In R, there are three ways to filter a vector: using a separate logical vector, using indexing, and using names. I tend to use the first method most, but all three are useful.</p>
 </div>
 <div class="section" id="Subsetting-with-logicals">
-<h1>Subsetting with logicals<a class="headerlink" href="#Subsetting-with-logicals" title="Permalink to this headline">¶</a></h1>
+<h2>Subsetting with logicals<a class="headerlink" href="#Subsetting-with-logicals" title="Permalink to this headline">¶</a></h2>
 <p>Let’s jump right into an example. Say we have a character vector with only two elements (“apple” and “banana”). Subsetting it to “apple” could be done like so:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
@@ -684,7 +687,7 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 </div>
 <p>Note that I didn’t create logical objects to carry out the subsets here, as opposed to above where we explicitly defined <code class="docutils literal notranslate"><span class="pre">lv</span></code>. I find it more compact and intuitive to take subsets without first creating a logical vector.</p>
 <div class="section" id="Subsetting-using-indexing">
-<h2>Subsetting using indexing<a class="headerlink" href="#Subsetting-using-indexing" title="Permalink to this headline">¶</a></h2>
+<h3>Subsetting using indexing<a class="headerlink" href="#Subsetting-using-indexing" title="Permalink to this headline">¶</a></h3>
 <p>A different way to subset a vector is to specify the index or indeces you want to keep, again using brackets. Here are a few examples:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
@@ -745,15 +748,15 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 <div class="output_area rendered_html docutils container">
 <ol class=list-inline>
     <li>36</li>
-    <li>40</li>
-    <li>57</li>
-    <li>21</li>
-    <li>20</li>
+    <li>26</li>
+    <li>73</li>
+    <li>54</li>
+    <li>99</li>
+    <li>42</li>
+    <li>33</li>
+    <li>66</li>
+    <li>52</li>
     <li>17</li>
-    <li>9</li>
-    <li>10</li>
-    <li>95</li>
-    <li>68</li>
 </ol></div>
 </div>
 <p>The function takes a vector of values (often successive integer values) and an argument that specifies how many values to draw at random from this vector. We can use the resulting values as indeces to subset another vector:</p>
@@ -772,17 +775,17 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 </div>
 <div class="output_area rendered_html docutils container">
 <ol class=list-inline>
-    <li>'orange'</li>
+    <li>'banana'</li>
     <li>'orange'</li>
     <li>'banana'</li>
-    <li>'apple'</li>
+    <li>'orange'</li>
     <li>'orange'</li>
 </ol></div>
 </div>
 <p>Here, we’re drawing a random sample of five elements from the vector <code class="docutils literal notranslate"><span class="pre">fruits</span></code>. Why did I specify <code class="docutils literal notranslate"><span class="pre">1:30</span></code>? Well, <code class="docutils literal notranslate"><span class="pre">fruits</span></code> consists of 30 elements, so specifying something like <code class="docutils literal notranslate"><span class="pre">1:100</span></code> likely would have resulted in sampled values outside the bounds of the vector (e.g., <code class="docutils literal notranslate"><span class="pre">fruits[35]</span></code> doesn’t exist). Specifying <code class="docutils literal notranslate"><span class="pre">1:30</span></code> gives every element in <code class="docutils literal notranslate"><span class="pre">fruits</span></code> an equal chance of being included in the sample.</p>
 </div>
 <div class="section" id="Subsetting-using-names">
-<h2>Subsetting using names<a class="headerlink" href="#Subsetting-using-names" title="Permalink to this headline">¶</a></h2>
+<h3>Subsetting using names<a class="headerlink" href="#Subsetting-using-names" title="Permalink to this headline">¶</a></h3>
 <p>Lastly, we can assign names to each element in a vector and take a subset based on the names.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
@@ -824,7 +827,7 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 </div>
 </div>
 <div class="section" id="Modifying-vectors">
-<h1>Modifying vectors<a class="headerlink" href="#Modifying-vectors" title="Permalink to this headline">¶</a></h1>
+<h2>Modifying vectors<a class="headerlink" href="#Modifying-vectors" title="Permalink to this headline">¶</a></h2>
 <p>The subsetting logic from above can be used to modify vectors. The idea here is that instead of keeping elements that meet a logical condition or occur at a specific index, we can change them. For example, what if we had mis-entered grandpa’s age above? We can fix it using indexing, a logical statement, or naming.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
@@ -918,7 +921,7 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 </div>
 </div>
 <div class="section" id="Vector-arithmetics">
-<h1>Vector arithmetics<a class="headerlink" href="#Vector-arithmetics" title="Permalink to this headline">¶</a></h1>
+<h2>Vector arithmetics<a class="headerlink" href="#Vector-arithmetics" title="Permalink to this headline">¶</a></h2>
 <p>We can modify or create new numeric vectors using arithmetic operations. Three common types of operations involve:</p>
 <ol class="arabic simple">
 <li>A vector with more than one element and a vector with only one element.</li>
@@ -1093,7 +1096,7 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 <p>Vector arithmetics can also be carried out in R on two multi-value vectors with different number of elements. Such operations use the <a class="reference external" href="http://www.r-tutor.com/r-introduction/vector/vector-arithmetics">recycling rule</a>.</p>
 </div>
 <div class="section" id="Summarizing-vectors">
-<h1>Summarizing vectors<a class="headerlink" href="#Summarizing-vectors" title="Permalink to this headline">¶</a></h1>
+<h2>Summarizing vectors<a class="headerlink" href="#Summarizing-vectors" title="Permalink to this headline">¶</a></h2>
 <p>We often want to get summary statistics from a vector — that is, learn something general about it by looking beyond its constituent elements. If we have a vector in which each element represents a person’s height, we may want to know who the shortest or tallest person is, what the median or mean height is, what the standard deviation is, etc. Here are common summary facts for vectors:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
@@ -1123,16 +1126,16 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 </div>
 <div class="output_area rendered_html docutils container">
 <ol class=list-inline>
-    <li>602</li>
-    <li>154</li>
-    <li>208</li>
-    <li>159</li>
-    <li>888</li>
-    <li>605</li>
-    <li>413</li>
-    <li>852</li>
-    <li>680</li>
-    <li>958</li>
+    <li>772</li>
+    <li>141</li>
+    <li>435</li>
+    <li>482</li>
+    <li>955</li>
+    <li>69</li>
+    <li>863</li>
+    <li>434</li>
+    <li>858</li>
+    <li>431</li>
 </ol></div>
 </div>
 <div class="nboutput docutils container">
@@ -1151,43 +1154,43 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-958</div>
+955</div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-154</div>
+69</div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-5519</div>
+5440</div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-551.9</div>
+544</div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-603.5</div>
+458.5</div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-93326.1</div>
+94432.2222222222</div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-305.493207780468</div>
+307.298262641074</div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
@@ -1195,15 +1198,15 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 <div class="output_area rendered_html docutils container">
 <dl class=dl-horizontal>
     <dt>0%</dt>
-            <dd>154</dd>
+            <dd>69</dd>
     <dt>25%</dt>
-            <dd>259.25</dd>
+            <dd>431.75</dd>
     <dt>50%</dt>
-            <dd>603.5</dd>
+            <dd>458.5</dd>
     <dt>75%</dt>
-            <dd>809</dd>
+            <dd>836.5</dd>
     <dt>100%</dt>
-            <dd>958</dd>
+            <dd>955</dd>
 </dl></div>
 </div>
 <div class="nboutput docutils container">
@@ -1212,42 +1215,42 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 <div class="output_area rendered_html docutils container">
 <dl class=dl-horizontal>
     <dt>0%</dt>
-            <dd>154</dd>
+            <dd>69</dd>
     <dt>10%</dt>
-            <dd>158.5</dd>
+            <dd>133.8</dd>
     <dt>20%</dt>
-            <dd>198.2</dd>
+            <dd>373</dd>
     <dt>30%</dt>
-            <dd>351.5</dd>
+            <dd>433.1</dd>
     <dt>40%</dt>
-            <dd>526.4</dd>
+            <dd>434.6</dd>
     <dt>50%</dt>
-            <dd>603.5</dd>
+            <dd>458.5</dd>
     <dt>60%</dt>
-            <dd>635</dd>
+            <dd>598</dd>
     <dt>70%</dt>
-            <dd>731.6</dd>
+            <dd>797.8</dd>
     <dt>80%</dt>
-            <dd>859.2</dd>
+            <dd>859</dd>
     <dt>90%</dt>
-            <dd>895</dd>
+            <dd>872.2</dd>
     <dt>100%</dt>
-            <dd>958</dd>
+            <dd>955</dd>
 </dl></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span> Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
-154.0   259.2   603.5   551.9   809.0   958.0
+<span></span>Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+69.0   431.8   458.5   544.0   836.5   955.0
 </pre></div>
 </div>
 </div>
 <p>If you forget one of these functions or if I haven’t included one here that you need, google almost surely has the answer for you. Also note that some of the operations above — most notably <code class="docutils literal notranslate"><span class="pre">class()</span></code> and <code class="docutils literal notranslate"><span class="pre">length()</span></code> — apply to non-numeric vectors.</p>
 </div>
 <div class="section" id="Code-generalization">
-<h1>Code generalization<a class="headerlink" href="#Code-generalization" title="Permalink to this headline">¶</a></h1>
+<h2>Code generalization<a class="headerlink" href="#Code-generalization" title="Permalink to this headline">¶</a></h2>
 <p>We want our code to be as general as possible so that it can be reapplied to a different coding task or if the data change. Commands that summarize vectors can be useful to accomplish this.</p>
 <p>Remember above when we found a random sample of <code class="docutils literal notranslate"><span class="pre">fruits</span></code>? Here is more or less the code we used:</p>
 <div class="nbinput docutils container">
@@ -1273,11 +1276,11 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 </div>
 <div class="output_area rendered_html docutils container">
 <ol class=list-inline>
+    <li>'orange'</li>
     <li>'banana'</li>
+    <li>'apple'</li>
     <li>'orange'</li>
     <li>'apple'</li>
-    <li>'banana'</li>
-    <li>'orange'</li>
 </ol></div>
 </div>
 <p>The third line, where we create <code class="docutils literal notranslate"><span class="pre">random_sample</span></code>, is not very general. Why? In this case, <code class="docutils literal notranslate"><span class="pre">fruits</span></code> has 30 elements. What if it instead had 50 elements? <em>Then the third line would not give us a random sample.</em> Or more precisely, this line would give us a random sample of the 30 first elements of fruits — the last 20 elements would not have a chance of being included. We could modify the third line to read <code class="docutils literal notranslate"><span class="pre">random_sample</span> <span class="pre">&lt;-</span> <span class="pre">fruits[sample(1:50,</span> <span class="pre">size</span> <span class="pre">=</span> <span class="pre">5)]</span></code>. But if we then modified <code class="docutils literal notranslate"><span class="pre">fruits</span></code>
@@ -1312,16 +1315,16 @@ to have a different number of elements again we’d end up with the same problem
 </div>
 <div class="output_area rendered_html docutils container">
 <ol class=list-inline>
-    <li>'banana'</li>
-    <li>'banana'</li>
     <li>'orange'</li>
     <li>'orange'</li>
     <li>'apple'</li>
+    <li>'banana'</li>
+    <li>'banana'</li>
 </ol></div>
 </div>
 <div style="margin-top: 15px"></div></div>
 <div class="section" id="Exercises">
-<h1>Exercises<a class="headerlink" href="#Exercises" title="Permalink to this headline">¶</a></h1>
+<h2>Exercises<a class="headerlink" href="#Exercises" title="Permalink to this headline">¶</a></h2>
 <p>Create a vector that represents the age of at least four different family members or friends. You can name it whatever you want.</p>
 <ol class="arabic simple">
 <li>What is the mean age of the people in your vector? Find out in two ways, with and without using the <code class="docutils literal notranslate"><span class="pre">mean()</span></code> command.</li>
@@ -1340,6 +1343,7 @@ to have a different number of elements again we’d end up with the same problem
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
 <span></span>
 </pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -1363,46 +1367,18 @@ to have a different number of elements again we’d end up with the same problem
 <h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Creating vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Subsetting-vectors">Subsetting vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Subsetting-with-logicals">Subsetting with logicals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Modifying-vectors">Modifying vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Vector-arithmetics">Vector arithmetics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Summarizing-vectors">Summarizing vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Code-generalization">Code generalization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Exercises">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html">Creating datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Dataset-structure">Dataset structure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Basic-commands">Basic commands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Reading-data">Reading data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Exercises">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Subsetting">Subsetting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Sorting">Sorting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Dropping">Dropping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Renaming">Renaming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Unique-values">Unique values</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#New-variables">New variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Chaining">Chaining</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Exercises">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html">One grouping variable</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Several-grouping-variables">Several grouping variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Additional-manipulation">Additional manipulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Different-functions">Different functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Exercises">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="for-loops.html">Writing a for loop</a></li>
-<li class="toctree-l1"><a class="reference internal" href="for-loops.html#An-appliction">An appliction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modifying-data.html">Manipulating Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html">Collapsing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="for-loops.html">For Loops</a></li>
 <li class="toctree-l1"><a class="reference internal" href="merging-appending.html">Merging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="merging-appending.html#Appending">Appending</a></li>
-<li class="toctree-l1"><a class="reference internal" href="merging-appending.html#Exercises">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html#Crosstabs">Crosstabs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html#Summary-statistics">Summary statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html#Regression-tables">Regression tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html">Wide versus long data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html#A-case-for-long-data">A case for long data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html">Wide &amp; Long Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wide-and-long.html#Wide-to-long-conversion">Wide-to-long conversion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html#Exercises">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="writing-functions.html">Motivation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="writing-functions.html#Building-blocks">Building blocks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="writing-functions.html#Applications">Applications</a></li>
@@ -1414,7 +1390,7 @@ to have a different number of elements again we’d end up with the same problem
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="introduction.html" title="previous chapter">Introduction</a></li>
-      <li>Next: <a href="dataset-basics.html" title="next chapter">Creating datasets</a></li>
+      <li>Next: <a href="dataset-basics.html" title="next chapter">Dataset Basics</a></li>
   </ul></li>
 </ul>
 </div>

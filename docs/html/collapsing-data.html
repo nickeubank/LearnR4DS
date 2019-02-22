@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>One grouping variable &#8212; R for Data Science  documentation</title>
+    <title>Collapsing Data &#8212; R for Data Science  documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -18,8 +18,8 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Writing a for loop" href="for-loops.html" />
-    <link rel="prev" title="Overview" href="modifying-data.html" />
+    <link rel="next" title="For Loops" href="for-loops.html" />
+    <link rel="prev" title="Modifying Data" href="modifying-data.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -236,6 +236,10 @@ div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
+<div class="section" id="Collapsing-Data">
+<h1>Collapsing Data<a class="headerlink" href="#Collapsing-Data" title="Permalink to this headline">¶</a></h1>
+<p>summary: This tutorial explains how to collapse data in R. Collapsing means using one or several <em>grouping variables</em> to find summary statistics — mean, median, etc. — for different categories in your data. For example, if you have yearly income data for the 50 U.S. states over a 10-year period (i.e., you have 500 data points), you may want to know what the mean income was in each state (collapsing the data to 50 data points) or in each year (10 data points). Or you may want to collapse the data
+by year <em>and</em> U.S. region, say, South v. non-South (20 data points). Like the <a class="reference external" href="../modifying-data">tutorial on modifying data</a>, this tutorial draws on a set of intuitive and elegant functions from the <code class="docutils literal notranslate"><span class="pre">dplyr</span></code> package.</p>
 <p>Before we begin, let’s load the <code class="docutils literal notranslate"><span class="pre">dplyr</span></code> package. We’ll make particular use of two functions from this package: <code class="docutils literal notranslate"><span class="pre">group_by</span></code> and <code class="docutils literal notranslate"><span class="pre">summarize</span></code>. We’ll also make use of chaining, which you can read more about in the tutorial on <a class="reference external" href="../modifying-data/#chaining">modifying data</a>.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -266,7 +270,7 @@ The following objects are masked from ‘package:base’:
 </pre></div></div>
 </div>
 <div class="section" id="One-grouping-variable">
-<h1>One grouping variable<a class="headerlink" href="#One-grouping-variable" title="Permalink to this headline">¶</a></h1>
+<h2>One grouping variable<a class="headerlink" href="#One-grouping-variable" title="Permalink to this headline">¶</a></h2>
 <p>To illustrate how collapsing works, let’s create a data frame with three variables: <code class="docutils literal notranslate"><span class="pre">student</span></code> (an id variable that uniquely identifies each row); <code class="docutils literal notranslate"><span class="pre">school</span></code> (a grouping variable indicating the student’s school); and <code class="docutils literal notranslate"><span class="pre">sat_score</span></code> (the student’s SAT score).</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -358,7 +362,7 @@ The following objects are masked from ‘package:base’:
 </div>
 </div>
 <div class="section" id="Several-grouping-variables">
-<h1>Several grouping variables<a class="headerlink" href="#Several-grouping-variables" title="Permalink to this headline">¶</a></h1>
+<h2>Several grouping variables<a class="headerlink" href="#Several-grouping-variables" title="Permalink to this headline">¶</a></h2>
 <p>In the previous example we collapsed the data using only one grouping variable. Collapsing can also be done using several grouping variables. Let’s modify the <code class="docutils literal notranslate"><span class="pre">grades</span></code> data frame to illustrate:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
@@ -422,7 +426,7 @@ The following objects are masked from ‘package:base’:
 </div>
 </div>
 <div class="section" id="Additional-manipulation">
-<h1>Additional manipulation<a class="headerlink" href="#Additional-manipulation" title="Permalink to this headline">¶</a></h1>
+<h2>Additional manipulation<a class="headerlink" href="#Additional-manipulation" title="Permalink to this headline">¶</a></h2>
 <p>One nice thing about using <code class="docutils literal notranslate"><span class="pre">dplyr</span></code> functions for collapsing data is that you can combine them with other data manipulation functions, many of which are covered in a separate tutorial on <a class="reference external" href="../modifying-data">modifying data</a>. The result is elegant code that is easy to debug and relatively quick to execute. Here’s an example in which I’m filtering the <code class="docutils literal notranslate"><span class="pre">grades</span></code> data frame to class of 2017 and then collapsing:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
@@ -475,7 +479,7 @@ The following objects are masked from ‘package:base’:
 </div>
 </div>
 <div class="section" id="Different-functions">
-<h1>Different functions<a class="headerlink" href="#Different-functions" title="Permalink to this headline">¶</a></h1>
+<h2>Different functions<a class="headerlink" href="#Different-functions" title="Permalink to this headline">¶</a></h2>
 <p>In all the examples above I’ve used <code class="docutils literal notranslate"><span class="pre">mean()</span></code> inside <code class="docutils literal notranslate"><span class="pre">summarize()</span></code>. Of course you’re by no means limited to finding the mean. You can use all of R’s built-in functions or write your own function. Here are examples that make use of other common functions:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
@@ -556,7 +560,7 @@ The following objects are masked from ‘package:base’:
 </div>
 </div>
 <div class="section" id="Exercises">
-<h1>Exercises<a class="headerlink" href="#Exercises" title="Permalink to this headline">¶</a></h1>
+<h2>Exercises<a class="headerlink" href="#Exercises" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li>Read the <code class="docutils literal notranslate"><span class="pre">world-small.csv</span></code> dataset (available <a class="reference external" href="../data/world-small.csv">here</a>) into R. Get to know the structure of this dataset using functions like <code class="docutils literal notranslate"><span class="pre">dim()</span></code>, <code class="docutils literal notranslate"><span class="pre">head()</span></code>, and <code class="docutils literal notranslate"><span class="pre">summary()</span></code>.</li>
 <li>Find the mean and median GDP per capita and Polity IV score, by region (that is, for each region in the dataset). Also find the number of countries by region.</li>
@@ -569,6 +573,7 @@ The following objects are masked from ‘package:base’:
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
 <span></span>
 </pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -592,43 +597,18 @@ The following objects are masked from ‘package:base’:
 <h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectors.html">Creating vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectors.html#Subsetting-vectors">Subsetting vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectors.html#Modifying-vectors">Modifying vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectors.html#Summarizing-vectors">Summarizing vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectors.html#Exercises">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html">Creating datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Dataset-structure">Dataset structure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Basic-commands">Basic commands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Reading-data">Reading data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Exercises">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Subsetting">Subsetting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Sorting">Sorting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Dropping">Dropping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Renaming">Renaming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Unique-values">Unique values</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#New-variables">New variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Chaining">Chaining</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Exercises">Exercises</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">One grouping variable</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Several-grouping-variables">Several grouping variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Additional-manipulation">Additional manipulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Different-functions">Different functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Exercises">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="for-loops.html">Writing a for loop</a></li>
-<li class="toctree-l1"><a class="reference internal" href="for-loops.html#An-appliction">An appliction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vectors.html">Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modifying-data.html">Manipulating Data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Collapsing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="for-loops.html">For Loops</a></li>
 <li class="toctree-l1"><a class="reference internal" href="merging-appending.html">Merging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="merging-appending.html#Appending">Appending</a></li>
-<li class="toctree-l1"><a class="reference internal" href="merging-appending.html#Exercises">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html#Crosstabs">Crosstabs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html#Summary-statistics">Summary statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html#Regression-tables">Regression tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html">Wide versus long data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html#A-case-for-long-data">A case for long data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html">Wide &amp; Long Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wide-and-long.html#Wide-to-long-conversion">Wide-to-long conversion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html#Exercises">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="writing-functions.html">Motivation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="writing-functions.html#Building-blocks">Building blocks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="writing-functions.html#Applications">Applications</a></li>
@@ -639,8 +619,8 @@ The following objects are masked from ‘package:base’:
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="modifying-data.html" title="previous chapter">Overview</a></li>
-      <li>Next: <a href="for-loops.html" title="next chapter">Writing a for loop</a></li>
+      <li>Previous: <a href="modifying-data.html" title="previous chapter">Modifying Data</a></li>
+      <li>Next: <a href="for-loops.html" title="next chapter">For Loops</a></li>
   </ul></li>
 </ul>
 </div>

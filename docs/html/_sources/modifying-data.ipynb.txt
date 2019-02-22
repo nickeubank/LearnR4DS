@@ -4,10 +4,8 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "---\n",
-    "title: Modifying Data\n",
-    "author: <a href=\"http://stanford.edu/~ejdemyr/\"> Simon Ejdemyr </a> \n",
-    "date: December, 2015\n",
+    "# Modifying Data\n",
+    "\n",
     "summary: Being able to quickly modify datasets is critical. This involves,\n",
     " among other things&#58; subsetting, sorting, extracting unique\n",
     " observations, renaming variables, dropping variables, and creating new\n",
@@ -16,18 +14,10 @@
     " by [Hadley Wickham](http://had.co.nz/).  A nice introduction to this\n",
     " package is [here](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html).\n",
     " I'll try to give more of a beginner's introduction below.\n",
-    "related: <a href=\"../dataset-basics\">Dataset basics</a>\n",
-    "         <a href=\"../collapsing-data\">Collapsing data</a> \n",
-    "         <a href=\"../merging-appending\">Merging &amp; appending</a>\n",
-    "output:\n",
-    "  html_document:\n",
-    "     template: ../template/r-tutorial-template-v2.html\n",
-    "     mathjax: null\n",
-    "---\n",
     "\n",
     "\n",
-    "Overview\n",
-    "====================\n",
+    "## Overview\n",
+    "\n",
     "\n",
     "The table below gives an overview of very common data management tasks\n",
     "and their corresponding dplyr function. \n",
@@ -138,8 +128,8 @@
    "source": [
     "<div style=\"margin-top: 15px\"> </div>\n",
     "\n",
-    "Subsetting\n",
-    "==============\n",
+    "## Subsetting\n",
+    "\n",
     "\n",
     "The best way to subset a dataset is by using a logical statement. The\n",
     "idea is that we want to keep only some *rows* in a dataset that meet\n",
@@ -216,8 +206,8 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Sorting\n",
-    "============\n",
+    "## Sorting\n",
+    "\n",
     "\n",
     "Use `arrange()` to sort a dataset. Here are a few examples. (I'll use\n",
     "the chaining operator `%>%` from now on --- if you're confused about\n",
@@ -248,8 +238,8 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Dropping\n",
-    "====================\n",
+    "## Dropping\n",
+    "\n",
     "\n",
     "To only keep some variables in a data frame use `select()`:"
    ]
@@ -274,8 +264,8 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Renaming\n",
-    "====================\n",
+    "## Renaming\n",
+    "\n",
     "\n",
     "As illustrated in the last line of code above you can rename variables\n",
     "using `select()`. But this can also be done using `rename()`:"
@@ -295,8 +285,8 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Unique values\n",
-    "=====================\n",
+    "## Unique values\n",
+    "\n",
     "\n",
     "Removing duplicate observations can be useful, but be careful: entire\n",
     "rows will be deleted. Use `distinct()`:"
@@ -354,8 +344,8 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "New variables \n",
-    "================\n",
+    "## New variables \n",
+    "\n",
     "\n",
     "Use `mutate()` to create new variables or to modify existing\n",
     "variables. Here are a few examples."
@@ -403,8 +393,7 @@
     "and `revalue()`. \n",
     "\n",
     "\n",
-    "<span class=\"fw\"> ifelse() </span>\n",
-    "------------------------------\n",
+    "### ifelse()\n",
     "\n",
     "`ifelse()` is a logical function that is useful for modifying\n",
     "variables in datasets (or individual vectors). Here's an illustration\n",
@@ -486,9 +475,7 @@
     "\n",
     "\n",
     "\n",
-    "<span class=\"fw\"> revalue() </span>\n",
-    "------------------------------\n",
-    "\n",
+    "### revalue()\n",
     "We often want to recode the categories of a variable. \n",
     "For example, take a look at the `region` variable in `world`:"
    ]
@@ -537,8 +524,8 @@
     "\n",
     "\n",
     "\n",
-    "A note on factor variables \n",
-    "------------------------------\n",
+    "### A note on factor variables \n",
+    "\n",
     "\n",
     "The `read.csv()` function automatically converts variables that\n",
     "contain strings to the class \"factor\". Note, for example, that both\n",
@@ -633,8 +620,8 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Chaining\n",
-    "=============\n",
+    "## Chaining\n",
+    "\n",
     "\n",
     "What if you wanted to apply *multiple* functions to one data frame?\n",
     "This is where chaining is elegant and facilitates debugging.\n",
@@ -696,8 +683,8 @@
     "\n",
     "\n",
     "\n",
-    "Exercises \n",
-    "==================\n",
+    "## Exercises \n",
+    "\n",
     "\n",
     "1. Read the `world-small.csv` dataset into R and store it in an object called `world`.\n",
     "\n",
@@ -723,6 +710,13 @@
     "10. How many countries in Europe are \"rich\" according to your coding? \n",
     "How many are poor? What percentage have Polity IV scores of at least 18?"
    ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
   }
  ],
  "metadata": {

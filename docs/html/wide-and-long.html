@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Wide versus long data &#8212; R for Data Science  documentation</title>
+    <title>Wide &amp; Long Data &#8212; R for Data Science  documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -236,8 +236,11 @@ div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
+<div class="section" id="Wide-&amp;-Long-Data">
+<h1>Wide &amp; Long Data<a class="headerlink" href="#Wide-&-Long-Data" title="Permalink to this headline">¶</a></h1>
+<p>author: Simon Ejdemyr date: January, 2016 summary: This tutorial has three purposes: to explain the difference between long and wide form datasets, to show why it’s generally preferable to use long form datasets, and to go over how to convert datasets from wide to long form.</p>
 <div class="section" id="Wide-versus-long-data">
-<h1>Wide versus long data<a class="headerlink" href="#Wide-versus-long-data" title="Permalink to this headline">¶</a></h1>
+<h2>Wide versus long data<a class="headerlink" href="#Wide-versus-long-data" title="Permalink to this headline">¶</a></h2>
 <p>Illustrating the difference between wide and long datasets is easiest using an example. Here are two datasets with the exact same information represented in wide and long form respectively (imagine that <code class="docutils literal notranslate"><span class="pre">avgtemp</span></code> represents average temperature in Celsius):</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -268,14 +271,14 @@ div.rendered_html tbody tr:hover {
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>avgtemp</th></tr></thead>
 <tbody>
-    <tr><td>Sweden </td><td>1994   </td><td> 5     </td></tr>
-    <tr><td>Denmark</td><td>1994   </td><td> 6     </td></tr>
-    <tr><td>Norway </td><td>1994   </td><td> 9     </td></tr>
-    <tr><td>Sweden </td><td>1995   </td><td> 8     </td></tr>
-    <tr><td>Denmark</td><td>1995   </td><td> 3     </td></tr>
-    <tr><td>Norway </td><td>1995   </td><td> 4     </td></tr>
-    <tr><td>Sweden </td><td>1996   </td><td>11     </td></tr>
-    <tr><td>Denmark</td><td>1996   </td><td> 8     </td></tr>
+    <tr><td>Sweden </td><td>1994   </td><td>11     </td></tr>
+    <tr><td>Denmark</td><td>1994   </td><td>11     </td></tr>
+    <tr><td>Norway </td><td>1994   </td><td> 7     </td></tr>
+    <tr><td>Sweden </td><td>1995   </td><td> 9     </td></tr>
+    <tr><td>Denmark</td><td>1995   </td><td> 9     </td></tr>
+    <tr><td>Norway </td><td>1995   </td><td>12     </td></tr>
+    <tr><td>Sweden </td><td>1996   </td><td> 8     </td></tr>
+    <tr><td>Denmark</td><td>1996   </td><td> 3     </td></tr>
     <tr><td>Norway </td><td>1996   </td><td>10     </td></tr>
 </tbody>
 </table></div>
@@ -287,22 +290,23 @@ div.rendered_html tbody tr:hover {
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>avgtemp.1994</th><th scope=col>avgtemp.1995</th><th scope=col>avgtemp.1996</th></tr></thead>
 <tbody>
-    <tr><td>Sweden </td><td>5      </td><td>8      </td><td>11     </td></tr>
-    <tr><td>Denmark</td><td>6      </td><td>3      </td><td> 8     </td></tr>
-    <tr><td>Norway </td><td>9      </td><td>4      </td><td>10     </td></tr>
+    <tr><td>Sweden </td><td>11     </td><td> 9     </td><td> 8     </td></tr>
+    <tr><td>Denmark</td><td>11     </td><td> 9     </td><td> 3     </td></tr>
+    <tr><td>Norway </td><td> 7     </td><td>12     </td><td>10     </td></tr>
 </tbody>
 </table></div>
 </div>
 <p>As is obvious, the long dataset separates the unit of analysis (country-year) into two separate variables. The wide dataset combines one of the keys (<code class="docutils literal notranslate"><span class="pre">year</span></code>) with the value variable (<code class="docutils literal notranslate"><span class="pre">avgtemp</span></code>).</p>
 </div>
 <div class="section" id="A-case-for-long-data">
-<h1>A case for long data<a class="headerlink" href="#A-case-for-long-data" title="Permalink to this headline">¶</a></h1>
+<h2>A case for long data<a class="headerlink" href="#A-case-for-long-data" title="Permalink to this headline">¶</a></h2>
 <p>There are many reasons to prefer datasets structured in long form. Repeating some of the points made in Hadley Wickham’s <a class="reference external" href="http://vita.had.co.nz/papers/tidy-data.html">excellent paper on the topic</a>, here are three reasons why you should attempt to structure your data in long form:</p>
 <ol class="arabic simple">
 <li>If you have many value variables, it is difficult to summarize wide-form datasets at a glance (which in turn makes it hard to identify mistakes in the data). For example, imagine we have a dataset with 50 years and 10 value variables of interest — this would result in 500 columns in wide form. Summarizing each column to look for strange observations, or simply understanding which variables are included in the dataset, becomes difficult in this case.</li>
 <li>Structuring data as key-value pairs — as is done in long-form datasets — facilitates conceptual clarity. For example, in <code class="docutils literal notranslate"><span class="pre">country_long</span></code> above, it is clear that the unit of analysis is country-year — or, put differently, that the variables <code class="docutils literal notranslate"><span class="pre">country</span></code> and <code class="docutils literal notranslate"><span class="pre">year</span></code> jointly constitute the key in the dataset. In wide-form datasets, one of the variables that constitutes the unit of analysis is mixed with a variable that holds values. (Read more about this in Hadley’s paper referenced above.)</li>
 <li>Long-form datasets are often required for advanced statistical analysis and graphing. For example, if you wanted to run a regression with year and/or country fixed effects, you would have to structure your data in long form. Furthermore, many graphing packages, including <code class="docutils literal notranslate"><span class="pre">ggplot</span></code>, rely on your data being in long form.</li>
 </ol>
+</div>
 </div>
 <div class="section" id="Wide-to-long-conversion">
 <h1>Wide-to-long conversion<a class="headerlink" href="#Wide-to-long-conversion" title="Permalink to this headline">¶</a></h1>
@@ -498,9 +502,8 @@ The following objects are masked from ‘package:base’:
 </table></div>
 </div>
 <p>Learn more about <code class="docutils literal notranslate"><span class="pre">gather()</span></code> and other excellent <code class="docutils literal notranslate"><span class="pre">tidyr</span></code> functions that facilitate tidy data <a class="reference external" href="http://blog.rstudio.org/2014/07/22/introducing-tidyr/">here</a> and <a class="reference external" href="http://blog.rstudio.org/2015/09/13/tidyr-0-3-0/">here</a>.</p>
-</div>
 <div class="section" id="Exercises">
-<h1>Exercises<a class="headerlink" href="#Exercises" title="Permalink to this headline">¶</a></h1>
+<h2>Exercises<a class="headerlink" href="#Exercises" title="Permalink to this headline">¶</a></h2>
 <p>Go to <a class="reference external" href="http://www.childmortality.org/">www.childmortality.org</a> and download the dataset under “Estimates for under-five, infant and neonatal mortality”. (You can also download it <a class="reference external" href="../data/RatesDeaths_AllIndicators.xlsx">here</a>.) The dataset is in wide form and contains six value variables of interest: under-five (0-4 years) mortality, infant (0-1 years) mortality, neonatal (0-1 month) mortality, as well as the number of under-five, infant, and neonatal deaths.</p>
 <ol class="arabic simple">
 <li>Read the dataset into R. Note that it is in .xlsx format — there are R packages that will allow you to read such files, or you can convert it to .csv using software such as Excel and then use <code class="docutils literal notranslate"><span class="pre">read.csv()</span></code>. Note that you don’t need the first few rows of the dataset.</li>
@@ -517,6 +520,16 @@ The following objects are masked from ‘package:base’:
 </div><ol class="arabic simple" start="4">
 <li>How many under-five, infant, and neonatal deaths occurred in total in the world in years 1990, 1995, 2000, 2005, and 2015? (Hint: see the tutorial on <a class="reference external" href="../collapsing-data">collapsing data</a>.)</li>
 </ol>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
 
@@ -538,46 +551,18 @@ The following objects are masked from ‘package:base’:
 <h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html#Packages">Packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html#Style">Style</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html#Trouble-shooting">Trouble shooting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectors.html">Creating vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectors.html#Subsetting-vectors">Subsetting vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectors.html#Modifying-vectors">Modifying vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectors.html#Summarizing-vectors">Summarizing vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectors.html#Exercises">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html">Creating datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Dataset-structure">Dataset structure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Basic-commands">Basic commands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Reading-data">Reading data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Exercises">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Subsetting">Subsetting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Sorting">Sorting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Dropping">Dropping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Renaming">Renaming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Unique-values">Unique values</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#New-variables">New variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Chaining">Chaining</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Exercises">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html">One grouping variable</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Several-grouping-variables">Several grouping variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Additional-manipulation">Additional manipulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Different-functions">Different functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Exercises">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="for-loops.html">Writing a for loop</a></li>
-<li class="toctree-l1"><a class="reference internal" href="for-loops.html#An-appliction">An appliction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vectors.html">Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modifying-data.html">Manipulating Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html">Collapsing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="for-loops.html">For Loops</a></li>
 <li class="toctree-l1"><a class="reference internal" href="merging-appending.html">Merging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="merging-appending.html#Appending">Appending</a></li>
-<li class="toctree-l1"><a class="reference internal" href="merging-appending.html#Exercises">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html#Crosstabs">Crosstabs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html#Summary-statistics">Summary statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html#Regression-tables">Regression tables</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Wide versus long data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#A-case-for-long-data">A case for long data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Wide &amp; Long Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#Wide-to-long-conversion">Wide-to-long conversion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Exercises">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="writing-functions.html">Motivation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="writing-functions.html#Building-blocks">Building blocks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="writing-functions.html#Applications">Applications</a></li>

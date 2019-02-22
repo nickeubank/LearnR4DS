@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Writing a for loop &#8212; R for Data Science  documentation</title>
+    <title>For Loops &#8212; R for Data Science  documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -18,8 +18,8 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Merging" href="merging-appending.html" />
-    <link rel="prev" title="One grouping variable" href="collapsing-data.html" />
+    <link rel="next" title="Merging &amp; Appending" href="merging-appending.html" />
+    <link rel="prev" title="Collapsing Data" href="collapsing-data.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -236,8 +236,11 @@ div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
+<div class="section" id="For-Loops">
+<h1>For Loops<a class="headerlink" href="#For-Loops" title="Permalink to this headline">¶</a></h1>
+<p>author: Simon Ejdemyr date: January, 2016 summary: For loops can be useful when you want to iterate a process in R — e.g., run a simulation. This tutorial explains how to write for loops and shows how to use them to run Monte Carlo simulations. For loops are neat, but it’s worth emphasizing that you should avoid them and instead use <a class="reference external" href="http://www.noamross.net/blog/2014/4/16/vectorization-in-r--why.html">vectorization</a> — which is much faster — when possible.</p>
 <div class="section" id="Writing-a-for-loop">
-<h1>Writing a for loop<a class="headerlink" href="#Writing-a-for-loop" title="Permalink to this headline">¶</a></h1>
+<h2>Writing a for loop<a class="headerlink" href="#Writing-a-for-loop" title="Permalink to this headline">¶</a></h2>
 <p>Let’s start with a very simple example. Let’s say you have the following vector <code class="docutils literal notranslate"><span class="pre">v1</span></code> with individuals’ height in centimeters:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -382,7 +385,7 @@ for(i in 1:n) {
 <p>Note that when adding a constant or <code class="docutils literal notranslate"><span class="pre">NA</span></code> values to a vector within a data frame, <code class="docutils literal notranslate"><span class="pre">R</span></code> (correctly) assumes that you want to add this constant to every element of the variable, so you don’t need to specify how many times you want to add <code class="docutils literal notranslate"><span class="pre">NA</span></code> in <code class="docutils literal notranslate"><span class="pre">ppl$height_inch</span> <span class="pre">&lt;-</span> <span class="pre">NA</span></code>.</p>
 </div>
 <div class="section" id="An-appliction">
-<h1>An appliction<a class="headerlink" href="#An-appliction" title="Permalink to this headline">¶</a></h1>
+<h2>An appliction<a class="headerlink" href="#An-appliction" title="Permalink to this headline">¶</a></h2>
 <p>For loops can be used to carry out Monte Carlo simulations. In the example below, we’ll draw repeated samples from a population, calculate the mean for each sample, and test whether we on average do a good job of estimating the population mean.</p>
 <p>Say the population consists of 10 individuals with the following heights:</p>
 <div class="nbinput docutils container">
@@ -417,7 +420,7 @@ for(i in 1:n) {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-183.4</div>
+167.2</div>
 </div>
 <p>Would we on average expect to estimate the mean of the population accurately? Let’s use a Monte Carlo simulation to find out. We’ll draw 10,000 random samples of five from <code class="docutils literal notranslate"><span class="pre">v</span></code> and take the mean of each of these samples. With an unbiased estimator we would, on average, expect the sample estimate to equal the population parameter of interest.</p>
 <div class="nbinput docutils container">
@@ -440,7 +443,8 @@ for(i in 1:n) {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-175.59424</div>
+175.57304</div>
+</div>
 </div>
 </div>
 
@@ -463,46 +467,18 @@ for(i in 1:n) {
 <h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html#Packages">Packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html#Style">Style</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html#Trouble-shooting">Trouble shooting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectors.html">Creating vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectors.html#Subsetting-vectors">Subsetting vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectors.html#Modifying-vectors">Modifying vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectors.html#Summarizing-vectors">Summarizing vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectors.html#Exercises">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html">Creating datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Dataset-structure">Dataset structure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Basic-commands">Basic commands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Reading-data">Reading data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Exercises">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Subsetting">Subsetting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Sorting">Sorting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Dropping">Dropping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Renaming">Renaming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Unique-values">Unique values</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#New-variables">New variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Chaining">Chaining</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Exercises">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html">One grouping variable</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Several-grouping-variables">Several grouping variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Additional-manipulation">Additional manipulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Different-functions">Different functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Exercises">Exercises</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Writing a for loop</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#An-appliction">An appliction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vectors.html">Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modifying-data.html">Manipulating Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html">Collapsing Data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">For Loops</a></li>
 <li class="toctree-l1"><a class="reference internal" href="merging-appending.html">Merging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="merging-appending.html#Appending">Appending</a></li>
-<li class="toctree-l1"><a class="reference internal" href="merging-appending.html#Exercises">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html#Crosstabs">Crosstabs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html#Summary-statistics">Summary statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html#Regression-tables">Regression tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html">Wide versus long data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html#A-case-for-long-data">A case for long data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html">Wide &amp; Long Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wide-and-long.html#Wide-to-long-conversion">Wide-to-long conversion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html#Exercises">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="writing-functions.html">Motivation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="writing-functions.html#Building-blocks">Building blocks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="writing-functions.html#Applications">Applications</a></li>
@@ -513,8 +489,8 @@ for(i in 1:n) {
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="collapsing-data.html" title="previous chapter">One grouping variable</a></li>
-      <li>Next: <a href="merging-appending.html" title="next chapter">Merging</a></li>
+      <li>Previous: <a href="collapsing-data.html" title="previous chapter">Collapsing Data</a></li>
+      <li>Next: <a href="merging-appending.html" title="next chapter">Merging &amp; Appending</a></li>
   </ul></li>
 </ul>
 </div>

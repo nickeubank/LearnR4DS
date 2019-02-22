@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Overview &#8212; R for Data Science  documentation</title>
+    <title>Modifying Data &#8212; R for Data Science  documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -18,8 +18,8 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="One grouping variable" href="collapsing-data.html" />
-    <link rel="prev" title="Creating datasets" href="dataset-basics.html" />
+    <link rel="next" title="Collapsing Data" href="collapsing-data.html" />
+    <link rel="prev" title="Dataset Basics" href="dataset-basics.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -236,8 +236,12 @@ div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
+<div class="section" id="Modifying-Data">
+<h1>Modifying Data<a class="headerlink" href="#Modifying-Data" title="Permalink to this headline">¶</a></h1>
+<p>summary: Being able to quickly modify datasets is critical. This involves, among other things: subsetting, sorting, extracting unique observations, renaming variables, dropping variables, and creating new variables. To accomplish each of these tasks, we’ll use a set of relatively new functions introduced in the <strong>dplyr</strong> package developed by <a class="reference external" href="http://had.co.nz/">Hadley Wickham</a>. A nice introduction to this package is
+<a class="reference external" href="https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html">here</a>. I’ll try to give more of a beginner’s introduction below.</p>
 <div class="section" id="Overview">
-<h1>Overview<a class="headerlink" href="#Overview" title="Permalink to this headline">¶</a></h1>
+<h2>Overview<a class="headerlink" href="#Overview" title="Permalink to this headline">¶</a></h2>
 <p>The table below gives an overview of very common data management tasks and their corresponding dplyr function.</p>
 <table class="table" style="width: auto !important"><thead class="text-left"><tr><th><p>Task</p>
 </th><th><p>Function</p>
@@ -280,15 +284,15 @@ div.rendered_html tbody tr:hover {
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>USA  </td><td>1994 </td><td> 9595</td></tr>
-    <tr><td>China</td><td>1994 </td><td>19743</td></tr>
-    <tr><td>Sudan</td><td>1994 </td><td>17529</td></tr>
-    <tr><td>USA  </td><td>1995 </td><td>19390</td></tr>
-    <tr><td>China</td><td>1995 </td><td> 9168</td></tr>
-    <tr><td>Sudan</td><td>1995 </td><td>10880</td></tr>
-    <tr><td>USA  </td><td>1996 </td><td>13717</td></tr>
-    <tr><td>China</td><td>1996 </td><td>17199</td></tr>
-    <tr><td>Sudan</td><td>1996 </td><td>17051</td></tr>
+    <tr><td>USA  </td><td>1994 </td><td>12465</td></tr>
+    <tr><td>China</td><td>1994 </td><td>15344</td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td> 5117</td></tr>
+    <tr><td>USA  </td><td>1995 </td><td> 2082</td></tr>
+    <tr><td>China</td><td>1995 </td><td>10750</td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td> 9037</td></tr>
+    <tr><td>USA  </td><td>1996 </td><td> 1769</td></tr>
+    <tr><td>China</td><td>1996 </td><td>18008</td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td> 4861</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -331,7 +335,7 @@ The following objects are masked from ‘package:base’:
 </div>
 <div style="margin-top: 15px"></div></div>
 <div class="section" id="Subsetting">
-<h1>Subsetting<a class="headerlink" href="#Subsetting" title="Permalink to this headline">¶</a></h1>
+<h2>Subsetting<a class="headerlink" href="#Subsetting" title="Permalink to this headline">¶</a></h2>
 <p>The best way to subset a dataset is by using a logical statement. The idea is that we want to keep only some <em>rows</em> in a dataset that meet some logical condition.</p>
 <p>Say we wanted to subset the <code class="docutils literal notranslate"><span class="pre">countries</span></code> dataset to (1) a certain country, (2) a certain year, (3) a certain country <em>and</em> year, or (4) a certain GDP range. Here’s how we can do this using <code class="docutils literal notranslate"><span class="pre">filter()</span></code>.</p>
 <div class="nbinput docutils container">
@@ -353,9 +357,9 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>China</td><td>1994 </td><td>19743</td></tr>
-    <tr><td>China</td><td>1995 </td><td> 9168</td></tr>
-    <tr><td>China</td><td>1996 </td><td>17199</td></tr>
+    <tr><td>China</td><td>1994 </td><td>15344</td></tr>
+    <tr><td>China</td><td>1995 </td><td>10750</td></tr>
+    <tr><td>China</td><td>1996 </td><td>18008</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -366,9 +370,9 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>USA  </td><td>1996 </td><td>13717</td></tr>
-    <tr><td>China</td><td>1996 </td><td>17199</td></tr>
-    <tr><td>Sudan</td><td>1996 </td><td>17051</td></tr>
+    <tr><td>USA  </td><td>1996 </td><td> 1769</td></tr>
+    <tr><td>China</td><td>1996 </td><td>18008</td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td> 4861</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -379,7 +383,7 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>USA  </td><td>1995 </td><td>19390</td></tr>
+    <tr><td>USA </td><td>1995</td><td>2082</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -390,10 +394,10 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>USA  </td><td>1994 </td><td> 9595</td></tr>
-    <tr><td>China</td><td>1995 </td><td> 9168</td></tr>
-    <tr><td>Sudan</td><td>1995 </td><td>10880</td></tr>
-    <tr><td>USA  </td><td>1996 </td><td>13717</td></tr>
+    <tr><td>USA  </td><td>1994 </td><td>12465</td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td> 5117</td></tr>
+    <tr><td>China</td><td>1995 </td><td>10750</td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td> 9037</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -418,9 +422,9 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>China</td><td>1994 </td><td>19743</td></tr>
-    <tr><td>China</td><td>1995 </td><td> 9168</td></tr>
-    <tr><td>China</td><td>1996 </td><td>17199</td></tr>
+    <tr><td>China</td><td>1994 </td><td>15344</td></tr>
+    <tr><td>China</td><td>1995 </td><td>10750</td></tr>
+    <tr><td>China</td><td>1996 </td><td>18008</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -431,9 +435,9 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>USA  </td><td>1996 </td><td>13717</td></tr>
-    <tr><td>China</td><td>1996 </td><td>17199</td></tr>
-    <tr><td>Sudan</td><td>1996 </td><td>17051</td></tr>
+    <tr><td>USA  </td><td>1996 </td><td> 1769</td></tr>
+    <tr><td>China</td><td>1996 </td><td>18008</td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td> 4861</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -444,7 +448,7 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>USA  </td><td>1995 </td><td>19390</td></tr>
+    <tr><td>USA </td><td>1995</td><td>2082</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -455,10 +459,10 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>USA  </td><td>1994 </td><td> 9595</td></tr>
-    <tr><td>China</td><td>1995 </td><td> 9168</td></tr>
-    <tr><td>Sudan</td><td>1995 </td><td>10880</td></tr>
-    <tr><td>USA  </td><td>1996 </td><td>13717</td></tr>
+    <tr><td>USA  </td><td>1994 </td><td>12465</td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td> 5117</td></tr>
+    <tr><td>China</td><td>1995 </td><td>10750</td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td> 9037</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -480,15 +484,15 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>China</td><td>1994 </td><td>19743</td></tr>
-    <tr><td>China</td><td>1995 </td><td> 9168</td></tr>
-    <tr><td>China</td><td>1996 </td><td>17199</td></tr>
+    <tr><td>China</td><td>1994 </td><td>15344</td></tr>
+    <tr><td>China</td><td>1995 </td><td>10750</td></tr>
+    <tr><td>China</td><td>1996 </td><td>18008</td></tr>
 </tbody>
 </table></div>
 </div>
 </div>
 <div class="section" id="Sorting">
-<h1>Sorting<a class="headerlink" href="#Sorting" title="Permalink to this headline">¶</a></h1>
+<h2>Sorting<a class="headerlink" href="#Sorting" title="Permalink to this headline">¶</a></h2>
 <p>Use <code class="docutils literal notranslate"><span class="pre">arrange()</span></code> to sort a dataset. Here are a few examples. (I’ll use the chaining operator <code class="docutils literal notranslate"><span class="pre">%&gt;%</span></code> from now on — if you’re confused about this remember that you can just bring the data frame <code class="docutils literal notranslate"><span class="pre">countries</span></code> inside the function.)</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
@@ -516,15 +520,15 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>China</td><td>1994 </td><td>19743</td></tr>
-    <tr><td>China</td><td>1995 </td><td> 9168</td></tr>
-    <tr><td>China</td><td>1996 </td><td>17199</td></tr>
-    <tr><td>Sudan</td><td>1994 </td><td>17529</td></tr>
-    <tr><td>Sudan</td><td>1995 </td><td>10880</td></tr>
-    <tr><td>Sudan</td><td>1996 </td><td>17051</td></tr>
-    <tr><td>USA  </td><td>1994 </td><td> 9595</td></tr>
-    <tr><td>USA  </td><td>1995 </td><td>19390</td></tr>
-    <tr><td>USA  </td><td>1996 </td><td>13717</td></tr>
+    <tr><td>China</td><td>1994 </td><td>15344</td></tr>
+    <tr><td>China</td><td>1995 </td><td>10750</td></tr>
+    <tr><td>China</td><td>1996 </td><td>18008</td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td> 5117</td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td> 9037</td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td> 4861</td></tr>
+    <tr><td>USA  </td><td>1994 </td><td>12465</td></tr>
+    <tr><td>USA  </td><td>1995 </td><td> 2082</td></tr>
+    <tr><td>USA  </td><td>1996 </td><td> 1769</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -535,15 +539,15 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>China</td><td>1995 </td><td> 9168</td></tr>
-    <tr><td>USA  </td><td>1994 </td><td> 9595</td></tr>
-    <tr><td>Sudan</td><td>1995 </td><td>10880</td></tr>
-    <tr><td>USA  </td><td>1996 </td><td>13717</td></tr>
-    <tr><td>Sudan</td><td>1996 </td><td>17051</td></tr>
-    <tr><td>China</td><td>1996 </td><td>17199</td></tr>
-    <tr><td>Sudan</td><td>1994 </td><td>17529</td></tr>
-    <tr><td>USA  </td><td>1995 </td><td>19390</td></tr>
-    <tr><td>China</td><td>1994 </td><td>19743</td></tr>
+    <tr><td>USA  </td><td>1996 </td><td> 1769</td></tr>
+    <tr><td>USA  </td><td>1995 </td><td> 2082</td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td> 4861</td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td> 5117</td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td> 9037</td></tr>
+    <tr><td>China</td><td>1995 </td><td>10750</td></tr>
+    <tr><td>USA  </td><td>1994 </td><td>12465</td></tr>
+    <tr><td>China</td><td>1994 </td><td>15344</td></tr>
+    <tr><td>China</td><td>1996 </td><td>18008</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -554,15 +558,15 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>China</td><td>1994 </td><td>19743</td></tr>
-    <tr><td>USA  </td><td>1995 </td><td>19390</td></tr>
-    <tr><td>Sudan</td><td>1994 </td><td>17529</td></tr>
-    <tr><td>China</td><td>1996 </td><td>17199</td></tr>
-    <tr><td>Sudan</td><td>1996 </td><td>17051</td></tr>
-    <tr><td>USA  </td><td>1996 </td><td>13717</td></tr>
-    <tr><td>Sudan</td><td>1995 </td><td>10880</td></tr>
-    <tr><td>USA  </td><td>1994 </td><td> 9595</td></tr>
-    <tr><td>China</td><td>1995 </td><td> 9168</td></tr>
+    <tr><td>China</td><td>1996 </td><td>18008</td></tr>
+    <tr><td>China</td><td>1994 </td><td>15344</td></tr>
+    <tr><td>USA  </td><td>1994 </td><td>12465</td></tr>
+    <tr><td>China</td><td>1995 </td><td>10750</td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td> 9037</td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td> 5117</td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td> 4861</td></tr>
+    <tr><td>USA  </td><td>1995 </td><td> 2082</td></tr>
+    <tr><td>USA  </td><td>1996 </td><td> 1769</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -573,21 +577,21 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>China</td><td>1995 </td><td> 9168</td></tr>
-    <tr><td>China</td><td>1996 </td><td>17199</td></tr>
-    <tr><td>China</td><td>1994 </td><td>19743</td></tr>
-    <tr><td>Sudan</td><td>1995 </td><td>10880</td></tr>
-    <tr><td>Sudan</td><td>1996 </td><td>17051</td></tr>
-    <tr><td>Sudan</td><td>1994 </td><td>17529</td></tr>
-    <tr><td>USA  </td><td>1994 </td><td> 9595</td></tr>
-    <tr><td>USA  </td><td>1996 </td><td>13717</td></tr>
-    <tr><td>USA  </td><td>1995 </td><td>19390</td></tr>
+    <tr><td>China</td><td>1995 </td><td>10750</td></tr>
+    <tr><td>China</td><td>1994 </td><td>15344</td></tr>
+    <tr><td>China</td><td>1996 </td><td>18008</td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td> 4861</td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td> 5117</td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td> 9037</td></tr>
+    <tr><td>USA  </td><td>1996 </td><td> 1769</td></tr>
+    <tr><td>USA  </td><td>1995 </td><td> 2082</td></tr>
+    <tr><td>USA  </td><td>1994 </td><td>12465</td></tr>
 </tbody>
 </table></div>
 </div>
 </div>
 <div class="section" id="Dropping">
-<h1>Dropping<a class="headerlink" href="#Dropping" title="Permalink to this headline">¶</a></h1>
+<h2>Dropping<a class="headerlink" href="#Dropping" title="Permalink to this headline">¶</a></h2>
 <p>To only keep some variables in a data frame use <code class="docutils literal notranslate"><span class="pre">select()</span></code>:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
@@ -612,15 +616,15 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>USA  </td><td> 9595</td></tr>
-    <tr><td>China</td><td>19743</td></tr>
-    <tr><td>Sudan</td><td>17529</td></tr>
-    <tr><td>USA  </td><td>19390</td></tr>
-    <tr><td>China</td><td> 9168</td></tr>
-    <tr><td>Sudan</td><td>10880</td></tr>
-    <tr><td>USA  </td><td>13717</td></tr>
-    <tr><td>China</td><td>17199</td></tr>
-    <tr><td>Sudan</td><td>17051</td></tr>
+    <tr><td>USA  </td><td>12465</td></tr>
+    <tr><td>China</td><td>15344</td></tr>
+    <tr><td>Sudan</td><td> 5117</td></tr>
+    <tr><td>USA  </td><td> 2082</td></tr>
+    <tr><td>China</td><td>10750</td></tr>
+    <tr><td>Sudan</td><td> 9037</td></tr>
+    <tr><td>USA  </td><td> 1769</td></tr>
+    <tr><td>China</td><td>18008</td></tr>
+    <tr><td>Sudan</td><td> 4861</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -631,15 +635,15 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>USA  </td><td> 9595</td></tr>
-    <tr><td>China</td><td>19743</td></tr>
-    <tr><td>Sudan</td><td>17529</td></tr>
-    <tr><td>USA  </td><td>19390</td></tr>
-    <tr><td>China</td><td> 9168</td></tr>
-    <tr><td>Sudan</td><td>10880</td></tr>
-    <tr><td>USA  </td><td>13717</td></tr>
-    <tr><td>China</td><td>17199</td></tr>
-    <tr><td>Sudan</td><td>17051</td></tr>
+    <tr><td>USA  </td><td>12465</td></tr>
+    <tr><td>China</td><td>15344</td></tr>
+    <tr><td>Sudan</td><td> 5117</td></tr>
+    <tr><td>USA  </td><td> 2082</td></tr>
+    <tr><td>China</td><td>10750</td></tr>
+    <tr><td>Sudan</td><td> 9037</td></tr>
+    <tr><td>USA  </td><td> 1769</td></tr>
+    <tr><td>China</td><td>18008</td></tr>
+    <tr><td>Sudan</td><td> 4861</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -650,21 +654,21 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country_name</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>USA  </td><td> 9595</td></tr>
-    <tr><td>China</td><td>19743</td></tr>
-    <tr><td>Sudan</td><td>17529</td></tr>
-    <tr><td>USA  </td><td>19390</td></tr>
-    <tr><td>China</td><td> 9168</td></tr>
-    <tr><td>Sudan</td><td>10880</td></tr>
-    <tr><td>USA  </td><td>13717</td></tr>
-    <tr><td>China</td><td>17199</td></tr>
-    <tr><td>Sudan</td><td>17051</td></tr>
+    <tr><td>USA  </td><td>12465</td></tr>
+    <tr><td>China</td><td>15344</td></tr>
+    <tr><td>Sudan</td><td> 5117</td></tr>
+    <tr><td>USA  </td><td> 2082</td></tr>
+    <tr><td>China</td><td>10750</td></tr>
+    <tr><td>Sudan</td><td> 9037</td></tr>
+    <tr><td>USA  </td><td> 1769</td></tr>
+    <tr><td>China</td><td>18008</td></tr>
+    <tr><td>Sudan</td><td> 4861</td></tr>
 </tbody>
 </table></div>
 </div>
 </div>
 <div class="section" id="Renaming">
-<h1>Renaming<a class="headerlink" href="#Renaming" title="Permalink to this headline">¶</a></h1>
+<h2>Renaming<a class="headerlink" href="#Renaming" title="Permalink to this headline">¶</a></h2>
 <p>As illustrated in the last line of code above you can rename variables using <code class="docutils literal notranslate"><span class="pre">select()</span></code>. But this can also be done using <code class="docutils literal notranslate"><span class="pre">rename()</span></code>:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
@@ -683,21 +687,21 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>GDP.PC</th></tr></thead>
 <tbody>
-    <tr><td>USA  </td><td>1994 </td><td> 9595</td></tr>
-    <tr><td>China</td><td>1994 </td><td>19743</td></tr>
-    <tr><td>Sudan</td><td>1994 </td><td>17529</td></tr>
-    <tr><td>USA  </td><td>1995 </td><td>19390</td></tr>
-    <tr><td>China</td><td>1995 </td><td> 9168</td></tr>
-    <tr><td>Sudan</td><td>1995 </td><td>10880</td></tr>
-    <tr><td>USA  </td><td>1996 </td><td>13717</td></tr>
-    <tr><td>China</td><td>1996 </td><td>17199</td></tr>
-    <tr><td>Sudan</td><td>1996 </td><td>17051</td></tr>
+    <tr><td>USA  </td><td>1994 </td><td>12465</td></tr>
+    <tr><td>China</td><td>1994 </td><td>15344</td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td> 5117</td></tr>
+    <tr><td>USA  </td><td>1995 </td><td> 2082</td></tr>
+    <tr><td>China</td><td>1995 </td><td>10750</td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td> 9037</td></tr>
+    <tr><td>USA  </td><td>1996 </td><td> 1769</td></tr>
+    <tr><td>China</td><td>1996 </td><td>18008</td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td> 4861</td></tr>
 </tbody>
 </table></div>
 </div>
 </div>
 <div class="section" id="Unique-values">
-<h1>Unique values<a class="headerlink" href="#Unique-values" title="Permalink to this headline">¶</a></h1>
+<h2>Unique values<a class="headerlink" href="#Unique-values" title="Permalink to this headline">¶</a></h2>
 <p>Removing duplicate observations can be useful, but be careful: entire rows will be deleted. Use <code class="docutils literal notranslate"><span class="pre">distinct()</span></code>:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
@@ -743,15 +747,15 @@ The following objects are masked from ‘package:base’:
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
     <tr><td>USA  </td><td>1994 </td><td>10000</td></tr>
-    <tr><td>USA  </td><td>1994 </td><td> 9595</td></tr>
-    <tr><td>China</td><td>1994 </td><td>19743</td></tr>
-    <tr><td>Sudan</td><td>1994 </td><td>17529</td></tr>
-    <tr><td>USA  </td><td>1995 </td><td>19390</td></tr>
-    <tr><td>China</td><td>1995 </td><td> 9168</td></tr>
-    <tr><td>Sudan</td><td>1995 </td><td>10880</td></tr>
-    <tr><td>USA  </td><td>1996 </td><td>13717</td></tr>
-    <tr><td>China</td><td>1996 </td><td>17199</td></tr>
-    <tr><td>Sudan</td><td>1996 </td><td>17051</td></tr>
+    <tr><td>USA  </td><td>1994 </td><td>12465</td></tr>
+    <tr><td>China</td><td>1994 </td><td>15344</td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td> 5117</td></tr>
+    <tr><td>USA  </td><td>1995 </td><td> 2082</td></tr>
+    <tr><td>China</td><td>1995 </td><td>10750</td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td> 9037</td></tr>
+    <tr><td>USA  </td><td>1996 </td><td> 1769</td></tr>
+    <tr><td>China</td><td>1996 </td><td>18008</td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td> 4861</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -786,7 +790,7 @@ The following objects are masked from ‘package:base’:
 </div>
 </div>
 <div class="section" id="New-variables">
-<h1>New variables<a class="headerlink" href="#New-variables" title="Permalink to this headline">¶</a></h1>
+<h2>New variables<a class="headerlink" href="#New-variables" title="Permalink to this headline">¶</a></h2>
 <p>Use <code class="docutils literal notranslate"><span class="pre">mutate()</span></code> to create new variables or to modify existing variables. Here are a few examples.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
@@ -812,15 +816,15 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th><th scope=col>gdppc_1k</th></tr></thead>
 <tbody>
-    <tr><td>USA   </td><td>1994  </td><td> 9595 </td><td> 9.595</td></tr>
-    <tr><td>China </td><td>1994  </td><td>19743 </td><td>19.743</td></tr>
-    <tr><td>Sudan </td><td>1994  </td><td>17529 </td><td>17.529</td></tr>
-    <tr><td>USA   </td><td>1995  </td><td>19390 </td><td>19.390</td></tr>
-    <tr><td>China </td><td>1995  </td><td> 9168 </td><td> 9.168</td></tr>
-    <tr><td>Sudan </td><td>1995  </td><td>10880 </td><td>10.880</td></tr>
-    <tr><td>USA   </td><td>1996  </td><td>13717 </td><td>13.717</td></tr>
-    <tr><td>China </td><td>1996  </td><td>17199 </td><td>17.199</td></tr>
-    <tr><td>Sudan </td><td>1996  </td><td>17051 </td><td>17.051</td></tr>
+    <tr><td>USA   </td><td>1994  </td><td>12465 </td><td>12.465</td></tr>
+    <tr><td>China </td><td>1994  </td><td>15344 </td><td>15.344</td></tr>
+    <tr><td>Sudan </td><td>1994  </td><td> 5117 </td><td> 5.117</td></tr>
+    <tr><td>USA   </td><td>1995  </td><td> 2082 </td><td> 2.082</td></tr>
+    <tr><td>China </td><td>1995  </td><td>10750 </td><td>10.750</td></tr>
+    <tr><td>Sudan </td><td>1995  </td><td> 9037 </td><td> 9.037</td></tr>
+    <tr><td>USA   </td><td>1996  </td><td> 1769 </td><td> 1.769</td></tr>
+    <tr><td>China </td><td>1996  </td><td>18008 </td><td>18.008</td></tr>
+    <tr><td>Sudan </td><td>1996  </td><td> 4861 </td><td> 4.861</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -831,15 +835,15 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th><th scope=col>country_lc</th></tr></thead>
 <tbody>
-    <tr><td>USA  </td><td>1994 </td><td> 9595</td><td>usa  </td></tr>
-    <tr><td>China</td><td>1994 </td><td>19743</td><td>china</td></tr>
-    <tr><td>Sudan</td><td>1994 </td><td>17529</td><td>sudan</td></tr>
-    <tr><td>USA  </td><td>1995 </td><td>19390</td><td>usa  </td></tr>
-    <tr><td>China</td><td>1995 </td><td> 9168</td><td>china</td></tr>
-    <tr><td>Sudan</td><td>1995 </td><td>10880</td><td>sudan</td></tr>
-    <tr><td>USA  </td><td>1996 </td><td>13717</td><td>usa  </td></tr>
-    <tr><td>China</td><td>1996 </td><td>17199</td><td>china</td></tr>
-    <tr><td>Sudan</td><td>1996 </td><td>17051</td><td>sudan</td></tr>
+    <tr><td>USA  </td><td>1994 </td><td>12465</td><td>usa  </td></tr>
+    <tr><td>China</td><td>1994 </td><td>15344</td><td>china</td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td> 5117</td><td>sudan</td></tr>
+    <tr><td>USA  </td><td>1995 </td><td> 2082</td><td>usa  </td></tr>
+    <tr><td>China</td><td>1995 </td><td>10750</td><td>china</td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td> 9037</td><td>sudan</td></tr>
+    <tr><td>USA  </td><td>1996 </td><td> 1769</td><td>usa  </td></tr>
+    <tr><td>China</td><td>1996 </td><td>18008</td><td>china</td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td> 4861</td><td>sudan</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -850,15 +854,15 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th><th scope=col>gdppc_1k</th><th scope=col>country_lc</th></tr></thead>
 <tbody>
-    <tr><td>USA   </td><td>1994  </td><td> 9595 </td><td> 9.595</td><td>usa   </td></tr>
-    <tr><td>China </td><td>1994  </td><td>19743 </td><td>19.743</td><td>china </td></tr>
-    <tr><td>Sudan </td><td>1994  </td><td>17529 </td><td>17.529</td><td>sudan </td></tr>
-    <tr><td>USA   </td><td>1995  </td><td>19390 </td><td>19.390</td><td>usa   </td></tr>
-    <tr><td>China </td><td>1995  </td><td> 9168 </td><td> 9.168</td><td>china </td></tr>
-    <tr><td>Sudan </td><td>1995  </td><td>10880 </td><td>10.880</td><td>sudan </td></tr>
-    <tr><td>USA   </td><td>1996  </td><td>13717 </td><td>13.717</td><td>usa   </td></tr>
-    <tr><td>China </td><td>1996  </td><td>17199 </td><td>17.199</td><td>china </td></tr>
-    <tr><td>Sudan </td><td>1996  </td><td>17051 </td><td>17.051</td><td>sudan </td></tr>
+    <tr><td>USA   </td><td>1994  </td><td>12465 </td><td>12.465</td><td>usa   </td></tr>
+    <tr><td>China </td><td>1994  </td><td>15344 </td><td>15.344</td><td>china </td></tr>
+    <tr><td>Sudan </td><td>1994  </td><td> 5117 </td><td> 5.117</td><td>sudan </td></tr>
+    <tr><td>USA   </td><td>1995  </td><td> 2082 </td><td> 2.082</td><td>usa   </td></tr>
+    <tr><td>China </td><td>1995  </td><td>10750 </td><td>10.750</td><td>china </td></tr>
+    <tr><td>Sudan </td><td>1995  </td><td> 9037 </td><td> 9.037</td><td>sudan </td></tr>
+    <tr><td>USA   </td><td>1996  </td><td> 1769 </td><td> 1.769</td><td>usa   </td></tr>
+    <tr><td>China </td><td>1996  </td><td>18008 </td><td>18.008</td><td>china </td></tr>
+    <tr><td>Sudan </td><td>1996  </td><td> 4861 </td><td> 4.861</td><td>sudan </td></tr>
 </tbody>
 </table></div>
 </div>
@@ -879,22 +883,21 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>usa  </td><td>1994 </td><td> 9595</td></tr>
-    <tr><td>china</td><td>1994 </td><td>19743</td></tr>
-    <tr><td>sudan</td><td>1994 </td><td>17529</td></tr>
-    <tr><td>usa  </td><td>1995 </td><td>19390</td></tr>
-    <tr><td>china</td><td>1995 </td><td> 9168</td></tr>
-    <tr><td>sudan</td><td>1995 </td><td>10880</td></tr>
-    <tr><td>usa  </td><td>1996 </td><td>13717</td></tr>
-    <tr><td>china</td><td>1996 </td><td>17199</td></tr>
-    <tr><td>sudan</td><td>1996 </td><td>17051</td></tr>
+    <tr><td>usa  </td><td>1994 </td><td>12465</td></tr>
+    <tr><td>china</td><td>1994 </td><td>15344</td></tr>
+    <tr><td>sudan</td><td>1994 </td><td> 5117</td></tr>
+    <tr><td>usa  </td><td>1995 </td><td> 2082</td></tr>
+    <tr><td>china</td><td>1995 </td><td>10750</td></tr>
+    <tr><td>sudan</td><td>1995 </td><td> 9037</td></tr>
+    <tr><td>usa  </td><td>1996 </td><td> 1769</td></tr>
+    <tr><td>china</td><td>1996 </td><td>18008</td></tr>
+    <tr><td>sudan</td><td>1996 </td><td> 4861</td></tr>
 </tbody>
 </table></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">mutate()</span></code> can be combined with two other useful functions: <code class="docutils literal notranslate"><span class="pre">ifelse()</span></code> and <code class="docutils literal notranslate"><span class="pre">revalue()</span></code>.</p>
-<blockquote>
-<div>ifelse()</div></blockquote>
-<hr class="docutils" />
+<div class="section" id="ifelse()">
+<h3>ifelse()<a class="headerlink" href="#ifelse()" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">ifelse()</span></code> is a logical function that is useful for modifying variables in datasets (or individual vectors). Here’s an illustration of how it works:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
@@ -1004,9 +1007,9 @@ The following objects are masked from ‘package:base’:
 <p>We first created a new variable called <code class="docutils literal notranslate"><span class="pre">democracy</span></code> equal to “democracy” if a country has a Polity IV score of at least 15 and “autocracy” otherwise. We then overwrote this variable with a “dummy variable” representing the same information using zeroes and ones.</p>
   <div class="general-note">
 
-General note about dummy variables: Dummy variables — sometimes called “indicator variables” or “binary variables” — are extremely useful for representing binary information. Their usefulness in part stems from their applicability in regression models and in part from how they can be used to summarize information. For example, taking the mean of the dummy variable ``democracy`` above — that is, ``mean(world$democracy)`` — gives us the proportion of countries that we classified as “democracy”.  </div>
-
-revalue()<hr class="docutils" />
+General note about dummy variables: Dummy variables — sometimes called “indicator variables” or “binary variables” — are extremely useful for representing binary information. Their usefulness in part stems from their applicability in regression models and in part from how they can be used to summarize information. For example, taking the mean of the dummy variable ``democracy`` above — that is, ``mean(world$democracy)`` — gives us the proportion of countries that we classified as “democracy”.</div></div>
+<div class="section" id="revalue()">
+<h3>revalue()<a class="headerlink" href="#revalue()" title="Permalink to this headline">¶</a></h3>
 <p>We often want to recode the categories of a variable. For example, take a look at the <code class="docutils literal notranslate"><span class="pre">region</span></code> variable in <code class="docutils literal notranslate"><span class="pre">world</span></code>:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
@@ -1058,8 +1061,9 @@ South America
 </div>
 </div>
 <p>This can also be accomplished with <code class="docutils literal notranslate"><span class="pre">ifelse()</span></code>, but we would have to nest several <code class="docutils literal notranslate"><span class="pre">ifelse()</span></code> statements. For this reason I prefer <code class="docutils literal notranslate"><span class="pre">revalue()</span></code>.</p>
+</div>
 <div class="section" id="A-note-on-factor-variables">
-<h2>A note on factor variables<a class="headerlink" href="#A-note-on-factor-variables" title="Permalink to this headline">¶</a></h2>
+<h3>A note on factor variables<a class="headerlink" href="#A-note-on-factor-variables" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">read.csv()</span></code> function automatically converts variables that contain strings to the class “factor”. Note, for example, that both the <code class="docutils literal notranslate"><span class="pre">country</span></code> and <code class="docutils literal notranslate"><span class="pre">region</span></code> variables in the <code class="docutils literal notranslate"><span class="pre">world</span></code> dataset are represented as factors.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
@@ -1183,7 +1187,7 @@ South America
 </div>
 </div>
 <div class="section" id="Chaining">
-<h1>Chaining<a class="headerlink" href="#Chaining" title="Permalink to this headline">¶</a></h1>
+<h2>Chaining<a class="headerlink" href="#Chaining" title="Permalink to this headline">¶</a></h2>
 <p>What if you wanted to apply <em>multiple</em> functions to one data frame? This is where chaining is elegant and facilitates debugging.</p>
 <p>More specifically, say we wanted to use <code class="docutils literal notranslate"><span class="pre">countries</span></code> to create a new data frame called <code class="docutils literal notranslate"><span class="pre">countries_new</span></code>, which should have observations from years 1995 and 1996 (dropping 1994), should be sorted by country name (in lower case), and should have a new variable equal to GDP per capita in 1000s.</p>
 <p>Here’s how we could do this <em>without</em> chaining:</p>
@@ -1207,12 +1211,12 @@ South America
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th><th scope=col>gdppc_1k</th></tr></thead>
 <tbody>
-    <tr><td>china </td><td>1995  </td><td> 9168 </td><td> 9.168</td></tr>
-    <tr><td>china </td><td>1996  </td><td>17199 </td><td>17.199</td></tr>
-    <tr><td>sudan </td><td>1995  </td><td>10880 </td><td>10.880</td></tr>
-    <tr><td>sudan </td><td>1996  </td><td>17051 </td><td>17.051</td></tr>
-    <tr><td>usa   </td><td>1995  </td><td>19390 </td><td>19.390</td></tr>
-    <tr><td>usa   </td><td>1996  </td><td>13717 </td><td>13.717</td></tr>
+    <tr><td>china </td><td>1995  </td><td>10750 </td><td>10.750</td></tr>
+    <tr><td>china </td><td>1996  </td><td>18008 </td><td>18.008</td></tr>
+    <tr><td>sudan </td><td>1995  </td><td> 9037 </td><td> 9.037</td></tr>
+    <tr><td>sudan </td><td>1996  </td><td> 4861 </td><td> 4.861</td></tr>
+    <tr><td>usa   </td><td>1995  </td><td> 2082 </td><td> 2.082</td></tr>
+    <tr><td>usa   </td><td>1996  </td><td> 1769 </td><td> 1.769</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -1237,12 +1241,12 @@ South America
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th><th scope=col>gdppc_1k</th></tr></thead>
 <tbody>
-    <tr><td>china </td><td>1995  </td><td> 9168 </td><td> 9.168</td></tr>
-    <tr><td>china </td><td>1996  </td><td>17199 </td><td>17.199</td></tr>
-    <tr><td>sudan </td><td>1995  </td><td>10880 </td><td>10.880</td></tr>
-    <tr><td>sudan </td><td>1996  </td><td>17051 </td><td>17.051</td></tr>
-    <tr><td>usa   </td><td>1995  </td><td>19390 </td><td>19.390</td></tr>
-    <tr><td>usa   </td><td>1996  </td><td>13717 </td><td>13.717</td></tr>
+    <tr><td>china </td><td>1995  </td><td>10750 </td><td>10.750</td></tr>
+    <tr><td>china </td><td>1996  </td><td>18008 </td><td>18.008</td></tr>
+    <tr><td>sudan </td><td>1995  </td><td> 9037 </td><td> 9.037</td></tr>
+    <tr><td>sudan </td><td>1996  </td><td> 4861 </td><td> 4.861</td></tr>
+    <tr><td>usa   </td><td>1995  </td><td> 2082 </td><td> 2.082</td></tr>
+    <tr><td>usa   </td><td>1996  </td><td> 1769 </td><td> 1.769</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -1250,7 +1254,7 @@ South America
 representing GDP per capita in 1000s.</p>
 </div>
 <div class="section" id="Exercises">
-<h1>Exercises<a class="headerlink" href="#Exercises" title="Permalink to this headline">¶</a></h1>
+<h2>Exercises<a class="headerlink" href="#Exercises" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li>Read the <code class="docutils literal notranslate"><span class="pre">world-small.csv</span></code> dataset into R and store it in an object called <code class="docutils literal notranslate"><span class="pre">world</span></code>.</li>
 <li>Subset <code class="docutils literal notranslate"><span class="pre">world</span></code> to European countries. Save this subset as a new data frame called <code class="docutils literal notranslate"><span class="pre">europe</span></code>.</li>
@@ -1267,6 +1271,16 @@ representing GDP per capita in 1000s.</p>
 <li>What was the poorest country in the world in 2008? Richest?</li>
 <li>How many countries in Europe are “rich” according to your coding? How many are poor? What percentage have Polity IV scores of at least 18?</li>
 </ol>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
 
@@ -1288,46 +1302,18 @@ representing GDP per capita in 1000s.</p>
 <h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html#Packages">Packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html#Style">Style</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html#Trouble-shooting">Trouble shooting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectors.html">Creating vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectors.html#Subsetting-vectors">Subsetting vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectors.html#Modifying-vectors">Modifying vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectors.html#Summarizing-vectors">Summarizing vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectors.html#Exercises">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html">Creating datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Dataset-structure">Dataset structure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Basic-commands">Basic commands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Reading-data">Reading data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Exercises">Exercises</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Subsetting">Subsetting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Sorting">Sorting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Dropping">Dropping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Renaming">Renaming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Unique-values">Unique values</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#New-variables">New variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Chaining">Chaining</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Exercises">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html">One grouping variable</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Several-grouping-variables">Several grouping variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Additional-manipulation">Additional manipulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Different-functions">Different functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Exercises">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="for-loops.html">Writing a for loop</a></li>
-<li class="toctree-l1"><a class="reference internal" href="for-loops.html#An-appliction">An appliction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vectors.html">Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html">Datasets</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Manipulating Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html">Collapsing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="for-loops.html">For Loops</a></li>
 <li class="toctree-l1"><a class="reference internal" href="merging-appending.html">Merging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="merging-appending.html#Appending">Appending</a></li>
-<li class="toctree-l1"><a class="reference internal" href="merging-appending.html#Exercises">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html#Crosstabs">Crosstabs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html#Summary-statistics">Summary statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html#Regression-tables">Regression tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html">Wide versus long data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html#A-case-for-long-data">A case for long data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html">Wide &amp; Long Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wide-and-long.html#Wide-to-long-conversion">Wide-to-long conversion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html#Exercises">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="writing-functions.html">Motivation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="writing-functions.html#Building-blocks">Building blocks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="writing-functions.html#Applications">Applications</a></li>
@@ -1338,8 +1324,8 @@ representing GDP per capita in 1000s.</p>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="dataset-basics.html" title="previous chapter">Creating datasets</a></li>
-      <li>Next: <a href="collapsing-data.html" title="next chapter">One grouping variable</a></li>
+      <li>Previous: <a href="dataset-basics.html" title="previous chapter">Dataset Basics</a></li>
+      <li>Next: <a href="collapsing-data.html" title="next chapter">Collapsing Data</a></li>
   </ul></li>
 </ul>
 </div>
