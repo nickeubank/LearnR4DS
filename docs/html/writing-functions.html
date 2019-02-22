@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Motivation &#8212; R for Data Science  documentation</title>
+    <title>Writing Functions &#8212; R for Data Science  documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -18,7 +18,7 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Wide versus long data" href="wide-and-long.html" />
+    <link rel="prev" title="Wide &amp; Long Data" href="wide-and-long.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -235,8 +235,11 @@ div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
+<div class="section" id="Writing-Functions">
+<h1>Writing Functions<a class="headerlink" href="#Writing-Functions" title="Permalink to this headline">¶</a></h1>
+<p>summary: This tutorial explains how you can write your own functions in R. Why do this? Functions are useful when you want to execute a task over and over again, resulting in less verbose and more easily interpretable code. After explaining the basics of writing functions, this tutorial covers two data science applications for writing functions. output: html_document: template: ../template/r-tutorial-template-v2.html mathjax: null —</p>
 <div class="section" id="Motivation">
-<h1>Motivation<a class="headerlink" href="#Motivation" title="Permalink to this headline">¶</a></h1>
+<h2>Motivation<a class="headerlink" href="#Motivation" title="Permalink to this headline">¶</a></h2>
 <p>To illustrate the value of functions, let’s start by a thought experiment: say R didn’t provide a function for finding the median of a numeric vector. (Of course this is not true — R has a built-in function called <code class="docutils literal notranslate"><span class="pre">median()</span></code> for this purpose.) In this annoying scenario, it would still be possible to find the median using a few lines of code.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -297,7 +300,7 @@ div.rendered_html tbody tr:hover {
 <p>This motivating example shows that writing functions can save us many lines of code and avoid mistakes that inevitably will happen if you rely too heavily on copying and pasting code.</p>
 </div>
 <div class="section" id="Building-blocks">
-<h1>Building blocks<a class="headerlink" href="#Building-blocks" title="Permalink to this headline">¶</a></h1>
+<h2>Building blocks<a class="headerlink" href="#Building-blocks" title="Permalink to this headline">¶</a></h2>
 <p>Remind yourself of a basic mathematical principle: a function takes some input, transforms it, and outputs the transformation. For example, the function <em>f(x) = 2x</em> takes a vector <em>x</em> and transforms each element to twice its original value. Functions in R (and other languages) do the same thing. For example:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -336,14 +339,14 @@ div.rendered_html tbody tr:hover {
 </ol>
 </div>
 <div class="section" id="Applications">
-<h1>Applications<a class="headerlink" href="#Applications" title="Permalink to this headline">¶</a></h1>
+<h2>Applications<a class="headerlink" href="#Applications" title="Permalink to this headline">¶</a></h2>
 <p>Functions can be used in a wide variety of scenarios. Here are two applications, which I go over in detail below:</p>
 <ol class="arabic simple">
 <li>A function that reads and manipulates a .csv file. Use it with <code class="docutils literal notranslate"><span class="pre">lapply()</span></code> or in a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to iterate over several files with a similar structure. Then combine the resulting data frames into one data frame.</li>
 <li>A function that carries out a regression or graphing analysis on a select number of variables or on a subset of the data.</li>
 </ol>
 <div class="section" id="Reading-several-files">
-<h2>Reading several files<a class="headerlink" href="#Reading-several-files" title="Permalink to this headline">¶</a></h2>
+<h3>Reading several files<a class="headerlink" href="#Reading-several-files" title="Permalink to this headline">¶</a></h3>
 <p>Begin by downloading a <a class="reference external" href="../data/nyc-311-sample.zip">.zip file with service request data from NYC</a>. The zip file contains six files for years 2004-2009, each with 10,000 observations. The data are originally from <a class="reference external" href="https://nycopendata.socrata.com/data?cat=social%20services">NYC’s Open Data portal</a>, which hosts datasets with millions of service requests filed by residents through the city’s 311 program. For the purpose of this example, I have taken a random sample of 10,000 for each year.</p>
 <p>Here’s what the 2004 file looks like (the other years have the same structure).</p>
 <div class="nbinput docutils container">
@@ -505,7 +508,7 @@ Traceback:
 </div>
 </div>
 <div class="section" id="Complex-analyses">
-<h2>Complex analyses<a class="headerlink" href="#Complex-analyses" title="Permalink to this headline">¶</a></h2>
+<h3>Complex analyses<a class="headerlink" href="#Complex-analyses" title="Permalink to this headline">¶</a></h3>
 <p>Functions can also be used when you have to carry out a bunch of analyses in a flexible way. Let’s use the <code class="docutils literal notranslate"><span class="pre">nyc_all</span></code> dataset that we just created above to test the hypothesis that it takes city workers in NYC a longer time to resolve requests that are filed during the winter (December-February), presumably because of tougher weather conditions.</p>
 <p>First let’s add a dummy variable equal to 1 if a request was filed during December-February.</p>
 <div class="nbinput nblast docutils container">
@@ -640,7 +643,7 @@ Traceback:
 </div>
 </div>
 <div class="section" id="Exercises">
-<h1>Exercises<a class="headerlink" href="#Exercises" title="Permalink to this headline">¶</a></h1>
+<h2>Exercises<a class="headerlink" href="#Exercises" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li>Write a function called <code class="docutils literal notranslate"><span class="pre">second_largest</span></code> that finds the second largest value in a vector of numeric values. That is, the input should be a numeric vector and the output should be the second largest value in the vector. You can assume that the input vector has at least two values. Test your function on the following two vectors:</li>
 </ol>
@@ -675,6 +678,7 @@ as follows:</li>
 </div>
 </div>
 </div></div>
+</div>
 
 
           </div>
@@ -695,57 +699,26 @@ as follows:</li>
 <h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html#Packages">Packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html#Style">Style</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html#Trouble-shooting">Trouble shooting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectors.html">Creating vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectors.html#Subsetting-vectors">Subsetting vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectors.html#Modifying-vectors">Modifying vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectors.html#Summarizing-vectors">Summarizing vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectors.html#Exercises">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html">Creating datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Dataset-structure">Dataset structure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Basic-commands">Basic commands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Reading-data">Reading data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Exercises">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Subsetting">Subsetting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Sorting">Sorting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Dropping">Dropping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Renaming">Renaming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Unique-values">Unique values</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#New-variables">New variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Chaining">Chaining</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Exercises">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html">One grouping variable</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Several-grouping-variables">Several grouping variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Additional-manipulation">Additional manipulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Different-functions">Different functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Exercises">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="for-loops.html">Writing a for loop</a></li>
-<li class="toctree-l1"><a class="reference internal" href="for-loops.html#An-appliction">An appliction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vectors.html">Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modifying-data.html">Manipulating Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html">Collapsing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="for-loops.html">For Loops</a></li>
 <li class="toctree-l1"><a class="reference internal" href="merging-appending.html">Merging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="merging-appending.html#Appending">Appending</a></li>
-<li class="toctree-l1"><a class="reference internal" href="merging-appending.html#Exercises">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html#Crosstabs">Crosstabs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html#Summary-statistics">Summary statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html#Regression-tables">Regression tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html">Wide versus long data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html#A-case-for-long-data">A case for long data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html">Wide &amp; Long Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wide-and-long.html#Wide-to-long-conversion">Wide-to-long conversion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html#Exercises">Exercises</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Motivation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Building-blocks">Building blocks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Applications">Applications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Exercises">Exercises</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Functions</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="wide-and-long.html" title="previous chapter">Wide versus long data</a></li>
+      <li>Previous: <a href="wide-and-long.html" title="previous chapter">Wide &amp; Long Data</a></li>
   </ul></li>
 </ul>
 </div>
