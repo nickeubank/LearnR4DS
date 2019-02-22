@@ -392,9 +392,8 @@ TRUE</div>
 <li><strong>Overwriting objects</strong>. You can overwrite objects without R complaining (e.g., <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">&lt;-</span> <span class="pre">1</span></code> above). This can be confusing if you don’t keep track of which objects you have overwritten, but in general this ability is a good thing. R stores every object you create in memory, and overwriting an object saves memory to the extent that R doesn’t need to hold an additional object, which may be consequential when you work with large datasets.</li>
 </ol>
 </div>
-</div>
 <div class="section" id="Packages">
-<h1>Packages<a class="headerlink" href="#Packages" title="Permalink to this headline">¶</a></h1>
+<h2>Packages<a class="headerlink" href="#Packages" title="Permalink to this headline">¶</a></h2>
 <p>The true power of R is that it’s open-source. As such, anyone can extend its core functionality through packages. This often results in remarkable improvements to how we can approach complex data tasks. In subsequent tutorials, I will make particular use of a set of R packages developed by <a class="reference external" href="http://had.co.nz/">Hadley Wickham</a>.</p>
 <p>To use a package you must:</p>
 <ol class="arabic simple">
@@ -418,16 +417,26 @@ TRUE</div>
 </div>
 <div style="margin-top: 15px"></div></div>
 <div class="section" id="Style">
-<h1>Style<a class="headerlink" href="#Style" title="Permalink to this headline">¶</a></h1>
+<h2>Style<a class="headerlink" href="#Style" title="Permalink to this headline">¶</a></h2>
 <p>Writing good code requires a lot of practice. Good code executes quickly and is non-repetitive (e.g., uses functions for tasks that need to be executed several times). But most importantly for you right now, good code is easy to understand — both for yourself if you were to come back to it and for someone else reading it.</p>
 <p>To that end, comments are extremely useful. Comments can delineate different blocks of code and, more importantly, clarify what a command or set of commands is doing. Especially use comments if you’re doing something complex — save them for routine tasks that most R programmers will understand.</p>
 <p>There are some other style guidelines you should attempt to follow. Please take a look at <a class="reference external" href="https://google.github.io/styleguide/Rguide.xml">Google’s R Style Guide</a>. In particular, try to observe the spacing and line lengths limits outlined in that document. (Some other rules seem less important to me: I personally like underscores for object and function names.)</p>
 </div>
 <div class="section" id="Trouble-shooting">
-<h1>Trouble shooting<a class="headerlink" href="#Trouble-shooting" title="Permalink to this headline">¶</a></h1>
+<h2>Trouble shooting<a class="headerlink" href="#Trouble-shooting" title="Permalink to this headline">¶</a></h2>
 <p>Many, many times when coding you’ll have an idea of what you want to do but won’t know how to do it in R. This happens even for experienced coders. With the right strategies, you’ll be able to solve a majority of issues you run into yourself. Not having to ask someone else every time you run into a problem will save you a lot of time.</p>
 <p>When you get stuck, google is your friend. For example, if you want to find the mean of a variable, try googling “how to find mean in R” and there will be tons of explanations of how to do this.</p>
 <p>R also has a help feature that can be called using the following syntax: <code class="docutils literal notranslate"><span class="pre">?commandname</span></code>, where <code class="docutils literal notranslate"><span class="pre">commandname</span></code> is the name of the command that you need help with. For example, <code class="docutils literal notranslate"><span class="pre">?mean</span></code> will bring up a help dialog box with information about how to use R’s <code class="docutils literal notranslate"><span class="pre">mean()</span></code> command.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
 
@@ -449,9 +458,6 @@ TRUE</div>
 <h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Packages">Packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Style">Style</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Trouble-shooting">Trouble shooting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vectors.html">Creating vectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vectors.html#Subsetting-vectors">Subsetting vectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vectors.html#Modifying-vectors">Modifying vectors</a></li>
