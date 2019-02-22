@@ -1,0 +1,496 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Introduction &#8212; R for Data Science  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<div class="section" id="Introduction">
+<h1>Introduction<a class="headerlink" href="#Introduction" title="Permalink to this headline">¶</a></h1>
+<p>In this first in a number of tutorials, we’ll cover the very basics of R. If you’ve programmed before you can skip much of this. But regardless of your background, I hope you’ll find this and subsequent tutorials useful for learning R’s many tools for graphing, statistical analysis, and data collection and management — or what we collectively might call “data science.”</p>
+<div class="section" id="Running-R">
+<h2>Running R<a class="headerlink" href="#Running-R" title="Permalink to this headline">¶</a></h2>
+<p>You can run R using a number of text editors or “integrated development environments” (IDEs). Most people prefer some other application than R’s native environment, which provides only limited functionality in terms of syntax highlighting, auto-completion, and debugging. Alternatives include <a class="reference external" href="https://www.rstudio.com/">RStudio</a> and <a class="reference external" href="https://www.gnu.org/software/emacs/">Emacs</a>/<a class="reference external" href="http://ess.r-project.org/">ESS</a>. I very much prefer the latter, but if you’ve never programmed before I would go
+with RStudio (installation instructions <a class="reference external" href="https://www.rstudio.com/products/rstudio/download/">here</a>; note that you need both R and RStudio).</p>
+<p>All IDEs include a console and a text editor. The console is where you’ll see the results (or <em>output</em>) of commands executed from the editor. You can type commands directly into the console, but this is generally not a good strategy. This is because the whole purpose of writing code is to make it reproducible. Typing commands in the text editor will let you come back to them later as long as you save them (using extension .R).</p>
+</div>
+<div class="section" id="Your-first-script">
+<h2>Your first script<a class="headerlink" href="#Your-first-script" title="Permalink to this headline">¶</a></h2>
+<p>Fire up RStudio (or whatever IDE you use) and type the following two lines into the text editor. Then execute them, which can be done using a <a class="reference external" href="https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts">keyboard shortcut</a> — Ctrl+Enter (Windows) or Command+Enter (mac) in RStudio.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">hello_world</span> <span class="o">&lt;-</span> <span class="s">&quot;hello world&quot;</span>
+<span class="n">hello_world</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+'hello world'</div>
+</div>
+<p>In case it’s not obvious, R output is displayed in gray, above which is code that you should type into your text editor.</p>
+<p>Now execute the following code (but type it into your text editor first):</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Create two objects and perform simple arithmetics</span>
+<span class="n">a</span> <span class="o">&lt;-</span> <span class="m">5</span>
+<span class="n">b</span> <span class="o">&lt;-</span> <span class="m">7</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+-2</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="m">10</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+22</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Create a third object</span>
+<span class="n">w</span> <span class="o">&lt;-</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="n">w</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+12</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Logical tests</span>
+<span class="n">w</span> <span class="o">-</span> <span class="n">b</span> <span class="o">==</span> <span class="n">a</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+TRUE</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">w</span> <span class="o">-</span> <span class="n">b</span> <span class="o">&gt;</span> <span class="n">a</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+FALSE</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">b</span> <span class="o">&lt;-</span> <span class="m">1</span>             <span class="c1">#overwrite b</span>
+<span class="n">x</span> <span class="o">&lt;-</span> <span class="n">w</span> <span class="o">-</span> <span class="n">b</span> <span class="o">&gt;</span> <span class="n">a</span>
+<span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+TRUE</div>
+</div>
+<p>Does the output make sense to you? (I’m not displaying it here so that you can try to make sense of it yourself first.)</p>
+<p>Here are some things to pay attention to from our first few lines of code:</p>
+<ol class="arabic simple">
+<li><strong>Comments</strong>. Anything after <code class="docutils literal notranslate"><span class="pre">#</span></code> is a comment and won’t be evaluated by R.</li>
+<li><strong>The assignment operator</strong>. R uses <code class="docutils literal notranslate"><span class="pre">&lt;-</span></code> (the assignment operator) to create objects. A single equal sign (<code class="docutils literal notranslate"><span class="pre">=</span></code>) also works, but the norm is to use <code class="docutils literal notranslate"><span class="pre">&lt;-</span></code> in R.</li>
+<li><strong>Objects</strong>. We used the assignment operator to create <em>objects</em> — for example, <code class="docutils literal notranslate"><span class="pre">hello_world</span></code> and <code class="docutils literal notranslate"><span class="pre">a</span></code>. The names of these objects are completely arbitrary. Unless they are created within a function, they are stored in R’s memory with the value you assigned to them (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;hello</span> <span class="pre">world&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">5</span></code>) until the end of your R session.</li>
+<li><strong>Class.</strong> R automatically assigns a class to each object you create. Three classes were used above: numeric, character, and logical. Use <code class="docutils literal notranslate"><span class="pre">class()</span></code> to see what type an object is (e.g., <code class="docutils literal notranslate"><span class="pre">class(hello_world)</span></code>, <code class="docutils literal notranslate"><span class="pre">class(a)</span></code>, and <code class="docutils literal notranslate"><span class="pre">class(x)</span></code>). Why is this important? For one, you may think a certain object has one class when it has another. This will cause issues. For example, this throws an error:</li>
+</ol>
+<div class="indent"><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">&lt;-</span> <span class="m">5</span>
+<span class="n">b</span> <span class="o">&lt;-</span> <span class="s">&quot;7&quot;</span>
+<span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="n">Error</span> <span class="n">in</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">:</span> <span class="n">non</span><span class="o">-</span><span class="n">numeric</span> <span class="n">argument</span> <span class="n">to</span> <span class="n">binary</span> <span class="n">operator</span>
+</pre></div>
+</div>
+<p>Not knowing that <code class="docutils literal notranslate"><span class="pre">b</span></code> is a character object (which often is much less obvious than here) would be frustrating. Other classes include factor, matrix, data.frame and many more that we’ll get to.</p>
+</div><ol class="arabic simple" start="5">
+<li><strong>Overwriting objects</strong>. You can overwrite objects without R complaining (e.g., <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">&lt;-</span> <span class="pre">1</span></code> above). This can be confusing if you don’t keep track of which objects you have overwritten, but in general this ability is a good thing. R stores every object you create in memory, and overwriting an object saves memory to the extent that R doesn’t need to hold an additional object, which may be consequential when you work with large datasets.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="Packages">
+<h1>Packages<a class="headerlink" href="#Packages" title="Permalink to this headline">¶</a></h1>
+<p>The true power of R is that it’s open-source. As such, anyone can extend its core functionality through packages. This often results in remarkable improvements to how we can approach complex data tasks. In subsequent tutorials, I will make particular use of a set of R packages developed by <a class="reference external" href="http://had.co.nz/">Hadley Wickham</a>.</p>
+<p>To use a package you must:</p>
+<ol class="arabic simple">
+<li><strong>Install it.</strong> You only need to do this once.</li>
+<li><strong>Load it.</strong> You need to re-load packages every time you open R.</li>
+</ol>
+<p>To install packages <code class="docutils literal notranslate"><span class="pre">plyr</span></code>, <code class="docutils literal notranslate"><span class="pre">dplyr</span></code>, and <code class="docutils literal notranslate"><span class="pre">tidyr</span></code>, which we’ll use a lot, run</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;plyr&quot;</span><span class="p">,</span> <span class="s">&quot;dplyr&quot;</span><span class="p">,</span> <span class="s">&quot;tidyr&quot;</span><span class="p">),</span> <span class="n">dep</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And to load these packages, use:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">require</span><span class="p">(</span><span class="n">plyr</span><span class="p">)</span>
+<span class="nf">require</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">require</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Or you can load many packages more compactly like so:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pkgs</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;plyr&quot;</span><span class="p">,</span> <span class="s">&quot;dplyr&quot;</span><span class="p">,</span> <span class="s">&quot;tidyr&quot;</span><span class="p">)</span>
+<span class="nf">sapply</span><span class="p">(</span><span class="n">pkgs</span><span class="p">,</span> <span class="n">require</span><span class="p">,</span> <span class="n">character.only</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
+</pre></div>
+</div>
+<div style="margin-top: 15px"></div></div>
+<div class="section" id="Style">
+<h1>Style<a class="headerlink" href="#Style" title="Permalink to this headline">¶</a></h1>
+<p>Writing good code requires a lot of practice. Good code executes quickly and is non-repetitive (e.g., uses functions for tasks that need to be executed several times). But most importantly for you right now, good code is easy to understand — both for yourself if you were to come back to it and for someone else reading it.</p>
+<p>To that end, comments are extremely useful. Comments can delineate different blocks of code and, more importantly, clarify what a command or set of commands is doing. Especially use comments if you’re doing something complex — save them for routine tasks that most R programmers will understand.</p>
+<p>There are some other style guidelines you should attempt to follow. Please take a look at <a class="reference external" href="https://google.github.io/styleguide/Rguide.xml">Google’s R Style Guide</a>. In particular, try to observe the spacing and line lengths limits outlined in that document. (Some other rules seem less important to me: I personally like underscores for object and function names.)</p>
+</div>
+<div class="section" id="Trouble-shooting">
+<h1>Trouble shooting<a class="headerlink" href="#Trouble-shooting" title="Permalink to this headline">¶</a></h1>
+<p>Many, many times when coding you’ll have an idea of what you want to do but won’t know how to do it in R. This happens even for experienced coders. With the right strategies, you’ll be able to solve a majority of issues you run into yourself. Not having to ask someone else every time you run into a problem will save you a lot of time.</p>
+<p>When you get stuck, google is your friend. For example, if you want to find the mean of a variable, try googling “how to find mean in R” and there will be tons of explanations of how to do this.</p>
+<p>R also has a help feature that can be called using the following syntax: <code class="docutils literal notranslate"><span class="pre">?commandname</span></code>, where <code class="docutils literal notranslate"><span class="pre">commandname</span></code> is the name of the command that you need help with. For example, <code class="docutils literal notranslate"><span class="pre">?mean</span></code> will bring up a help dialog box with information about how to use R’s <code class="docutils literal notranslate"><span class="pre">mean()</span></code> command.</p>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">R for Data Science</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Simon Ejdemyr and Nick Eubank.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/introduction.ipynb.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

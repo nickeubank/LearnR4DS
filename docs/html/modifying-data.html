@@ -1,0 +1,1341 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Overview &#8212; R for Data Science  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<div class="section" id="Overview">
+<h1>Overview<a class="headerlink" href="#Overview" title="Permalink to this headline">¶</a></h1>
+<p>The table below gives an overview of very common data management tasks and their corresponding dplyr function.</p>
+<table class="table" style="width: auto !important"><thead class="text-left"><tr><th><p>Task</p>
+</th><th><p>Function</p>
+</th></tr></thead><tfoot><tr>  <td>
+
+\*Covered in a `separate tutorial <../collapsing-data>`__.</td><td></td></tr></tfoot><tbody><tr><td><p>Subsetting</p>
+</td><td><p><code class="docutils literal notranslate"><span class="pre">filter()</span></code></p>
+</td></tr><tr><td><p>Sorting</p>
+</td><td><p><code class="docutils literal notranslate"><span class="pre">arrange()</span></code></p>
+</td></tr><tr><td><p>Dropping variables</p>
+</td><td><p><code class="docutils literal notranslate"><span class="pre">select()</span></code></p>
+</td></tr><tr><td><p>Renaming variables</p>
+</td><td><p><code class="docutils literal notranslate"><span class="pre">rename()</span></code></p>
+</td></tr><tr><td><p>Extracting unique values</p>
+</td><td><p><code class="docutils literal notranslate"><span class="pre">distinct()</span></code></p>
+</td></tr><tr><td><p>Creating new variables</p>
+</td><td><p><code class="docutils literal notranslate"><span class="pre">mutate()</span></code></p>
+</td></tr><tr><td><p>Collapsing data*</p>
+</td><td><p><code class="docutils literal notranslate"><span class="pre">group_by()</span></code> and <code class="docutils literal notranslate"><span class="pre">summarize()</span></code></p>
+</tr></tbody></table><p>All of these tasks can also be accomplished using R’s base functions, but this usually requires more involved code. An additional advantage of using dplyr functions is that they can be combined in an elegant way using <a class="reference external" href="#chaining">chaining</a>.</p>
+<p>To demonstrate these functions, we’ll rely on a small data frame called <code class="docutils literal notranslate"><span class="pre">countries</span></code> that you can create as follows:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">countries</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span>
+    <span class="nf">expand.grid</span><span class="p">(</span><span class="n">country</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;USA&quot;</span><span class="p">,</span> <span class="s">&quot;China&quot;</span><span class="p">,</span> <span class="s">&quot;Sudan&quot;</span><span class="p">),</span> <span class="n">year</span> <span class="o">=</span> <span class="m">1994</span><span class="o">:</span><span class="m">1996</span><span class="p">),</span>
+    <span class="n">gdp_pc</span> <span class="o">=</span> <span class="nf">round</span><span class="p">(</span><span class="nf">runif</span><span class="p">(</span><span class="m">9</span><span class="p">,</span> <span class="m">1000</span><span class="p">,</span> <span class="m">20000</span><span class="p">),</span> <span class="m">0</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="n">countries</span><span class="o">$</span><span class="n">country</span> <span class="o">&lt;-</span> <span class="nf">as.character</span><span class="p">(</span><span class="n">countries</span><span class="o">$</span><span class="n">country</span><span class="p">)</span> <span class="c1">#factor --&gt; character</span>
+<span class="n">countries</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
+<tbody>
+    <tr><td>USA  </td><td>1994 </td><td>9219 </td></tr>
+    <tr><td>China</td><td>1994 </td><td>8512 </td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td>7550 </td></tr>
+    <tr><td>USA  </td><td>1995 </td><td>5419 </td></tr>
+    <tr><td>China</td><td>1995 </td><td>1634 </td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td>1545 </td></tr>
+    <tr><td>USA  </td><td>1996 </td><td>8802 </td></tr>
+    <tr><td>China</td><td>1996 </td><td>8214 </td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td>8718 </td></tr>
+</tbody>
+</table></div>
+</div>
+<p>We’ll also make use of <code class="docutils literal notranslate"><span class="pre">world-small.csv</span></code>, which you can download <a class="reference external" href="../data/world-small.csv">here</a>.</p>
+<p>Before we begin, let’s also load two packages we’ll need. (Of course, they need to be installed first — remind yourself <a class="reference external" href="../introduction/#packages">here</a>.)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">require</span><span class="p">(</span><span class="n">plyr</span><span class="p">)</span>
+<span class="nf">require</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Loading required package: plyr
+Loading required package: dplyr
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:plyr’:
+
+    arrange, count, desc, failwith, id, mutate, rename, summarise,
+    summarize
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+</pre></div></div>
+</div>
+<div style="margin-top: 15px"></div></div>
+<div class="section" id="Subsetting">
+<h1>Subsetting<a class="headerlink" href="#Subsetting" title="Permalink to this headline">¶</a></h1>
+<p>The best way to subset a dataset is by using a logical statement. The idea is that we want to keep only some <em>rows</em> in a dataset that meet some logical condition.</p>
+<p>Say we wanted to subset the <code class="docutils literal notranslate"><span class="pre">countries</span></code> dataset to (1) a certain country, (2) a certain year, (3) a certain country <em>and</em> year, or (4) a certain GDP range. Here’s how we can do this using <code class="docutils literal notranslate"><span class="pre">filter()</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">filter</span><span class="p">(</span><span class="n">countries</span><span class="p">,</span> <span class="n">country</span> <span class="o">==</span> <span class="s">&quot;China&quot;</span><span class="p">)</span>
+<span class="nf">filter</span><span class="p">(</span><span class="n">countries</span><span class="p">,</span> <span class="n">year</span> <span class="o">==</span> <span class="m">1996</span><span class="p">)</span>
+<span class="nf">filter</span><span class="p">(</span><span class="n">countries</span><span class="p">,</span> <span class="n">country</span> <span class="o">==</span> <span class="s">&quot;USA&quot;</span> <span class="o">&amp;</span> <span class="n">year</span> <span class="o">==</span> <span class="m">1995</span><span class="p">)</span>
+<span class="nf">filter</span><span class="p">(</span><span class="n">countries</span><span class="p">,</span> <span class="n">gdp_pc</span> <span class="o">&gt;</span> <span class="m">5000</span> <span class="o">&amp;</span> <span class="n">gdp_pc</span> <span class="o">&lt;</span> <span class="m">14000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
+<tbody>
+    <tr><td>China</td><td>1994 </td><td>8512 </td></tr>
+    <tr><td>China</td><td>1995 </td><td>1634 </td></tr>
+    <tr><td>China</td><td>1996 </td><td>8214 </td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
+<tbody>
+    <tr><td>USA  </td><td>1996 </td><td>8802 </td></tr>
+    <tr><td>China</td><td>1996 </td><td>8214 </td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td>8718 </td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
+<tbody>
+    <tr><td>USA </td><td>1995</td><td>5419</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
+<tbody>
+    <tr><td>USA  </td><td>1994 </td><td>9219 </td></tr>
+    <tr><td>China</td><td>1994 </td><td>8512 </td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td>7550 </td></tr>
+    <tr><td>USA  </td><td>1995 </td><td>5419 </td></tr>
+    <tr><td>USA  </td><td>1996 </td><td>8802 </td></tr>
+    <tr><td>China</td><td>1996 </td><td>8214 </td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td>8718 </td></tr>
+</tbody>
+</table></div>
+</div>
+<p>As should be obvious, the first argument in the <code class="docutils literal notranslate"><span class="pre">filter()</span></code> function specifies the dataset on which to carry out the operation. The second argument specifies the logical operation used to filter the data.</p>
+<p>In fact, <strong>the first argument in all dplyr functions is a dataset</strong>. Using dplyr we can move this first argument outside the function and use the special operator <code class="docutils literal notranslate"><span class="pre">%&gt;%</span></code> to chain statements. The benefits of this will become more obvious in the section on chaining. The code below accomplishes the same thing as that above using <code class="docutils literal notranslate"><span class="pre">%&gt;%</span></code> and moving the data frame outside the <code class="docutils literal notranslate"><span class="pre">filter()</span></code> function.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">countries</span> <span class="o">%&gt;%</span> <span class="nf">filter</span><span class="p">(</span><span class="n">country</span> <span class="o">==</span> <span class="s">&quot;China&quot;</span><span class="p">)</span>
+<span class="n">countries</span> <span class="o">%&gt;%</span> <span class="nf">filter</span><span class="p">(</span><span class="n">year</span> <span class="o">==</span> <span class="m">1996</span><span class="p">)</span>
+<span class="n">countries</span> <span class="o">%&gt;%</span> <span class="nf">filter</span><span class="p">(</span><span class="n">country</span> <span class="o">==</span> <span class="s">&quot;USA&quot;</span> <span class="o">&amp;</span> <span class="n">year</span> <span class="o">==</span> <span class="m">1995</span><span class="p">)</span>
+<span class="n">countries</span> <span class="o">%&gt;%</span> <span class="nf">filter</span><span class="p">(</span><span class="n">gdp_pc</span> <span class="o">&gt;</span> <span class="m">5000</span> <span class="o">&amp;</span> <span class="n">gdp_pc</span> <span class="o">&lt;</span> <span class="m">14000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
+<tbody>
+    <tr><td>China</td><td>1994 </td><td>8512 </td></tr>
+    <tr><td>China</td><td>1995 </td><td>1634 </td></tr>
+    <tr><td>China</td><td>1996 </td><td>8214 </td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
+<tbody>
+    <tr><td>USA  </td><td>1996 </td><td>8802 </td></tr>
+    <tr><td>China</td><td>1996 </td><td>8214 </td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td>8718 </td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
+<tbody>
+    <tr><td>USA </td><td>1995</td><td>5419</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
+<tbody>
+    <tr><td>USA  </td><td>1994 </td><td>9219 </td></tr>
+    <tr><td>China</td><td>1994 </td><td>8512 </td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td>7550 </td></tr>
+    <tr><td>USA  </td><td>1995 </td><td>5419 </td></tr>
+    <tr><td>USA  </td><td>1996 </td><td>8802 </td></tr>
+    <tr><td>China</td><td>1996 </td><td>8214 </td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td>8718 </td></tr>
+</tbody>
+</table></div>
+</div>
+<p>One last note that applies throughout most of this tutorial: I’m not saving the subsets to any object here. You would normally want to do this. (I’m not doing it here so that you can see the output of the function without extra lines of code.) Just to be clear, if you wanted to take a subset and save the result into an object you’d use the assignment operator as usual.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">china</span> <span class="o">&lt;-</span> <span class="n">countries</span> <span class="o">%&gt;%</span> <span class="nf">filter</span><span class="p">(</span><span class="n">country</span> <span class="o">==</span> <span class="s">&quot;China&quot;</span><span class="p">)</span>
+<span class="n">china</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
+<tbody>
+    <tr><td>China</td><td>1994 </td><td>8512 </td></tr>
+    <tr><td>China</td><td>1995 </td><td>1634 </td></tr>
+    <tr><td>China</td><td>1996 </td><td>8214 </td></tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="section" id="Sorting">
+<h1>Sorting<a class="headerlink" href="#Sorting" title="Permalink to this headline">¶</a></h1>
+<p>Use <code class="docutils literal notranslate"><span class="pre">arrange()</span></code> to sort a dataset. Here are a few examples. (I’ll use the chaining operator <code class="docutils literal notranslate"><span class="pre">%&gt;%</span></code> from now on — if you’re confused about this remember that you can just bring the data frame <code class="docutils literal notranslate"><span class="pre">countries</span></code> inside the function.)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Sort by country names</span>
+<span class="n">countries</span> <span class="o">%&gt;%</span> <span class="nf">arrange</span><span class="p">(</span><span class="n">country</span><span class="p">)</span>
+
+<span class="c1"># Sort by GDP (ascending is default)</span>
+<span class="n">countries</span> <span class="o">%&gt;%</span> <span class="nf">arrange</span><span class="p">(</span><span class="n">gdp_pc</span><span class="p">)</span>
+
+<span class="c1"># Sort by GDP (descending)</span>
+<span class="n">countries</span> <span class="o">%&gt;%</span> <span class="nf">arrange</span><span class="p">(</span><span class="nf">desc</span><span class="p">(</span><span class="n">gdp_pc</span><span class="p">))</span>
+
+<span class="c1"># Sort by country name, then GDP</span>
+<span class="n">countries</span> <span class="o">%&gt;%</span> <span class="nf">arrange</span><span class="p">(</span><span class="n">country</span><span class="p">,</span> <span class="n">gdp_pc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
+<tbody>
+    <tr><td>China</td><td>1994 </td><td>8512 </td></tr>
+    <tr><td>China</td><td>1995 </td><td>1634 </td></tr>
+    <tr><td>China</td><td>1996 </td><td>8214 </td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td>7550 </td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td>1545 </td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td>8718 </td></tr>
+    <tr><td>USA  </td><td>1994 </td><td>9219 </td></tr>
+    <tr><td>USA  </td><td>1995 </td><td>5419 </td></tr>
+    <tr><td>USA  </td><td>1996 </td><td>8802 </td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
+<tbody>
+    <tr><td>Sudan</td><td>1995 </td><td>1545 </td></tr>
+    <tr><td>China</td><td>1995 </td><td>1634 </td></tr>
+    <tr><td>USA  </td><td>1995 </td><td>5419 </td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td>7550 </td></tr>
+    <tr><td>China</td><td>1996 </td><td>8214 </td></tr>
+    <tr><td>China</td><td>1994 </td><td>8512 </td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td>8718 </td></tr>
+    <tr><td>USA  </td><td>1996 </td><td>8802 </td></tr>
+    <tr><td>USA  </td><td>1994 </td><td>9219 </td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
+<tbody>
+    <tr><td>USA  </td><td>1994 </td><td>9219 </td></tr>
+    <tr><td>USA  </td><td>1996 </td><td>8802 </td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td>8718 </td></tr>
+    <tr><td>China</td><td>1994 </td><td>8512 </td></tr>
+    <tr><td>China</td><td>1996 </td><td>8214 </td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td>7550 </td></tr>
+    <tr><td>USA  </td><td>1995 </td><td>5419 </td></tr>
+    <tr><td>China</td><td>1995 </td><td>1634 </td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td>1545 </td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
+<tbody>
+    <tr><td>China</td><td>1995 </td><td>1634 </td></tr>
+    <tr><td>China</td><td>1996 </td><td>8214 </td></tr>
+    <tr><td>China</td><td>1994 </td><td>8512 </td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td>1545 </td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td>7550 </td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td>8718 </td></tr>
+    <tr><td>USA  </td><td>1995 </td><td>5419 </td></tr>
+    <tr><td>USA  </td><td>1996 </td><td>8802 </td></tr>
+    <tr><td>USA  </td><td>1994 </td><td>9219 </td></tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="section" id="Dropping">
+<h1>Dropping<a class="headerlink" href="#Dropping" title="Permalink to this headline">¶</a></h1>
+<p>To only keep some variables in a data frame use <code class="docutils literal notranslate"><span class="pre">select()</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Keep country and GDP</span>
+<span class="n">countries</span> <span class="o">%&gt;%</span> <span class="nf">select</span><span class="p">(</span><span class="n">country</span><span class="p">,</span> <span class="n">gdp_pc</span><span class="p">)</span>
+
+<span class="c1"># Same thing using &#39;-&#39;, implying you want to delete a variable</span>
+<span class="n">countries</span> <span class="o">%&gt;%</span> <span class="nf">select</span><span class="p">(</span><span class="o">-</span><span class="n">year</span><span class="p">)</span>
+
+<span class="c1"># Selecting and renaming in one</span>
+<span class="n">countries</span> <span class="o">%&gt;%</span> <span class="nf">select</span><span class="p">(</span><span class="n">country_name</span> <span class="o">=</span> <span class="n">country</span><span class="p">,</span> <span class="n">gdp_pc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>gdp_pc</th></tr></thead>
+<tbody>
+    <tr><td>USA  </td><td>9219 </td></tr>
+    <tr><td>China</td><td>8512 </td></tr>
+    <tr><td>Sudan</td><td>7550 </td></tr>
+    <tr><td>USA  </td><td>5419 </td></tr>
+    <tr><td>China</td><td>1634 </td></tr>
+    <tr><td>Sudan</td><td>1545 </td></tr>
+    <tr><td>USA  </td><td>8802 </td></tr>
+    <tr><td>China</td><td>8214 </td></tr>
+    <tr><td>Sudan</td><td>8718 </td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>gdp_pc</th></tr></thead>
+<tbody>
+    <tr><td>USA  </td><td>9219 </td></tr>
+    <tr><td>China</td><td>8512 </td></tr>
+    <tr><td>Sudan</td><td>7550 </td></tr>
+    <tr><td>USA  </td><td>5419 </td></tr>
+    <tr><td>China</td><td>1634 </td></tr>
+    <tr><td>Sudan</td><td>1545 </td></tr>
+    <tr><td>USA  </td><td>8802 </td></tr>
+    <tr><td>China</td><td>8214 </td></tr>
+    <tr><td>Sudan</td><td>8718 </td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country_name</th><th scope=col>gdp_pc</th></tr></thead>
+<tbody>
+    <tr><td>USA  </td><td>9219 </td></tr>
+    <tr><td>China</td><td>8512 </td></tr>
+    <tr><td>Sudan</td><td>7550 </td></tr>
+    <tr><td>USA  </td><td>5419 </td></tr>
+    <tr><td>China</td><td>1634 </td></tr>
+    <tr><td>Sudan</td><td>1545 </td></tr>
+    <tr><td>USA  </td><td>8802 </td></tr>
+    <tr><td>China</td><td>8214 </td></tr>
+    <tr><td>Sudan</td><td>8718 </td></tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="section" id="Renaming">
+<h1>Renaming<a class="headerlink" href="#Renaming" title="Permalink to this headline">¶</a></h1>
+<p>As illustrated in the last line of code above you can rename variables using <code class="docutils literal notranslate"><span class="pre">select()</span></code>. But this can also be done using <code class="docutils literal notranslate"><span class="pre">rename()</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Rename GDP per capita</span>
+<span class="n">countries</span> <span class="o">%&gt;%</span> <span class="nf">rename</span><span class="p">(</span><span class="n">GDP.PC</span> <span class="o">=</span> <span class="n">gdp_pc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>GDP.PC</th></tr></thead>
+<tbody>
+    <tr><td>USA  </td><td>1994 </td><td>9219 </td></tr>
+    <tr><td>China</td><td>1994 </td><td>8512 </td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td>7550 </td></tr>
+    <tr><td>USA  </td><td>1995 </td><td>5419 </td></tr>
+    <tr><td>China</td><td>1995 </td><td>1634 </td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td>1545 </td></tr>
+    <tr><td>USA  </td><td>1996 </td><td>8802 </td></tr>
+    <tr><td>China</td><td>1996 </td><td>8214 </td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td>8718 </td></tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="section" id="Unique-values">
+<h1>Unique values<a class="headerlink" href="#Unique-values" title="Permalink to this headline">¶</a></h1>
+<p>Removing duplicate observations can be useful, but be careful: entire rows will be deleted. Use <code class="docutils literal notranslate"><span class="pre">distinct()</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">countries</span> <span class="o">%&gt;%</span> <span class="nf">distinct</span><span class="p">(</span><span class="n">country</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th></tr></thead>
+<tbody>
+    <tr><td>USA  </td></tr>
+    <tr><td>China</td></tr>
+    <tr><td>Sudan</td></tr>
+</tbody>
+</table></div>
+</div>
+<p>Note that the function keeps the first non-duplicate. This is more useful when you suspect that duplicate values of the following kind have slipped into the dataset:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">countries2</span> <span class="o">&lt;-</span> <span class="nf">rbind</span><span class="p">(</span>
+    <span class="nf">data.frame</span><span class="p">(</span><span class="n">country</span> <span class="o">=</span> <span class="s">&quot;USA&quot;</span><span class="p">,</span> <span class="n">year</span> <span class="o">=</span> <span class="m">1994</span><span class="p">,</span> <span class="n">gdp_pc</span> <span class="o">=</span> <span class="m">10000</span><span class="p">),</span>
+    <span class="n">countries</span>
+    <span class="p">)</span>
+<span class="n">countries2</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
+<tbody>
+    <tr><td>USA  </td><td>1994 </td><td>10000</td></tr>
+    <tr><td>USA  </td><td>1994 </td><td> 9219</td></tr>
+    <tr><td>China</td><td>1994 </td><td> 8512</td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td> 7550</td></tr>
+    <tr><td>USA  </td><td>1995 </td><td> 5419</td></tr>
+    <tr><td>China</td><td>1995 </td><td> 1634</td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td> 1545</td></tr>
+    <tr><td>USA  </td><td>1996 </td><td> 8802</td></tr>
+    <tr><td>China</td><td>1996 </td><td> 8214</td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td> 8718</td></tr>
+</tbody>
+</table></div>
+</div>
+<p>Note that we all of a sudden have two USA 1994 observations. Delete one of them using <code class="docutils literal notranslate"><span class="pre">distinct()</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">countries2</span> <span class="o">%&gt;%</span> <span class="nf">distinct</span><span class="p">(</span><span class="n">country</span><span class="p">,</span> <span class="n">year</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>year</th></tr></thead>
+<tbody>
+    <tr><td>USA  </td><td>1994 </td></tr>
+    <tr><td>China</td><td>1994 </td></tr>
+    <tr><td>Sudan</td><td>1994 </td></tr>
+    <tr><td>USA  </td><td>1995 </td></tr>
+    <tr><td>China</td><td>1995 </td></tr>
+    <tr><td>Sudan</td><td>1995 </td></tr>
+    <tr><td>USA  </td><td>1996 </td></tr>
+    <tr><td>China</td><td>1996 </td></tr>
+    <tr><td>Sudan</td><td>1996 </td></tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="section" id="New-variables">
+<h1>New variables<a class="headerlink" href="#New-variables" title="Permalink to this headline">¶</a></h1>
+<p>Use <code class="docutils literal notranslate"><span class="pre">mutate()</span></code> to create new variables or to modify existing variables. Here are a few examples.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Create a new variable that has GDP per capita in 1000s</span>
+<span class="n">countries</span> <span class="o">%&gt;%</span> <span class="nf">mutate</span><span class="p">(</span><span class="n">gdppc_1k</span> <span class="o">=</span> <span class="n">gdp_pc</span> <span class="o">/</span> <span class="m">1000</span><span class="p">)</span>
+
+<span class="c1"># Create a new variable with lower-case country names</span>
+<span class="n">countries</span> <span class="o">%&gt;%</span> <span class="nf">mutate</span><span class="p">(</span><span class="n">country_lc</span> <span class="o">=</span> <span class="nf">tolower</span><span class="p">(</span><span class="n">country</span><span class="p">))</span>
+
+<span class="c1"># Both in one statement</span>
+<span class="n">countries</span> <span class="o">%&gt;%</span> <span class="nf">mutate</span><span class="p">(</span><span class="n">gdppc_1k</span> <span class="o">=</span> <span class="n">gdp_pc</span> <span class="o">/</span> <span class="m">1000</span><span class="p">,</span>
+                     <span class="n">country_lc</span> <span class="o">=</span> <span class="nf">tolower</span><span class="p">(</span><span class="n">country</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th><th scope=col>gdppc_1k</th></tr></thead>
+<tbody>
+    <tr><td>USA  </td><td>1994 </td><td>9219 </td><td>9.219</td></tr>
+    <tr><td>China</td><td>1994 </td><td>8512 </td><td>8.512</td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td>7550 </td><td>7.550</td></tr>
+    <tr><td>USA  </td><td>1995 </td><td>5419 </td><td>5.419</td></tr>
+    <tr><td>China</td><td>1995 </td><td>1634 </td><td>1.634</td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td>1545 </td><td>1.545</td></tr>
+    <tr><td>USA  </td><td>1996 </td><td>8802 </td><td>8.802</td></tr>
+    <tr><td>China</td><td>1996 </td><td>8214 </td><td>8.214</td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td>8718 </td><td>8.718</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th><th scope=col>country_lc</th></tr></thead>
+<tbody>
+    <tr><td>USA  </td><td>1994 </td><td>9219 </td><td>usa  </td></tr>
+    <tr><td>China</td><td>1994 </td><td>8512 </td><td>china</td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td>7550 </td><td>sudan</td></tr>
+    <tr><td>USA  </td><td>1995 </td><td>5419 </td><td>usa  </td></tr>
+    <tr><td>China</td><td>1995 </td><td>1634 </td><td>china</td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td>1545 </td><td>sudan</td></tr>
+    <tr><td>USA  </td><td>1996 </td><td>8802 </td><td>usa  </td></tr>
+    <tr><td>China</td><td>1996 </td><td>8214 </td><td>china</td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td>8718 </td><td>sudan</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th><th scope=col>gdppc_1k</th><th scope=col>country_lc</th></tr></thead>
+<tbody>
+    <tr><td>USA  </td><td>1994 </td><td>9219 </td><td>9.219</td><td>usa  </td></tr>
+    <tr><td>China</td><td>1994 </td><td>8512 </td><td>8.512</td><td>china</td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td>7550 </td><td>7.550</td><td>sudan</td></tr>
+    <tr><td>USA  </td><td>1995 </td><td>5419 </td><td>5.419</td><td>usa  </td></tr>
+    <tr><td>China</td><td>1995 </td><td>1634 </td><td>1.634</td><td>china</td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td>1545 </td><td>1.545</td><td>sudan</td></tr>
+    <tr><td>USA  </td><td>1996 </td><td>8802 </td><td>8.802</td><td>usa  </td></tr>
+    <tr><td>China</td><td>1996 </td><td>8214 </td><td>8.214</td><td>china</td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td>8718 </td><td>8.718</td><td>sudan</td></tr>
+</tbody>
+</table></div>
+</div>
+<p>A lot of times it makes more sense to just overwrite an existing variable rather than adding a variable.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">countries</span> <span class="o">%&gt;%</span> <span class="nf">mutate</span><span class="p">(</span><span class="n">country</span> <span class="o">=</span> <span class="nf">tolower</span><span class="p">(</span><span class="n">country</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
+<tbody>
+    <tr><td>usa  </td><td>1994 </td><td>9219 </td></tr>
+    <tr><td>china</td><td>1994 </td><td>8512 </td></tr>
+    <tr><td>sudan</td><td>1994 </td><td>7550 </td></tr>
+    <tr><td>usa  </td><td>1995 </td><td>5419 </td></tr>
+    <tr><td>china</td><td>1995 </td><td>1634 </td></tr>
+    <tr><td>sudan</td><td>1995 </td><td>1545 </td></tr>
+    <tr><td>usa  </td><td>1996 </td><td>8802 </td></tr>
+    <tr><td>china</td><td>1996 </td><td>8214 </td></tr>
+    <tr><td>sudan</td><td>1996 </td><td>8718 </td></tr>
+</tbody>
+</table></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">mutate()</span></code> can be combined with two other useful functions: <code class="docutils literal notranslate"><span class="pre">ifelse()</span></code> and <code class="docutils literal notranslate"><span class="pre">revalue()</span></code>.</p>
+<blockquote>
+<div>ifelse()</div></blockquote>
+<hr class="docutils" />
+<p><code class="docutils literal notranslate"><span class="pre">ifelse()</span></code> is a logical function that is useful for modifying variables in datasets (or individual vectors). Here’s an illustration of how it works:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">numbers</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span>
+<span class="nf">ifelse</span><span class="p">(</span><span class="n">numbers</span> <span class="o">&gt;</span> <span class="m">5</span><span class="p">,</span> <span class="n">numbers</span> <span class="o">*</span> <span class="m">10</span><span class="p">,</span> <span class="n">numbers</span> <span class="o">/</span> <span class="m">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<ol class=list-inline>
+    <li>0.1</li>
+    <li>0.2</li>
+    <li>0.3</li>
+    <li>0.4</li>
+    <li>0.5</li>
+    <li>60</li>
+    <li>70</li>
+    <li>80</li>
+    <li>90</li>
+    <li>100</li>
+</ol></div>
+</div>
+<p>The function takes three arguments: (1) a logical test, (2) what to do if the test is true, and (3) what to do if the test is false. Thus, in the code above numbers greater than 5 are multiplied by 10 and numbers less than or equal to 5 are divided by 10.</p>
+<p>We can apply this to variables in data frames. Let’s use the <code class="docutils literal notranslate"><span class="pre">world-small.csv</span></code> dataset to illustrate (download <a class="reference external" href="../data/world-small.csv">here</a>).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Read world-small dataset</span>
+<span class="n">world</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/world-small.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">head</span><span class="p">(</span><span class="n">world</span><span class="p">)</span>
+
+<span class="c1"># Create a new variable equal to &quot;democracy&quot; if a country has</span>
+<span class="c1"># a polity score &gt;= 15 and &quot;autocracy&quot; otherwise</span>
+<span class="n">world</span> <span class="o">&lt;-</span> <span class="n">world</span> <span class="o">%&gt;%</span> <span class="nf">mutate</span><span class="p">(</span><span class="n">democracy</span> <span class="o">=</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">polityIV</span> <span class="o">&gt;=</span> <span class="m">15</span><span class="p">,</span> <span class="s">&quot;democracy&quot;</span><span class="p">,</span> <span class="s">&quot;autocracy&quot;</span><span class="p">))</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">world</span><span class="p">)</span>
+
+<span class="c1"># Or represent this information as a dummy variable instead</span>
+<span class="n">world</span> <span class="o">&lt;-</span> <span class="n">world</span> <span class="o">%&gt;%</span> <span class="nf">mutate</span><span class="p">(</span><span class="n">democracy</span> <span class="o">=</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">polityIV</span> <span class="o">&gt;=</span> <span class="m">15</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">))</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">world</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>region</th><th scope=col>gdppcap08</th><th scope=col>polityIV</th></tr></thead>
+<tbody>
+    <tr><td><span style=white-space:pre-wrap>Albania  </span>       </td><td><span style=white-space:pre-wrap>C&amp;E Europe  </span></td><td> 7715                                                   </td><td>17.8                                                    </td></tr>
+    <tr><td>Algeria     </td><td>Africa      </td><td> 8033       </td><td>10.0        </td></tr>
+    <tr><td>Angola      </td><td>Africa      </td><td> 5899       </td><td> 8.0        </td></tr>
+    <tr><td>Argentina   </td><td>S. America  </td><td>14333       </td><td>18.0        </td></tr>
+    <tr><td><span style=white-space:pre-wrap>Armenia  </span>       </td><td><span style=white-space:pre-wrap>C&amp;E Europe  </span></td><td> 6070                                                   </td><td>15.0                                                    </td></tr>
+    <tr><td>Australia   </td><td>Asia-Pacific</td><td>35677       </td><td>20.0        </td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>region</th><th scope=col>gdppcap08</th><th scope=col>polityIV</th><th scope=col>democracy</th></tr></thead>
+<tbody>
+    <tr><td><span style=white-space:pre-wrap>Albania  </span>       </td><td><span style=white-space:pre-wrap>C&amp;E Europe  </span></td><td> 7715                                                   </td><td>17.8                                                    </td><td>democracy                                               </td></tr>
+    <tr><td>Algeria     </td><td>Africa      </td><td> 8033       </td><td>10.0        </td><td>autocracy   </td></tr>
+    <tr><td>Angola      </td><td>Africa      </td><td> 5899       </td><td> 8.0        </td><td>autocracy   </td></tr>
+    <tr><td>Argentina   </td><td>S. America  </td><td>14333       </td><td>18.0        </td><td>democracy   </td></tr>
+    <tr><td><span style=white-space:pre-wrap>Armenia  </span>       </td><td><span style=white-space:pre-wrap>C&amp;E Europe  </span></td><td> 6070                                                   </td><td>15.0                                                    </td><td>democracy                                               </td></tr>
+    <tr><td>Australia   </td><td>Asia-Pacific</td><td>35677       </td><td>20.0        </td><td>democracy   </td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>region</th><th scope=col>gdppcap08</th><th scope=col>polityIV</th><th scope=col>democracy</th></tr></thead>
+<tbody>
+    <tr><td><span style=white-space:pre-wrap>Albania  </span>       </td><td><span style=white-space:pre-wrap>C&amp;E Europe  </span></td><td> 7715                                                   </td><td>17.8                                                    </td><td>1                                                       </td></tr>
+    <tr><td>Algeria     </td><td>Africa      </td><td> 8033       </td><td>10.0        </td><td>0           </td></tr>
+    <tr><td>Angola      </td><td>Africa      </td><td> 5899       </td><td> 8.0        </td><td>0           </td></tr>
+    <tr><td>Argentina   </td><td>S. America  </td><td>14333       </td><td>18.0        </td><td>1           </td></tr>
+    <tr><td><span style=white-space:pre-wrap>Armenia  </span>       </td><td><span style=white-space:pre-wrap>C&amp;E Europe  </span></td><td> 6070                                                   </td><td>15.0                                                    </td><td>1                                                       </td></tr>
+    <tr><td>Australia   </td><td>Asia-Pacific</td><td>35677       </td><td>20.0        </td><td>1           </td></tr>
+</tbody>
+</table></div>
+</div>
+<p>We first created a new variable called <code class="docutils literal notranslate"><span class="pre">democracy</span></code> equal to “democracy” if a country has a Polity IV score of at least 15 and “autocracy” otherwise. We then overwrote this variable with a “dummy variable” representing the same information using zeroes and ones.</p>
+  <div class="general-note">
+
+General note about dummy variables: Dummy variables — sometimes called “indicator variables” or “binary variables” — are extremely useful for representing binary information. Their usefulness in part stems from their applicability in regression models and in part from how they can be used to summarize information. For example, taking the mean of the dummy variable ``democracy`` above — that is, ``mean(world$democracy)`` — gives us the proportion of countries that we classified as “democracy”.  </div>
+
+revalue()<hr class="docutils" />
+<p>We often want to recode the categories of a variable. For example, take a look at the <code class="docutils literal notranslate"><span class="pre">region</span></code> variable in <code class="docutils literal notranslate"><span class="pre">world</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">table</span><span class="p">(</span><span class="n">world</span><span class="o">$</span><span class="n">region</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+
+<span></span>      Africa Asia-Pacific   C&amp;E Europe  Middle East   N. America   S. America
+          42           24           25           16            3           19
+ Scandinavia    W. Europe
+           4           12
+</pre></div>
+</div>
+</div>
+<p>Currently this variable has eight categories. Say we wanted to simplify it a little bit by combining the three regions in Europe. We also want to rename the two regions in America. This can be accomplished with <code class="docutils literal notranslate"><span class="pre">revalue()</span></code> from the <strong>plyr</strong> package.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">world</span><span class="o">$</span><span class="n">region</span> <span class="o">&lt;-</span> <span class="nf">revalue</span><span class="p">(</span><span class="n">world</span><span class="o">$</span><span class="n">region</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span>
+    <span class="s">&quot;C&amp;E Europe&quot;</span> <span class="o">=</span> <span class="s">&quot;Europe&quot;</span><span class="p">,</span>
+    <span class="s">&quot;Scandinavia&quot;</span> <span class="o">=</span> <span class="s">&quot;Europe&quot;</span><span class="p">,</span>
+    <span class="s">&quot;W. Europe&quot;</span> <span class="o">=</span> <span class="s">&quot;Europe&quot;</span><span class="p">,</span>
+    <span class="s">&quot;N. America&quot;</span> <span class="o">=</span> <span class="s">&quot;North America&quot;</span><span class="p">,</span>
+    <span class="s">&quot;S. America&quot;</span> <span class="o">=</span> <span class="s">&quot;South America&quot;</span><span class="p">))</span>
+<span class="nf">table</span><span class="p">(</span><span class="n">world</span><span class="o">$</span><span class="n">region</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+
+<span></span>       Africa  Asia-Pacific        Europe   Middle East North America
+           42            24            41            16             3
+South America
+           19
+</pre></div>
+</div>
+</div>
+<p>This can also be accomplished with <code class="docutils literal notranslate"><span class="pre">ifelse()</span></code>, but we would have to nest several <code class="docutils literal notranslate"><span class="pre">ifelse()</span></code> statements. For this reason I prefer <code class="docutils literal notranslate"><span class="pre">revalue()</span></code>.</p>
+<div class="section" id="A-note-on-factor-variables">
+<h2>A note on factor variables<a class="headerlink" href="#A-note-on-factor-variables" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">read.csv()</span></code> function automatically converts variables that contain strings to the class “factor”. Note, for example, that both the <code class="docutils literal notranslate"><span class="pre">country</span></code> and <code class="docutils literal notranslate"><span class="pre">region</span></code> variables in the <code class="docutils literal notranslate"><span class="pre">world</span></code> dataset are represented as factors.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">class</span><span class="p">(</span><span class="n">world</span><span class="o">$</span><span class="n">country</span><span class="p">)</span>
+<span class="nf">class</span><span class="p">(</span><span class="n">world</span><span class="o">$</span><span class="n">region</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+'factor'</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+'factor'</div>
+</div>
+<p>These variables are useful in regression models in R. For example, including <code class="docutils literal notranslate"><span class="pre">region</span></code> in an OLS model (using command <code class="docutils literal notranslate"><span class="pre">lm()</span></code>) would automatically represent all regions as dummy variables except one left as the reference category. If that’s not making sense to you at this stage, don’t worry at all.</p>
+<p>But factor variables can also cause issues if you’re not careful. In particular, factor variables are sometimes displayed to the user as a certain set of numbers, yet are stored internally as an entirely different set of numbers. For example, say the <code class="docutils literal notranslate"><span class="pre">gdppcap08</span></code> variable in <code class="docutils literal notranslate"><span class="pre">world</span></code> had been read as a factor. (Fortunately, in reality it was read correctly as numeric, but this sometimes isn’t the case.)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Recode gdp per capita to factor</span>
+<span class="c1"># NOTE: Only for illustrative purposes!</span>
+<span class="n">world</span> <span class="o">&lt;-</span> <span class="n">world</span> <span class="o">%&gt;%</span> <span class="nf">mutate</span><span class="p">(</span><span class="n">gdppcap08</span> <span class="o">=</span> <span class="nf">as.factor</span><span class="p">(</span><span class="n">gdppcap08</span><span class="p">))</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">world</span><span class="p">)</span>
+<span class="nf">class</span><span class="p">(</span><span class="n">world</span><span class="o">$</span><span class="n">gdppcap08</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>region</th><th scope=col>gdppcap08</th><th scope=col>polityIV</th><th scope=col>democracy</th></tr></thead>
+<tbody>
+    <tr><td>Albania      </td><td>Europe       </td><td>7715         </td><td>17.8         </td><td>1            </td></tr>
+    <tr><td>Algeria      </td><td>Africa       </td><td>8033         </td><td>10.0         </td><td>0            </td></tr>
+    <tr><td>Angola       </td><td>Africa       </td><td>5899         </td><td> 8.0         </td><td>0            </td></tr>
+    <tr><td>Argentina    </td><td>South America</td><td>14333        </td><td>18.0         </td><td>1            </td></tr>
+    <tr><td>Armenia      </td><td>Europe       </td><td>6070         </td><td>15.0         </td><td>1            </td></tr>
+    <tr><td>Australia    </td><td>Asia-Pacific </td><td>35677        </td><td>20.0         </td><td>1            </td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+'factor'</div>
+</div>
+<p>Ok, the GDP variable is now a factor variable. Note, though, that it looks just like a numeric variable. You might therefore be tempted to try to do things like <code class="docutils literal notranslate"><span class="pre">mean(world$gdppcap08)</span></code>, yet this would return <code class="docutils literal notranslate"><span class="pre">NA</span></code> instead of an actual value as before. You might also be tempted to recode the GDP variable from factor to numeric using the following code:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">head</span><span class="p">(</span><span class="n">world</span> <span class="o">%&gt;%</span> <span class="nf">mutate</span><span class="p">(</span><span class="n">gdppcap08</span> <span class="o">=</span> <span class="nf">as.numeric</span><span class="p">(</span><span class="n">gdppcap08</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>region</th><th scope=col>gdppcap08</th><th scope=col>polityIV</th><th scope=col>democracy</th></tr></thead>
+<tbody>
+    <tr><td>Albania      </td><td>Europe       </td><td> 76          </td><td>17.8         </td><td>1            </td></tr>
+    <tr><td>Algeria      </td><td>Africa       </td><td> 79          </td><td>10.0         </td><td>0            </td></tr>
+    <tr><td>Angola       </td><td>Africa       </td><td> 67          </td><td> 8.0         </td><td>0            </td></tr>
+    <tr><td>Argentina    </td><td>South America</td><td> 99          </td><td>18.0         </td><td>1            </td></tr>
+    <tr><td>Armenia      </td><td>Europe       </td><td> 69          </td><td>15.0         </td><td>1            </td></tr>
+    <tr><td>Australia    </td><td>Asia-Pacific </td><td>132          </td><td>20.0         </td><td>1            </td></tr>
+</tbody>
+</table></div>
+</div>
+<p>Something has gone seriously wrong — look at the values of <code class="docutils literal notranslate"><span class="pre">gdppcap08</span></code>. <strong>Here’s the learning lesson: to convert a factor variable to numeric, you have to recode it to character first.</strong> Use <code class="docutils literal notranslate"><span class="pre">as.numeric(as.character(variable))</span></code>, where <code class="docutils literal notranslate"><span class="pre">variable</span></code> is the factor variable to convert.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">world</span> <span class="o">&lt;-</span> <span class="n">world</span> <span class="o">%&gt;%</span> <span class="nf">mutate</span><span class="p">(</span><span class="n">gdppcap08</span> <span class="o">=</span> <span class="nf">as.numeric</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">gdppcap08</span><span class="p">)))</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">world</span><span class="p">)</span>
+<span class="nf">class</span><span class="p">(</span><span class="n">world</span><span class="o">$</span><span class="n">gdppcap08</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>region</th><th scope=col>gdppcap08</th><th scope=col>polityIV</th><th scope=col>democracy</th></tr></thead>
+<tbody>
+    <tr><td>Albania      </td><td>Europe       </td><td> 7715        </td><td>17.8         </td><td>1            </td></tr>
+    <tr><td>Algeria      </td><td>Africa       </td><td> 8033        </td><td>10.0         </td><td>0            </td></tr>
+    <tr><td>Angola       </td><td>Africa       </td><td> 5899        </td><td> 8.0         </td><td>0            </td></tr>
+    <tr><td>Argentina    </td><td>South America</td><td>14333        </td><td>18.0         </td><td>1            </td></tr>
+    <tr><td>Armenia      </td><td>Europe       </td><td> 6070        </td><td>15.0         </td><td>1            </td></tr>
+    <tr><td>Australia    </td><td>Asia-Pacific </td><td>35677        </td><td>20.0         </td><td>1            </td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+'numeric'</div>
+</div>
+</div>
+</div>
+<div class="section" id="Chaining">
+<h1>Chaining<a class="headerlink" href="#Chaining" title="Permalink to this headline">¶</a></h1>
+<p>What if you wanted to apply <em>multiple</em> functions to one data frame? This is where chaining is elegant and facilitates debugging.</p>
+<p>More specifically, say we wanted to use <code class="docutils literal notranslate"><span class="pre">countries</span></code> to create a new data frame called <code class="docutils literal notranslate"><span class="pre">countries_new</span></code>, which should have observations from years 1995 and 1996 (dropping 1994), should be sorted by country name (in lower case), and should have a new variable equal to GDP per capita in 1000s.</p>
+<p>Here’s how we could do this <em>without</em> chaining:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">countries_new</span> <span class="o">&lt;-</span> <span class="nf">filter</span><span class="p">(</span><span class="n">countries</span><span class="p">,</span> <span class="n">year</span> <span class="o">!=</span> <span class="m">1994</span><span class="p">)</span> <span class="c1">#drop year 1994</span>
+<span class="n">countries_new</span> <span class="o">&lt;-</span> <span class="nf">arrange</span><span class="p">(</span><span class="n">countries_new</span><span class="p">,</span> <span class="n">country</span><span class="p">)</span> <span class="c1">#sort by country names</span>
+<span class="n">countries_new</span> <span class="o">&lt;-</span> <span class="nf">mutate</span><span class="p">(</span><span class="n">countries_new</span><span class="p">,</span> <span class="n">country</span> <span class="o">=</span> <span class="nf">tolower</span><span class="p">(</span><span class="n">country</span><span class="p">),</span> <span class="c1">#convert name to lower-case</span>
+                                       <span class="n">gdppc_1k</span> <span class="o">=</span> <span class="n">gdp_pc</span> <span class="o">/</span> <span class="m">1000</span><span class="p">)</span> <span class="c1">#create GDP pc in 1000s</span>
+<span class="n">countries_new</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th><th scope=col>gdppc_1k</th></tr></thead>
+<tbody>
+    <tr><td>china</td><td>1995 </td><td>1634 </td><td>1.634</td></tr>
+    <tr><td>china</td><td>1996 </td><td>8214 </td><td>8.214</td></tr>
+    <tr><td>sudan</td><td>1995 </td><td>1545 </td><td>1.545</td></tr>
+    <tr><td>sudan</td><td>1996 </td><td>8718 </td><td>8.718</td></tr>
+    <tr><td>usa  </td><td>1995 </td><td>5419 </td><td>5.419</td></tr>
+    <tr><td>usa  </td><td>1996 </td><td>8802 </td><td>8.802</td></tr>
+</tbody>
+</table></div>
+</div>
+<p>Here’s the same thing using chaining:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">countries_new</span> <span class="o">&lt;-</span> <span class="n">countries</span> <span class="o">%&gt;%</span>
+    <span class="nf">filter</span><span class="p">(</span><span class="n">year</span> <span class="o">!=</span> <span class="m">1994</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">arrange</span><span class="p">(</span><span class="n">country</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">mutate</span><span class="p">(</span><span class="n">country</span> <span class="o">=</span> <span class="nf">tolower</span><span class="p">(</span><span class="n">country</span><span class="p">),</span> <span class="n">gdppc_1k</span> <span class="o">=</span> <span class="n">gdp_pc</span> <span class="o">/</span> <span class="m">1000</span><span class="p">)</span>
+<span class="n">countries_new</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th><th scope=col>gdppc_1k</th></tr></thead>
+<tbody>
+    <tr><td>china</td><td>1995 </td><td>1634 </td><td>1.634</td></tr>
+    <tr><td>china</td><td>1996 </td><td>8214 </td><td>8.214</td></tr>
+    <tr><td>sudan</td><td>1995 </td><td>1545 </td><td>1.545</td></tr>
+    <tr><td>sudan</td><td>1996 </td><td>8718 </td><td>8.718</td></tr>
+    <tr><td>usa  </td><td>1995 </td><td>5419 </td><td>5.419</td></tr>
+    <tr><td>usa  </td><td>1996 </td><td>8802 </td><td>8.802</td></tr>
+</tbody>
+</table></div>
+</div>
+<p>I find code that makes use of chaining more readable. Chaining always begins with specifying the data frame we want to operate on (e.g., <code class="docutils literal notranslate"><span class="pre">countries</span></code>). Every subsequent statement will operate on this data frame, starting with the function that comes right after the data frame and working its way down. In our case, the first thing we’ll do to <code class="docutils literal notranslate"><span class="pre">countries</span></code> is to subset it. We’ll then sort it by country name. Lastly, we’ll overwrite the country name to be lower-case and create a new variable
+representing GDP per capita in 1000s.</p>
+</div>
+<div class="section" id="Exercises">
+<h1>Exercises<a class="headerlink" href="#Exercises" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li>Read the <code class="docutils literal notranslate"><span class="pre">world-small.csv</span></code> dataset into R and store it in an object called <code class="docutils literal notranslate"><span class="pre">world</span></code>.</li>
+<li>Subset <code class="docutils literal notranslate"><span class="pre">world</span></code> to European countries. Save this subset as a new data frame called <code class="docutils literal notranslate"><span class="pre">europe</span></code>.</li>
+<li>Add two variables to <code class="docutils literal notranslate"><span class="pre">europe</span></code>:<ol class="loweralpha">
+<li>A variable that recodes <code class="docutils literal notranslate"><span class="pre">polityIV</span></code> from 0-20 to -10-10.</li>
+<li>A variable that categorizes a country as “rich” or “poor” based on some cutoff of <code class="docutils literal notranslate"><span class="pre">gdppcap08</span></code> you think is reasonable.</li>
+</ol>
+</li>
+<li>Drop the <code class="docutils literal notranslate"><span class="pre">region</span></code> variable in <code class="docutils literal notranslate"><span class="pre">europe</span></code> (keep the rest).</li>
+<li>Sort <code class="docutils literal notranslate"><span class="pre">europe</span></code> based on Polity IV.</li>
+<li>Repeat Exercises 2-5 using chaining.</li>
+<li>What was the world’s mean GDP per capita in 2008? Polity IV score?</li>
+<li>What was Africa’s mean GDP per capita and Polity IV score?</li>
+<li>What was the poorest country in the world in 2008? Richest?</li>
+<li>How many countries in Europe are “rich” according to your coding? How many are poor? What percentage have Polity IV scores of at least 18?</li>
+</ol>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">R for Data Science</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Simon Ejdemyr and Nick Eubank.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/modifying-data.ipynb.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
