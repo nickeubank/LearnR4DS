@@ -193,9 +193,18 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 2,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "ename": "ERROR",
+     "evalue": "Error in tidy(lm(bush00 ~ blkpct, states)): could not find function \"tidy\"\n",
+     "output_type": "error",
+     "traceback": [
+      "Error in tidy(lm(bush00 ~ blkpct, states)): could not find function \"tidy\"\nTraceback:\n"
+     ]
+    }
+   ],
    "source": [
     "m1 <- tidy(lm(bush00 ~ blkpct, states)) \n",
     "m2 <- tidy(lm(bush00 ~ blkpct + south, data = states))\n",

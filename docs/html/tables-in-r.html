@@ -359,8 +359,8 @@ Traceback:
 <div class="section" id="Regression-tables">
 <h2>Regression tables<a class="headerlink" href="#Regression-tables" title="Permalink to this headline">¶</a></h2>
 <p>Say we wanted to run three OLS models to predict state-level support for Bush in 2000, where each model adds a predictor to the preceding model. We can create a regression table with all three models like so:</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -390,6 +390,16 @@ Traceback:
 <span class="nf">write.table</span><span class="p">(</span><span class="n">ols_table</span><span class="p">,</span> <span class="n">file</span> <span class="o">=</span> <span class="s">&quot;data/olstab.txt&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="n">quote</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">row.names</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Error in tidy(lm(bush00 ~ blkpct, states)): could not find function &#34;tidy&#34;
+Traceback:
+
+</pre></div></div>
 </div>
 <p>Again, follow steps 3 and 4 from the Overview section above to import the content of the .txt file into Word.</p>
 </div>
@@ -421,8 +431,7 @@ Traceback:
 <li class="toctree-l1"><a class="reference internal" href="for-loops.html">For Loops</a></li>
 <li class="toctree-l1"><a class="reference internal" href="merging-appending.html">Merging</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html">Wide &amp; Long Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html#Wide-to-long-conversion">Wide-to-long conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html">Reshaping</a></li>
 <li class="toctree-l1"><a class="reference internal" href="writing-functions.html">Functions</a></li>
 </ul>
 
