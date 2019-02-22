@@ -9,6 +9,7 @@ Welcome to R for Data Science's documentation!
 Here's the stuff!
 
 .. toctree::
+   :maxdepth: 1
 
    Introduction <introduction>
    Vectors <vectors>

@@ -18,6 +18,8 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Merging" href="merging-appending.html" />
+    <link rel="prev" title="One grouping variable" href="collapsing-data.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -415,7 +417,7 @@ for(i in 1:n) {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-174.8</div>
+183.4</div>
 </div>
 <p>Would we on average expect to estimate the mean of the population accurately? Let’s use a Monte Carlo simulation to find out. We’ll draw 10,000 random samples of five from <code class="docutils literal notranslate"><span class="pre">v</span></code> and take the mean of each of these samples. With an unbiased estimator we would, on average, expect the sample estimate to equal the population parameter of interest.</p>
 <div class="nbinput docutils container">
@@ -438,7 +440,7 @@ for(i in 1:n) {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-175.5558</div>
+175.59424</div>
 </div>
 </div>
 
@@ -459,11 +461,60 @@ for(i in 1:n) {
 
 
 <h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html#Packages">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html#Style">Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html#Trouble-shooting">Trouble shooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vectors.html">Creating vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vectors.html#Subsetting-vectors">Subsetting vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vectors.html#Modifying-vectors">Modifying vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vectors.html#Summarizing-vectors">Summarizing vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vectors.html#Exercises">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html">Creating datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Dataset-structure">Dataset structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Basic-commands">Basic commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Reading-data">Reading data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Exercises">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modifying-data.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Subsetting">Subsetting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Sorting">Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Dropping">Dropping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Renaming">Renaming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Unique-values">Unique values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#New-variables">New variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Chaining">Chaining</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Exercises">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html">One grouping variable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Several-grouping-variables">Several grouping variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Additional-manipulation">Additional manipulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Different-functions">Different functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Exercises">Exercises</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Writing a for loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#An-appliction">An appliction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="merging-appending.html">Merging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="merging-appending.html#Appending">Appending</a></li>
+<li class="toctree-l1"><a class="reference internal" href="merging-appending.html#Exercises">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables-in-r.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables-in-r.html#Crosstabs">Crosstabs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables-in-r.html#Summary-statistics">Summary statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables-in-r.html#Regression-tables">Regression tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html">Wide versus long data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html#A-case-for-long-data">A case for long data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html#Wide-to-long-conversion">Wide-to-long conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html#Exercises">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing-functions.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing-functions.html#Building-blocks">Building blocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing-functions.html#Applications">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing-functions.html#Exercises">Exercises</a></li>
+</ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="collapsing-data.html" title="previous chapter">One grouping variable</a></li>
+      <li>Next: <a href="merging-appending.html" title="next chapter">Merging</a></li>
   </ul></li>
 </ul>
 </div>

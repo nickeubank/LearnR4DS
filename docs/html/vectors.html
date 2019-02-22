@@ -18,6 +18,8 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Creating datasets" href="dataset-basics.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -742,16 +744,16 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 </div>
 <div class="output_area rendered_html docutils container">
 <ol class=list-inline>
-    <li>8</li>
-    <li>81</li>
-    <li>11</li>
-    <li>20</li>
-    <li>37</li>
-    <li>43</li>
     <li>5</li>
+    <li>58</li>
+    <li>73</li>
+    <li>63</li>
+    <li>29</li>
+    <li>59</li>
+    <li>21</li>
+    <li>1</li>
     <li>80</li>
-    <li>64</li>
-    <li>19</li>
+    <li>81</li>
 </ol></div>
 </div>
 <p>The function takes a vector of values (often successive integer values) and an argument that specifies how many values to draw at random from this vector. We can use the resulting values as indeces to subset another vector:</p>
@@ -770,11 +772,11 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 </div>
 <div class="output_area rendered_html docutils container">
 <ol class=list-inline>
+    <li>'apple'</li>
+    <li>'apple'</li>
     <li>'orange'</li>
     <li>'banana'</li>
     <li>'banana'</li>
-    <li>'banana'</li>
-    <li>'apple'</li>
 </ol></div>
 </div>
 <p>Here, we’re drawing a random sample of five elements from the vector <code class="docutils literal notranslate"><span class="pre">fruits</span></code>. Why did I specify <code class="docutils literal notranslate"><span class="pre">1:30</span></code>? Well, <code class="docutils literal notranslate"><span class="pre">fruits</span></code> consists of 30 elements, so specifying something like <code class="docutils literal notranslate"><span class="pre">1:100</span></code> likely would have resulted in sampled values outside the bounds of the vector (e.g., <code class="docutils literal notranslate"><span class="pre">fruits[35]</span></code> doesn’t exist). Specifying <code class="docutils literal notranslate"><span class="pre">1:30</span></code> gives every element in <code class="docutils literal notranslate"><span class="pre">fruits</span></code> an equal chance of being included in the sample.</p>
@@ -1121,16 +1123,16 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 </div>
 <div class="output_area rendered_html docutils container">
 <ol class=list-inline>
-    <li>247</li>
-    <li>385</li>
-    <li>63</li>
-    <li>594</li>
-    <li>715</li>
-    <li>683</li>
-    <li>845</li>
-    <li>606</li>
-    <li>258</li>
-    <li>283</li>
+    <li>478</li>
+    <li>977</li>
+    <li>701</li>
+    <li>441</li>
+    <li>56</li>
+    <li>582</li>
+    <li>296</li>
+    <li>945</li>
+    <li>341</li>
+    <li>121</li>
 </ol></div>
 </div>
 <div class="nboutput docutils container">
@@ -1149,43 +1151,43 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-845</div>
+977</div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-63</div>
+56</div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-4679</div>
+4938</div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-467.9</div>
+493.8</div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-489.5</div>
+459.5</div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-64706.9888888889</div>
+98214.8444444444</div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-254.375684547263</div>
+313.39247668769</div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
@@ -1193,15 +1195,15 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 <div class="output_area rendered_html docutils container">
 <dl class=dl-horizontal>
     <dt>0%</dt>
-            <dd>63</dd>
+            <dd>56</dd>
     <dt>25%</dt>
-            <dd>264.25</dd>
+            <dd>307.25</dd>
     <dt>50%</dt>
-            <dd>489.5</dd>
+            <dd>459.5</dd>
     <dt>75%</dt>
-            <dd>663.75</dd>
+            <dd>671.25</dd>
     <dt>100%</dt>
-            <dd>845</dd>
+            <dd>977</dd>
 </dl></div>
 </div>
 <div class="nboutput docutils container">
@@ -1210,27 +1212,27 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 <div class="output_area rendered_html docutils container">
 <dl class=dl-horizontal>
     <dt>0%</dt>
-            <dd>63</dd>
+            <dd>56</dd>
     <dt>10%</dt>
-            <dd>228.6</dd>
+            <dd>114.5</dd>
     <dt>20%</dt>
-            <dd>255.8</dd>
+            <dd>261</dd>
     <dt>30%</dt>
-            <dd>275.5</dd>
+            <dd>327.5</dd>
     <dt>40%</dt>
-            <dd>344.2</dd>
+            <dd>401</dd>
     <dt>50%</dt>
-            <dd>489.5</dd>
+            <dd>459.5</dd>
     <dt>60%</dt>
-            <dd>598.8</dd>
+            <dd>519.6</dd>
     <dt>70%</dt>
-            <dd>629.1</dd>
+            <dd>617.7</dd>
     <dt>80%</dt>
-            <dd>689.4</dd>
+            <dd>749.8</dd>
     <dt>90%</dt>
-            <dd>728</dd>
+            <dd>948.2</dd>
     <dt>100%</dt>
-            <dd>845</dd>
+            <dd>977</dd>
 </dl></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1238,7 +1240,7 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
 <span></span>Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
-63.0   264.2   489.5   467.9   663.8   845.0
+56.0   307.2   459.5   493.8   671.2   977.0
 </pre></div>
 </div>
 </div>
@@ -1270,11 +1272,11 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 </div>
 <div class="output_area rendered_html docutils container">
 <ol class=list-inline>
+    <li>'apple'</li>
     <li>'banana'</li>
     <li>'apple'</li>
-    <li>'apple'</li>
     <li>'orange'</li>
-    <li>'apple'</li>
+    <li>'orange'</li>
 </ol></div>
 </div>
 <p>The third line, where we create <code class="docutils literal notranslate"><span class="pre">random_sample</span></code>, is not very general. Why? In this case, <code class="docutils literal notranslate"><span class="pre">fruits</span></code> has 30 elements. What if it instead had 50 elements? <em>Then the third line would not give us a random sample.</em> Or more precisely, this line would give us a random sample of the 30 first elements of fruits — the last 20 elements would not have a chance of being included. We could modify the third line to read <code class="docutils literal notranslate"><span class="pre">random_sample</span> <span class="pre">&lt;-</span> <span class="pre">fruits[sample(1:50,</span> <span class="pre">size</span> <span class="pre">=</span> <span class="pre">5)]</span></code>. But if we then modified <code class="docutils literal notranslate"><span class="pre">fruits</span></code>
@@ -1309,11 +1311,11 @@ to have a different number of elements again we’d end up with the same problem
 </div>
 <div class="output_area rendered_html docutils container">
 <ol class=list-inline>
+    <li>'apple'</li>
+    <li>'orange'</li>
+    <li>'orange'</li>
     <li>'banana'</li>
-    <li>'apple'</li>
-    <li>'apple'</li>
-    <li>'apple'</li>
-    <li>'apple'</li>
+    <li>'banana'</li>
 </ol></div>
 </div>
 <div style="margin-top: 15px"></div></div>
@@ -1350,11 +1352,60 @@ to have a different number of elements again we’d end up with the same problem
 
 
 <h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html#Packages">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html#Style">Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html#Trouble-shooting">Trouble shooting</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Creating vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Subsetting-vectors">Subsetting vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Modifying-vectors">Modifying vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Summarizing-vectors">Summarizing vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Exercises">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html">Creating datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Dataset-structure">Dataset structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Basic-commands">Basic commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Reading-data">Reading data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataset-basics.html#Exercises">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modifying-data.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Subsetting">Subsetting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Sorting">Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Dropping">Dropping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Renaming">Renaming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Unique-values">Unique values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#New-variables">New variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Chaining">Chaining</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modifying-data.html#Exercises">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html">One grouping variable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Several-grouping-variables">Several grouping variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Additional-manipulation">Additional manipulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Different-functions">Different functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collapsing-data.html#Exercises">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="for-loops.html">Writing a for loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="for-loops.html#An-appliction">An appliction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="merging-appending.html">Merging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="merging-appending.html#Appending">Appending</a></li>
+<li class="toctree-l1"><a class="reference internal" href="merging-appending.html#Exercises">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables-in-r.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables-in-r.html#Crosstabs">Crosstabs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables-in-r.html#Summary-statistics">Summary statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables-in-r.html#Regression-tables">Regression tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html">Wide versus long data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html#A-case-for-long-data">A case for long data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html#Wide-to-long-conversion">Wide-to-long conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wide-and-long.html#Exercises">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing-functions.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing-functions.html#Building-blocks">Building blocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing-functions.html#Applications">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing-functions.html#Exercises">Exercises</a></li>
+</ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="introduction.html" title="previous chapter">Introduction</a></li>
+      <li>Next: <a href="dataset-basics.html" title="next chapter">Creating datasets</a></li>
   </ul></li>
 </ul>
 </div>
