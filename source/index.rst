@@ -10,48 +10,45 @@ Welcome to R for Data Science, a collection of tutorials designed to get student
 
 The course is organized as follows:
 
-
-
-[**Introduction**](introduction.ipynb)
+:doc:`Introduction <introduction>`
 
 In this first in a number of tutorials, we’ll cover the very basics of R: how to execute code; how to install and load packages; style; and trouble shooting.
 
-[**Vectors**](vectors.ipynb)
+:doc:`Vectors <vectors>`
 
 This tutorial introduces a key object in R: vectors. It explains how to create different types of vectors, how to subset them, how to modify them, and how to summarize them.
 
-[**Dataset Basics**](dataset-basics.ipynb)
+:doc:`Dataset Basics <dataset-basics>`
 
 This tutorial introduces datasets — “data frames” in R. Datasets can be thought of as a collection of vectors stored as columns. We’ll talk about how to create datasets and how to read them from file. We’ll also talk more conceptually about how datasets should be structured.
 
-[**Modifying Data**](modifying-data.ipynb)
+:doc:`Modifying Data <modifying-data>`
 
 Being able to quickly modify datasets — using tasks like subsetting, sorting, extracting unique observations, renaming variables, dropping variables, and creating new variables — is critical. This tutorial explains how to easily do this in R with functions from the dplyr package.
 
-[**Collapsing Data**](collapsing-data.ipynb)
+:doc:`Collapsing Data <collapsing-data>`
 
 This tutorial explains how to find summary statistics for different categories in a dataset — what is often referred to as collapsing data. Like the tutorial on modifying data, the tutorial draws on a set of intuitive and elegant functions from the dplyr package.
 
-[**Merging & Appending**](merging-appending.ipynb)
+:doc:`Merging & Appending <merging-appending>`
 
 This tutorial explains how to combine datasets by merging or appending them. Merging means transferring columns from one dataset to another, while appending means transferring rows from one dataset to another.
 
-[**Wide & Long Data**](wide-and-long.ipynb)
+:doc:`Wide & Long Data <wide-and-long>`
 
 This tutorial explains the difference between long and wide form datasets, shows why it’s generally preferable to use long form datasets, and goes over how to convert datasets from wide to long form.
 
-[**For Loops**](for-loops.ipynb)
+:doc:`For Loops <for-loops>`
 
 This tutorial explains how to write for loops — which can be useful when you want to iterate a process in R — and shows how to use for loops to carry out Monte Carlo simulations.
 
-[**Writing Functions**](writing-functions.ipynb)
+:doc:`Writing Functions <writing-functions>`
 
 This tutorial explains how you can write your own functions in R. After explaining the basics, the tutorial dives into two data science applications for writing functions.
 
-[**Tables in R**](tables-in-r.ipynb)
+:doc:`Tables in R <tables-in-r>`
 
 This tutorial explains how to create and export tables in R. It was originally designed for undergraduate students at Stanford who tend to use Word rather than LaTeX.
-
 
 
 
