@@ -6,12 +6,7 @@
    "source": [
     "# Vectors\n",
     "\n",
-    "summary: This tutorial introduces a key object in R&#58; vectors. Vectors have one\n",
-    " dimension that represents some concept or fact about the\n",
-    " world. Examples include age, height, eye color, GDP per capita, and\n",
-    " war initiation. The tutorial explains how to create different types of\n",
-    " vectors, how to subset them, how to modify them, and how to summarize\n",
-    " them.\n",
+    "This tutorial introduces a key object in R&#58; vectors. Vectors have one dimension that represents some concept or fact about the world. Examples include age, height, eye color, GDP per capita, and war initiation. The tutorial explains how to create different types of vectors, how to subset them, how to modify them, and how to summarize them.\n",
     "\n",
     "\n",
     "## Creating vectors\n",

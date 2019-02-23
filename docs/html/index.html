@@ -14,6 +14,8 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Introduction" href="introduction.html" />
@@ -35,7 +37,28 @@
             
   <div class="section" id="welcome-to-r-for-data-science-s-documentation">
 <h1>Welcome to R for Data Science’s documentation!<a class="headerlink" href="#welcome-to-r-for-data-science-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Here’s the stuff!</p>
+<p>Welcome to R for Data Science, a collection of tutorials designed to get students up and running in R even if they have no prior experience with programming. These tutorials are designed to not only provide students with the ability to stitch together code to meet a goal, but also provide students an understanding of the principles of programming in R to help demystify the tool, and improve student confidence in working in R and troubleshooting problems.</p>
+<p>The course is organized as follows:</p>
+<p>[<strong>Introduction</strong>](introduction.ipynb)</p>
+<p>In this first in a number of tutorials, we’ll cover the very basics of R: how to execute code; how to install and load packages; style; and trouble shooting.</p>
+<p>[<strong>Vectors</strong>](vectors.ipynb)</p>
+<p>This tutorial introduces a key object in R: vectors. It explains how to create different types of vectors, how to subset them, how to modify them, and how to summarize them.</p>
+<p>[<strong>Dataset Basics</strong>](dataset-basics.ipynb)</p>
+<p>This tutorial introduces datasets — “data frames” in R. Datasets can be thought of as a collection of vectors stored as columns. We’ll talk about how to create datasets and how to read them from file. We’ll also talk more conceptually about how datasets should be structured.</p>
+<p>[<strong>Modifying Data</strong>](modifying-data.ipynb)</p>
+<p>Being able to quickly modify datasets — using tasks like subsetting, sorting, extracting unique observations, renaming variables, dropping variables, and creating new variables — is critical. This tutorial explains how to easily do this in R with functions from the dplyr package.</p>
+<p>[<strong>Collapsing Data</strong>](collapsing-data.ipynb)</p>
+<p>This tutorial explains how to find summary statistics for different categories in a dataset — what is often referred to as collapsing data. Like the tutorial on modifying data, the tutorial draws on a set of intuitive and elegant functions from the dplyr package.</p>
+<p>[<strong>Merging &amp; Appending</strong>](merging-appending.ipynb)</p>
+<p>This tutorial explains how to combine datasets by merging or appending them. Merging means transferring columns from one dataset to another, while appending means transferring rows from one dataset to another.</p>
+<p>[<strong>Wide &amp; Long Data</strong>](wide-and-long.ipynb)</p>
+<p>This tutorial explains the difference between long and wide form datasets, shows why it’s generally preferable to use long form datasets, and goes over how to convert datasets from wide to long form.</p>
+<p>[<strong>For Loops</strong>](for-loops.ipynb)</p>
+<p>This tutorial explains how to write for loops — which can be useful when you want to iterate a process in R — and shows how to use for loops to carry out Monte Carlo simulations.</p>
+<p>[<strong>Writing Functions</strong>](writing-functions.ipynb)</p>
+<p>This tutorial explains how you can write your own functions in R. After explaining the basics, the tutorial dives into two data science applications for writing functions.</p>
+<p>[<strong>Tables in R</strong>](tables-in-r.ipynb)</p>
+<p>This tutorial explains how to create and export tables in R. It was originally designed for undergraduate students at Stanford who tend to use Word rather than LaTeX.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
@@ -50,14 +73,6 @@
 <li class="toctree-l1"><a class="reference internal" href="writing-functions.html">Functions</a></li>
 </ul>
 </div>
-</div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
-<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
-</ul>
 </div>
 
 

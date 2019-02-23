@@ -14,6 +14,8 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Dataset Basics" href="dataset-basics.html" />
@@ -236,7 +238,7 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="Vectors">
 <h1>Vectors<a class="headerlink" href="#Vectors" title="Permalink to this headline">¶</a></h1>
-<p>summary: This tutorial introduces a key object in R: vectors. Vectors have one dimension that represents some concept or fact about the world. Examples include age, height, eye color, GDP per capita, and war initiation. The tutorial explains how to create different types of vectors, how to subset them, how to modify them, and how to summarize them.</p>
+<p>This tutorial introduces a key object in R: vectors. Vectors have one dimension that represents some concept or fact about the world. Examples include age, height, eye color, GDP per capita, and war initiation. The tutorial explains how to create different types of vectors, how to subset them, how to modify them, and how to summarize them.</p>
 <div class="section" id="Creating-vectors">
 <h2>Creating vectors<a class="headerlink" href="#Creating-vectors" title="Permalink to this headline">¶</a></h2>
 <p>We’ll create three types of vectors: numeric, character, and logical. Here are examples of each type:</p>
@@ -745,16 +747,16 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 </div>
 <div class="output_area rendered_html docutils container">
 <ol class=list-inline>
-    <li>36</li>
-    <li>26</li>
-    <li>73</li>
-    <li>54</li>
-    <li>99</li>
+    <li>74</li>
+    <li>85</li>
+    <li>82</li>
+    <li>76</li>
+    <li>46</li>
+    <li>13</li>
     <li>42</li>
-    <li>33</li>
-    <li>66</li>
-    <li>52</li>
     <li>17</li>
+    <li>18</li>
+    <li>12</li>
 </ol></div>
 </div>
 <p>The function takes a vector of values (often successive integer values) and an argument that specifies how many values to draw at random from this vector. We can use the resulting values as indeces to subset another vector:</p>
@@ -774,10 +776,10 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 <div class="output_area rendered_html docutils container">
 <ol class=list-inline>
     <li>'banana'</li>
+    <li>'apple'</li>
     <li>'orange'</li>
+    <li>'apple'</li>
     <li>'banana'</li>
-    <li>'orange'</li>
-    <li>'orange'</li>
 </ol></div>
 </div>
 <p>Here, we’re drawing a random sample of five elements from the vector <code class="docutils literal notranslate"><span class="pre">fruits</span></code>. Why did I specify <code class="docutils literal notranslate"><span class="pre">1:30</span></code>? Well, <code class="docutils literal notranslate"><span class="pre">fruits</span></code> consists of 30 elements, so specifying something like <code class="docutils literal notranslate"><span class="pre">1:100</span></code> likely would have resulted in sampled values outside the bounds of the vector (e.g., <code class="docutils literal notranslate"><span class="pre">fruits[35]</span></code> doesn’t exist). Specifying <code class="docutils literal notranslate"><span class="pre">1:30</span></code> gives every element in <code class="docutils literal notranslate"><span class="pre">fruits</span></code> an equal chance of being included in the sample.</p>
@@ -1124,16 +1126,16 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 </div>
 <div class="output_area rendered_html docutils container">
 <ol class=list-inline>
-    <li>772</li>
-    <li>141</li>
-    <li>435</li>
-    <li>482</li>
-    <li>955</li>
-    <li>69</li>
-    <li>863</li>
-    <li>434</li>
-    <li>858</li>
-    <li>431</li>
+    <li>656</li>
+    <li>977</li>
+    <li>930</li>
+    <li>800</li>
+    <li>413</li>
+    <li>868</li>
+    <li>692</li>
+    <li>988</li>
+    <li>190</li>
+    <li>843</li>
 </ol></div>
 </div>
 <div class="nboutput docutils container">
@@ -1152,43 +1154,43 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-955</div>
+988</div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-69</div>
+190</div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-5440</div>
+7357</div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-544</div>
+735.7</div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-458.5</div>
+821.5</div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-94432.2222222222</div>
+66996.6777777778</div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-307.298262641074</div>
+258.837164599247</div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
@@ -1196,15 +1198,15 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 <div class="output_area rendered_html docutils container">
 <dl class=dl-horizontal>
     <dt>0%</dt>
-            <dd>69</dd>
+            <dd>190</dd>
     <dt>25%</dt>
-            <dd>431.75</dd>
+            <dd>665</dd>
     <dt>50%</dt>
-            <dd>458.5</dd>
+            <dd>821.5</dd>
     <dt>75%</dt>
-            <dd>836.5</dd>
+            <dd>914.5</dd>
     <dt>100%</dt>
-            <dd>955</dd>
+            <dd>988</dd>
 </dl></div>
 </div>
 <div class="nboutput docutils container">
@@ -1213,35 +1215,35 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 <div class="output_area rendered_html docutils container">
 <dl class=dl-horizontal>
     <dt>0%</dt>
-            <dd>69</dd>
+            <dd>190</dd>
     <dt>10%</dt>
-            <dd>133.8</dd>
+            <dd>390.7</dd>
     <dt>20%</dt>
-            <dd>373</dd>
+            <dd>607.4</dd>
     <dt>30%</dt>
-            <dd>433.1</dd>
+            <dd>681.2</dd>
     <dt>40%</dt>
-            <dd>434.6</dd>
+            <dd>756.8</dd>
     <dt>50%</dt>
-            <dd>458.5</dd>
+            <dd>821.5</dd>
     <dt>60%</dt>
-            <dd>598</dd>
+            <dd>853</dd>
     <dt>70%</dt>
-            <dd>797.8</dd>
+            <dd>886.6</dd>
     <dt>80%</dt>
-            <dd>859</dd>
+            <dd>939.4</dd>
     <dt>90%</dt>
-            <dd>872.2</dd>
+            <dd>978.1</dd>
     <dt>100%</dt>
-            <dd>955</dd>
+            <dd>988</dd>
 </dl></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
-69.0   431.8   458.5   544.0   836.5   955.0
+<span></span> Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+190.0   665.0   821.5   735.7   914.5   988.0
 </pre></div>
 </div>
 </div>
@@ -1274,8 +1276,8 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 </div>
 <div class="output_area rendered_html docutils container">
 <ol class=list-inline>
-    <li>'orange'</li>
     <li>'banana'</li>
+    <li>'apple'</li>
     <li>'apple'</li>
     <li>'orange'</li>
     <li>'apple'</li>
@@ -1313,11 +1315,11 @@ to have a different number of elements again we’d end up with the same problem
 </div>
 <div class="output_area rendered_html docutils container">
 <ol class=list-inline>
-    <li>'orange'</li>
-    <li>'orange'</li>
+    <li>'banana'</li>
     <li>'apple'</li>
-    <li>'banana'</li>
-    <li>'banana'</li>
+    <li>'orange'</li>
+    <li>'orange'</li>
+    <li>'orange'</li>
 </ol></div>
 </div>
 <div style="margin-top: 15px"></div></div>
