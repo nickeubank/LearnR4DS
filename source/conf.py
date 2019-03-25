@@ -19,9 +19,9 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'R for Data Science'
-copyright = '2019, Simon Ejdemyr and Nick Eubank'
-author = 'Simon Ejdemyr and Nick Eubank'
+project = 'learnR4ds'
+copyright = '2019, Nick Eubank'
+author = 'Nick Eubank'
 
 # The short X.Y version
 version = ''

@@ -51,6 +51,10 @@ This tutorial explains how you can write your own functions in R. After explaini
 
 This tutorial explains how to create and export tables in R. It was originally designed for undergraduate students at Stanford who tend to use Word rather than LaTeX.
 
+:doc:`Plotting in R <plotting>`
+
+This tutorial explains how to plot and visualize data.
+
 
 
 From Whom is This Course Designed?
@@ -88,12 +92,23 @@ It is worth emphasizing that we're not learning R because it is necessarily the 
 
 As a result, over the course of your career you may find yourself gravitating to one tool or another as required by your research. But in providing you with a firm foundation in a very popular language like R, we feel confident that we will not only be providing you with tools that will allow you to do most everything you'll want to do in graduate school, but we will also be providing you with *generalizable* skills around data manipulation that you will find useful if you later change platforms.
 
-To learn more about the differences between common programming languages, you can find a summary [here](http://www.programming4ds.com/html/languages.html). 
+To learn more about the differences between common programming languages, you can find a summary [here](https://www.programming4ds.com/html/languages.html). 
+
+Where did this course come from?
+--------------------------------
+
+These tutorials form the backbone of *Programming for Data Science*, a course taught as part of the Masters in Data Science (MIDS) at Duke University by myself, [Nick Eubank](www.nickeubank.com). They are built off of the amazing tutorials of [Simon Ejdmyer](https://sejdemyr.github.io/r-tutorials/basics/).
+
+Want to learn more?
+-------------------
+
+These tutorials are from the first class in a two-course sequence. If you want to learn more, check out [Programming For Data Science](https://www.programming4ds.com), which provides a more in depth introduction to computer science concepts relevant for data science.
+
 
 
 .. toctree::
    :hidden:
-   :maxdepth: 1
+   :maxdepth: 2
 
    Introduction <introduction>
    Vectors <vectors>
@@ -105,4 +120,5 @@ To learn more about the differences between common programming languages, you ca
    Functions <writing-functions>
    Tables <tables-in-r>
    Reshaping <wide-and-long>
+   Plotting <plotting>
 
