@@ -3,10 +3,10 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to R for Data Science's documentation!
-==============================================
+Welcome to Learn R for Data Science!
+====================================
 
-Welcome to R for Data Science, a collection of tutorials designed to get students up and running in R even if they have no prior experience with programming. These tutorials are designed to not only provide students with the ability to stitch together code to meet a goal, but also an understanding of the principles of programming in R to help demystify the tool, and improve student confidence in working in R and troubleshooting problems. 
+Welcome to Learn R for Data Science, a collection of tutorials designed to get students up and running in R even if they have no prior experience with programming. These tutorials are designed to not only provide students with the ability to stitch together code to meet a goal, but also an understanding of the principles of programming in R to help demystify the tool, and improve student confidence in working in R and troubleshooting problems. 
 
 The course is organized as follows:
 
