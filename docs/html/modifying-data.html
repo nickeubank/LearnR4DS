@@ -14,9 +14,11 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Collapsing Data" href="collapsing-data.html" />
+    <link rel="next" title="Merging &amp; Appending" href="merging-appending.html" />
     <link rel="prev" title="Dataset Basics" href="dataset-basics.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -282,15 +284,15 @@ div.rendered_html tbody tr:hover {
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>USA  </td><td>1994 </td><td>12465</td></tr>
-    <tr><td>China</td><td>1994 </td><td>15344</td></tr>
-    <tr><td>Sudan</td><td>1994 </td><td> 5117</td></tr>
-    <tr><td>USA  </td><td>1995 </td><td> 2082</td></tr>
-    <tr><td>China</td><td>1995 </td><td>10750</td></tr>
-    <tr><td>Sudan</td><td>1995 </td><td> 9037</td></tr>
-    <tr><td>USA  </td><td>1996 </td><td> 1769</td></tr>
-    <tr><td>China</td><td>1996 </td><td>18008</td></tr>
-    <tr><td>Sudan</td><td>1996 </td><td> 4861</td></tr>
+    <tr><td>USA  </td><td>1994 </td><td>14509</td></tr>
+    <tr><td>China</td><td>1994 </td><td> 3451</td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td> 9475</td></tr>
+    <tr><td>USA  </td><td>1995 </td><td>14391</td></tr>
+    <tr><td>China</td><td>1995 </td><td>14810</td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td> 1778</td></tr>
+    <tr><td>USA  </td><td>1996 </td><td>16030</td></tr>
+    <tr><td>China</td><td>1996 </td><td>17438</td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td>14002</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -355,9 +357,9 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>China</td><td>1994 </td><td>15344</td></tr>
-    <tr><td>China</td><td>1995 </td><td>10750</td></tr>
-    <tr><td>China</td><td>1996 </td><td>18008</td></tr>
+    <tr><td>China</td><td>1994 </td><td> 3451</td></tr>
+    <tr><td>China</td><td>1995 </td><td>14810</td></tr>
+    <tr><td>China</td><td>1996 </td><td>17438</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -368,9 +370,9 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>USA  </td><td>1996 </td><td> 1769</td></tr>
-    <tr><td>China</td><td>1996 </td><td>18008</td></tr>
-    <tr><td>Sudan</td><td>1996 </td><td> 4861</td></tr>
+    <tr><td>USA  </td><td>1996 </td><td>16030</td></tr>
+    <tr><td>China</td><td>1996 </td><td>17438</td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td>14002</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -381,7 +383,7 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>USA </td><td>1995</td><td>2082</td></tr>
+    <tr><td>USA  </td><td>1995 </td><td>14391</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -392,10 +394,7 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>USA  </td><td>1994 </td><td>12465</td></tr>
-    <tr><td>Sudan</td><td>1994 </td><td> 5117</td></tr>
-    <tr><td>China</td><td>1995 </td><td>10750</td></tr>
-    <tr><td>Sudan</td><td>1995 </td><td> 9037</td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td>9475 </td></tr>
 </tbody>
 </table></div>
 </div>
@@ -420,9 +419,9 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>China</td><td>1994 </td><td>15344</td></tr>
-    <tr><td>China</td><td>1995 </td><td>10750</td></tr>
-    <tr><td>China</td><td>1996 </td><td>18008</td></tr>
+    <tr><td>China</td><td>1994 </td><td> 3451</td></tr>
+    <tr><td>China</td><td>1995 </td><td>14810</td></tr>
+    <tr><td>China</td><td>1996 </td><td>17438</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -433,9 +432,9 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>USA  </td><td>1996 </td><td> 1769</td></tr>
-    <tr><td>China</td><td>1996 </td><td>18008</td></tr>
-    <tr><td>Sudan</td><td>1996 </td><td> 4861</td></tr>
+    <tr><td>USA  </td><td>1996 </td><td>16030</td></tr>
+    <tr><td>China</td><td>1996 </td><td>17438</td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td>14002</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -446,7 +445,7 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>USA </td><td>1995</td><td>2082</td></tr>
+    <tr><td>USA  </td><td>1995 </td><td>14391</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -457,10 +456,7 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>USA  </td><td>1994 </td><td>12465</td></tr>
-    <tr><td>Sudan</td><td>1994 </td><td> 5117</td></tr>
-    <tr><td>China</td><td>1995 </td><td>10750</td></tr>
-    <tr><td>Sudan</td><td>1995 </td><td> 9037</td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td>9475 </td></tr>
 </tbody>
 </table></div>
 </div>
@@ -482,9 +478,9 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>China</td><td>1994 </td><td>15344</td></tr>
-    <tr><td>China</td><td>1995 </td><td>10750</td></tr>
-    <tr><td>China</td><td>1996 </td><td>18008</td></tr>
+    <tr><td>China</td><td>1994 </td><td> 3451</td></tr>
+    <tr><td>China</td><td>1995 </td><td>14810</td></tr>
+    <tr><td>China</td><td>1996 </td><td>17438</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -518,15 +514,15 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>China</td><td>1994 </td><td>15344</td></tr>
-    <tr><td>China</td><td>1995 </td><td>10750</td></tr>
-    <tr><td>China</td><td>1996 </td><td>18008</td></tr>
-    <tr><td>Sudan</td><td>1994 </td><td> 5117</td></tr>
-    <tr><td>Sudan</td><td>1995 </td><td> 9037</td></tr>
-    <tr><td>Sudan</td><td>1996 </td><td> 4861</td></tr>
-    <tr><td>USA  </td><td>1994 </td><td>12465</td></tr>
-    <tr><td>USA  </td><td>1995 </td><td> 2082</td></tr>
-    <tr><td>USA  </td><td>1996 </td><td> 1769</td></tr>
+    <tr><td>China</td><td>1994 </td><td> 3451</td></tr>
+    <tr><td>China</td><td>1995 </td><td>14810</td></tr>
+    <tr><td>China</td><td>1996 </td><td>17438</td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td> 9475</td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td> 1778</td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td>14002</td></tr>
+    <tr><td>USA  </td><td>1994 </td><td>14509</td></tr>
+    <tr><td>USA  </td><td>1995 </td><td>14391</td></tr>
+    <tr><td>USA  </td><td>1996 </td><td>16030</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -537,15 +533,15 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>USA  </td><td>1996 </td><td> 1769</td></tr>
-    <tr><td>USA  </td><td>1995 </td><td> 2082</td></tr>
-    <tr><td>Sudan</td><td>1996 </td><td> 4861</td></tr>
-    <tr><td>Sudan</td><td>1994 </td><td> 5117</td></tr>
-    <tr><td>Sudan</td><td>1995 </td><td> 9037</td></tr>
-    <tr><td>China</td><td>1995 </td><td>10750</td></tr>
-    <tr><td>USA  </td><td>1994 </td><td>12465</td></tr>
-    <tr><td>China</td><td>1994 </td><td>15344</td></tr>
-    <tr><td>China</td><td>1996 </td><td>18008</td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td> 1778</td></tr>
+    <tr><td>China</td><td>1994 </td><td> 3451</td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td> 9475</td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td>14002</td></tr>
+    <tr><td>USA  </td><td>1995 </td><td>14391</td></tr>
+    <tr><td>USA  </td><td>1994 </td><td>14509</td></tr>
+    <tr><td>China</td><td>1995 </td><td>14810</td></tr>
+    <tr><td>USA  </td><td>1996 </td><td>16030</td></tr>
+    <tr><td>China</td><td>1996 </td><td>17438</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -556,15 +552,15 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>China</td><td>1996 </td><td>18008</td></tr>
-    <tr><td>China</td><td>1994 </td><td>15344</td></tr>
-    <tr><td>USA  </td><td>1994 </td><td>12465</td></tr>
-    <tr><td>China</td><td>1995 </td><td>10750</td></tr>
-    <tr><td>Sudan</td><td>1995 </td><td> 9037</td></tr>
-    <tr><td>Sudan</td><td>1994 </td><td> 5117</td></tr>
-    <tr><td>Sudan</td><td>1996 </td><td> 4861</td></tr>
-    <tr><td>USA  </td><td>1995 </td><td> 2082</td></tr>
-    <tr><td>USA  </td><td>1996 </td><td> 1769</td></tr>
+    <tr><td>China</td><td>1996 </td><td>17438</td></tr>
+    <tr><td>USA  </td><td>1996 </td><td>16030</td></tr>
+    <tr><td>China</td><td>1995 </td><td>14810</td></tr>
+    <tr><td>USA  </td><td>1994 </td><td>14509</td></tr>
+    <tr><td>USA  </td><td>1995 </td><td>14391</td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td>14002</td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td> 9475</td></tr>
+    <tr><td>China</td><td>1994 </td><td> 3451</td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td> 1778</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -575,15 +571,15 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>China</td><td>1995 </td><td>10750</td></tr>
-    <tr><td>China</td><td>1994 </td><td>15344</td></tr>
-    <tr><td>China</td><td>1996 </td><td>18008</td></tr>
-    <tr><td>Sudan</td><td>1996 </td><td> 4861</td></tr>
-    <tr><td>Sudan</td><td>1994 </td><td> 5117</td></tr>
-    <tr><td>Sudan</td><td>1995 </td><td> 9037</td></tr>
-    <tr><td>USA  </td><td>1996 </td><td> 1769</td></tr>
-    <tr><td>USA  </td><td>1995 </td><td> 2082</td></tr>
-    <tr><td>USA  </td><td>1994 </td><td>12465</td></tr>
+    <tr><td>China</td><td>1994 </td><td> 3451</td></tr>
+    <tr><td>China</td><td>1995 </td><td>14810</td></tr>
+    <tr><td>China</td><td>1996 </td><td>17438</td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td> 1778</td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td> 9475</td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td>14002</td></tr>
+    <tr><td>USA  </td><td>1995 </td><td>14391</td></tr>
+    <tr><td>USA  </td><td>1994 </td><td>14509</td></tr>
+    <tr><td>USA  </td><td>1996 </td><td>16030</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -614,15 +610,15 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>USA  </td><td>12465</td></tr>
-    <tr><td>China</td><td>15344</td></tr>
-    <tr><td>Sudan</td><td> 5117</td></tr>
-    <tr><td>USA  </td><td> 2082</td></tr>
-    <tr><td>China</td><td>10750</td></tr>
-    <tr><td>Sudan</td><td> 9037</td></tr>
-    <tr><td>USA  </td><td> 1769</td></tr>
-    <tr><td>China</td><td>18008</td></tr>
-    <tr><td>Sudan</td><td> 4861</td></tr>
+    <tr><td>USA  </td><td>14509</td></tr>
+    <tr><td>China</td><td> 3451</td></tr>
+    <tr><td>Sudan</td><td> 9475</td></tr>
+    <tr><td>USA  </td><td>14391</td></tr>
+    <tr><td>China</td><td>14810</td></tr>
+    <tr><td>Sudan</td><td> 1778</td></tr>
+    <tr><td>USA  </td><td>16030</td></tr>
+    <tr><td>China</td><td>17438</td></tr>
+    <tr><td>Sudan</td><td>14002</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -633,15 +629,15 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>USA  </td><td>12465</td></tr>
-    <tr><td>China</td><td>15344</td></tr>
-    <tr><td>Sudan</td><td> 5117</td></tr>
-    <tr><td>USA  </td><td> 2082</td></tr>
-    <tr><td>China</td><td>10750</td></tr>
-    <tr><td>Sudan</td><td> 9037</td></tr>
-    <tr><td>USA  </td><td> 1769</td></tr>
-    <tr><td>China</td><td>18008</td></tr>
-    <tr><td>Sudan</td><td> 4861</td></tr>
+    <tr><td>USA  </td><td>14509</td></tr>
+    <tr><td>China</td><td> 3451</td></tr>
+    <tr><td>Sudan</td><td> 9475</td></tr>
+    <tr><td>USA  </td><td>14391</td></tr>
+    <tr><td>China</td><td>14810</td></tr>
+    <tr><td>Sudan</td><td> 1778</td></tr>
+    <tr><td>USA  </td><td>16030</td></tr>
+    <tr><td>China</td><td>17438</td></tr>
+    <tr><td>Sudan</td><td>14002</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -652,15 +648,15 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country_name</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>USA  </td><td>12465</td></tr>
-    <tr><td>China</td><td>15344</td></tr>
-    <tr><td>Sudan</td><td> 5117</td></tr>
-    <tr><td>USA  </td><td> 2082</td></tr>
-    <tr><td>China</td><td>10750</td></tr>
-    <tr><td>Sudan</td><td> 9037</td></tr>
-    <tr><td>USA  </td><td> 1769</td></tr>
-    <tr><td>China</td><td>18008</td></tr>
-    <tr><td>Sudan</td><td> 4861</td></tr>
+    <tr><td>USA  </td><td>14509</td></tr>
+    <tr><td>China</td><td> 3451</td></tr>
+    <tr><td>Sudan</td><td> 9475</td></tr>
+    <tr><td>USA  </td><td>14391</td></tr>
+    <tr><td>China</td><td>14810</td></tr>
+    <tr><td>Sudan</td><td> 1778</td></tr>
+    <tr><td>USA  </td><td>16030</td></tr>
+    <tr><td>China</td><td>17438</td></tr>
+    <tr><td>Sudan</td><td>14002</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -685,15 +681,15 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>GDP.PC</th></tr></thead>
 <tbody>
-    <tr><td>USA  </td><td>1994 </td><td>12465</td></tr>
-    <tr><td>China</td><td>1994 </td><td>15344</td></tr>
-    <tr><td>Sudan</td><td>1994 </td><td> 5117</td></tr>
-    <tr><td>USA  </td><td>1995 </td><td> 2082</td></tr>
-    <tr><td>China</td><td>1995 </td><td>10750</td></tr>
-    <tr><td>Sudan</td><td>1995 </td><td> 9037</td></tr>
-    <tr><td>USA  </td><td>1996 </td><td> 1769</td></tr>
-    <tr><td>China</td><td>1996 </td><td>18008</td></tr>
-    <tr><td>Sudan</td><td>1996 </td><td> 4861</td></tr>
+    <tr><td>USA  </td><td>1994 </td><td>14509</td></tr>
+    <tr><td>China</td><td>1994 </td><td> 3451</td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td> 9475</td></tr>
+    <tr><td>USA  </td><td>1995 </td><td>14391</td></tr>
+    <tr><td>China</td><td>1995 </td><td>14810</td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td> 1778</td></tr>
+    <tr><td>USA  </td><td>1996 </td><td>16030</td></tr>
+    <tr><td>China</td><td>1996 </td><td>17438</td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td>14002</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -745,15 +741,15 @@ The following objects are masked from ‘package:base’:
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
     <tr><td>USA  </td><td>1994 </td><td>10000</td></tr>
-    <tr><td>USA  </td><td>1994 </td><td>12465</td></tr>
-    <tr><td>China</td><td>1994 </td><td>15344</td></tr>
-    <tr><td>Sudan</td><td>1994 </td><td> 5117</td></tr>
-    <tr><td>USA  </td><td>1995 </td><td> 2082</td></tr>
-    <tr><td>China</td><td>1995 </td><td>10750</td></tr>
-    <tr><td>Sudan</td><td>1995 </td><td> 9037</td></tr>
-    <tr><td>USA  </td><td>1996 </td><td> 1769</td></tr>
-    <tr><td>China</td><td>1996 </td><td>18008</td></tr>
-    <tr><td>Sudan</td><td>1996 </td><td> 4861</td></tr>
+    <tr><td>USA  </td><td>1994 </td><td>14509</td></tr>
+    <tr><td>China</td><td>1994 </td><td> 3451</td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td> 9475</td></tr>
+    <tr><td>USA  </td><td>1995 </td><td>14391</td></tr>
+    <tr><td>China</td><td>1995 </td><td>14810</td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td> 1778</td></tr>
+    <tr><td>USA  </td><td>1996 </td><td>16030</td></tr>
+    <tr><td>China</td><td>1996 </td><td>17438</td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td>14002</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -814,15 +810,15 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th><th scope=col>gdppc_1k</th></tr></thead>
 <tbody>
-    <tr><td>USA   </td><td>1994  </td><td>12465 </td><td>12.465</td></tr>
-    <tr><td>China </td><td>1994  </td><td>15344 </td><td>15.344</td></tr>
-    <tr><td>Sudan </td><td>1994  </td><td> 5117 </td><td> 5.117</td></tr>
-    <tr><td>USA   </td><td>1995  </td><td> 2082 </td><td> 2.082</td></tr>
-    <tr><td>China </td><td>1995  </td><td>10750 </td><td>10.750</td></tr>
-    <tr><td>Sudan </td><td>1995  </td><td> 9037 </td><td> 9.037</td></tr>
-    <tr><td>USA   </td><td>1996  </td><td> 1769 </td><td> 1.769</td></tr>
-    <tr><td>China </td><td>1996  </td><td>18008 </td><td>18.008</td></tr>
-    <tr><td>Sudan </td><td>1996  </td><td> 4861 </td><td> 4.861</td></tr>
+    <tr><td>USA   </td><td>1994  </td><td>14509 </td><td>14.509</td></tr>
+    <tr><td>China </td><td>1994  </td><td> 3451 </td><td> 3.451</td></tr>
+    <tr><td>Sudan </td><td>1994  </td><td> 9475 </td><td> 9.475</td></tr>
+    <tr><td>USA   </td><td>1995  </td><td>14391 </td><td>14.391</td></tr>
+    <tr><td>China </td><td>1995  </td><td>14810 </td><td>14.810</td></tr>
+    <tr><td>Sudan </td><td>1995  </td><td> 1778 </td><td> 1.778</td></tr>
+    <tr><td>USA   </td><td>1996  </td><td>16030 </td><td>16.030</td></tr>
+    <tr><td>China </td><td>1996  </td><td>17438 </td><td>17.438</td></tr>
+    <tr><td>Sudan </td><td>1996  </td><td>14002 </td><td>14.002</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -833,15 +829,15 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th><th scope=col>country_lc</th></tr></thead>
 <tbody>
-    <tr><td>USA  </td><td>1994 </td><td>12465</td><td>usa  </td></tr>
-    <tr><td>China</td><td>1994 </td><td>15344</td><td>china</td></tr>
-    <tr><td>Sudan</td><td>1994 </td><td> 5117</td><td>sudan</td></tr>
-    <tr><td>USA  </td><td>1995 </td><td> 2082</td><td>usa  </td></tr>
-    <tr><td>China</td><td>1995 </td><td>10750</td><td>china</td></tr>
-    <tr><td>Sudan</td><td>1995 </td><td> 9037</td><td>sudan</td></tr>
-    <tr><td>USA  </td><td>1996 </td><td> 1769</td><td>usa  </td></tr>
-    <tr><td>China</td><td>1996 </td><td>18008</td><td>china</td></tr>
-    <tr><td>Sudan</td><td>1996 </td><td> 4861</td><td>sudan</td></tr>
+    <tr><td>USA  </td><td>1994 </td><td>14509</td><td>usa  </td></tr>
+    <tr><td>China</td><td>1994 </td><td> 3451</td><td>china</td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td> 9475</td><td>sudan</td></tr>
+    <tr><td>USA  </td><td>1995 </td><td>14391</td><td>usa  </td></tr>
+    <tr><td>China</td><td>1995 </td><td>14810</td><td>china</td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td> 1778</td><td>sudan</td></tr>
+    <tr><td>USA  </td><td>1996 </td><td>16030</td><td>usa  </td></tr>
+    <tr><td>China</td><td>1996 </td><td>17438</td><td>china</td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td>14002</td><td>sudan</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -852,15 +848,15 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th><th scope=col>gdppc_1k</th><th scope=col>country_lc</th></tr></thead>
 <tbody>
-    <tr><td>USA   </td><td>1994  </td><td>12465 </td><td>12.465</td><td>usa   </td></tr>
-    <tr><td>China </td><td>1994  </td><td>15344 </td><td>15.344</td><td>china </td></tr>
-    <tr><td>Sudan </td><td>1994  </td><td> 5117 </td><td> 5.117</td><td>sudan </td></tr>
-    <tr><td>USA   </td><td>1995  </td><td> 2082 </td><td> 2.082</td><td>usa   </td></tr>
-    <tr><td>China </td><td>1995  </td><td>10750 </td><td>10.750</td><td>china </td></tr>
-    <tr><td>Sudan </td><td>1995  </td><td> 9037 </td><td> 9.037</td><td>sudan </td></tr>
-    <tr><td>USA   </td><td>1996  </td><td> 1769 </td><td> 1.769</td><td>usa   </td></tr>
-    <tr><td>China </td><td>1996  </td><td>18008 </td><td>18.008</td><td>china </td></tr>
-    <tr><td>Sudan </td><td>1996  </td><td> 4861 </td><td> 4.861</td><td>sudan </td></tr>
+    <tr><td>USA   </td><td>1994  </td><td>14509 </td><td>14.509</td><td>usa   </td></tr>
+    <tr><td>China </td><td>1994  </td><td> 3451 </td><td> 3.451</td><td>china </td></tr>
+    <tr><td>Sudan </td><td>1994  </td><td> 9475 </td><td> 9.475</td><td>sudan </td></tr>
+    <tr><td>USA   </td><td>1995  </td><td>14391 </td><td>14.391</td><td>usa   </td></tr>
+    <tr><td>China </td><td>1995  </td><td>14810 </td><td>14.810</td><td>china </td></tr>
+    <tr><td>Sudan </td><td>1995  </td><td> 1778 </td><td> 1.778</td><td>sudan </td></tr>
+    <tr><td>USA   </td><td>1996  </td><td>16030 </td><td>16.030</td><td>usa   </td></tr>
+    <tr><td>China </td><td>1996  </td><td>17438 </td><td>17.438</td><td>china </td></tr>
+    <tr><td>Sudan </td><td>1996  </td><td>14002 </td><td>14.002</td><td>sudan </td></tr>
 </tbody>
 </table></div>
 </div>
@@ -881,15 +877,15 @@ The following objects are masked from ‘package:base’:
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>usa  </td><td>1994 </td><td>12465</td></tr>
-    <tr><td>china</td><td>1994 </td><td>15344</td></tr>
-    <tr><td>sudan</td><td>1994 </td><td> 5117</td></tr>
-    <tr><td>usa  </td><td>1995 </td><td> 2082</td></tr>
-    <tr><td>china</td><td>1995 </td><td>10750</td></tr>
-    <tr><td>sudan</td><td>1995 </td><td> 9037</td></tr>
-    <tr><td>usa  </td><td>1996 </td><td> 1769</td></tr>
-    <tr><td>china</td><td>1996 </td><td>18008</td></tr>
-    <tr><td>sudan</td><td>1996 </td><td> 4861</td></tr>
+    <tr><td>usa  </td><td>1994 </td><td>14509</td></tr>
+    <tr><td>china</td><td>1994 </td><td> 3451</td></tr>
+    <tr><td>sudan</td><td>1994 </td><td> 9475</td></tr>
+    <tr><td>usa  </td><td>1995 </td><td>14391</td></tr>
+    <tr><td>china</td><td>1995 </td><td>14810</td></tr>
+    <tr><td>sudan</td><td>1995 </td><td> 1778</td></tr>
+    <tr><td>usa  </td><td>1996 </td><td>16030</td></tr>
+    <tr><td>china</td><td>1996 </td><td>17438</td></tr>
+    <tr><td>sudan</td><td>1996 </td><td>14002</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -1209,12 +1205,12 @@ South America
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th><th scope=col>gdppc_1k</th></tr></thead>
 <tbody>
-    <tr><td>china </td><td>1995  </td><td>10750 </td><td>10.750</td></tr>
-    <tr><td>china </td><td>1996  </td><td>18008 </td><td>18.008</td></tr>
-    <tr><td>sudan </td><td>1995  </td><td> 9037 </td><td> 9.037</td></tr>
-    <tr><td>sudan </td><td>1996  </td><td> 4861 </td><td> 4.861</td></tr>
-    <tr><td>usa   </td><td>1995  </td><td> 2082 </td><td> 2.082</td></tr>
-    <tr><td>usa   </td><td>1996  </td><td> 1769 </td><td> 1.769</td></tr>
+    <tr><td>china </td><td>1995  </td><td>14810 </td><td>14.810</td></tr>
+    <tr><td>china </td><td>1996  </td><td>17438 </td><td>17.438</td></tr>
+    <tr><td>sudan </td><td>1995  </td><td> 1778 </td><td> 1.778</td></tr>
+    <tr><td>sudan </td><td>1996  </td><td>14002 </td><td>14.002</td></tr>
+    <tr><td>usa   </td><td>1995  </td><td>14391 </td><td>14.391</td></tr>
+    <tr><td>usa   </td><td>1996  </td><td>16030 </td><td>16.030</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -1239,12 +1235,12 @@ South America
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>gdp_pc</th><th scope=col>gdppc_1k</th></tr></thead>
 <tbody>
-    <tr><td>china </td><td>1995  </td><td>10750 </td><td>10.750</td></tr>
-    <tr><td>china </td><td>1996  </td><td>18008 </td><td>18.008</td></tr>
-    <tr><td>sudan </td><td>1995  </td><td> 9037 </td><td> 9.037</td></tr>
-    <tr><td>sudan </td><td>1996  </td><td> 4861 </td><td> 4.861</td></tr>
-    <tr><td>usa   </td><td>1995  </td><td> 2082 </td><td> 2.082</td></tr>
-    <tr><td>usa   </td><td>1996  </td><td> 1769 </td><td> 1.769</td></tr>
+    <tr><td>china </td><td>1995  </td><td>14810 </td><td>14.810</td></tr>
+    <tr><td>china </td><td>1996  </td><td>17438 </td><td>17.438</td></tr>
+    <tr><td>sudan </td><td>1995  </td><td> 1778 </td><td> 1.778</td></tr>
+    <tr><td>sudan </td><td>1996  </td><td>14002 </td><td>14.002</td></tr>
+    <tr><td>usa   </td><td>1995  </td><td>14391 </td><td>14.391</td></tr>
+    <tr><td>usa   </td><td>1996  </td><td>16030 </td><td>16.030</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -1303,12 +1299,12 @@ representing GDP per capita in 1000s.</p>
 <li class="toctree-l1"><a class="reference internal" href="vectors.html">Vectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dataset-basics.html">Datasets</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Manipulating Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="merging-appending.html">Merging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="collapsing-data.html">Collapsing Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="for-loops.html">For Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="merging-appending.html">Merging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing-functions.html">Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html">Tables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wide-and-long.html">Reshaping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="writing-functions.html">Functions</a></li>
 </ul>
 
 <div class="relations">
@@ -1316,7 +1312,7 @@ representing GDP per capita in 1000s.</p>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="dataset-basics.html" title="previous chapter">Dataset Basics</a></li>
-      <li>Next: <a href="collapsing-data.html" title="next chapter">Collapsing Data</a></li>
+      <li>Next: <a href="merging-appending.html" title="next chapter">Merging &amp; Appending</a></li>
   </ul></li>
 </ul>
 </div>

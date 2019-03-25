@@ -14,10 +14,12 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Tables in R" href="tables-in-r.html" />
-    <link rel="prev" title="For Loops" href="for-loops.html" />
+    <link rel="next" title="Collapsing Data" href="collapsing-data.html" />
+    <link rel="prev" title="Modifying Data" href="modifying-data.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -351,15 +353,15 @@ div.rendered_html tbody tr:hover {
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>democracy_score</th></tr></thead>
 <tbody>
-    <tr><td>USA  </td><td>1994 </td><td> 4   </td></tr>
-    <tr><td>China</td><td>1994 </td><td> 0   </td></tr>
-    <tr><td>Sudan</td><td>1994 </td><td>18   </td></tr>
-    <tr><td>USA  </td><td>1995 </td><td>11   </td></tr>
-    <tr><td>China</td><td>1995 </td><td>16   </td></tr>
+    <tr><td>USA  </td><td>1994 </td><td> 6   </td></tr>
+    <tr><td>China</td><td>1994 </td><td> 8   </td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td> 2   </td></tr>
+    <tr><td>USA  </td><td>1995 </td><td> 2   </td></tr>
+    <tr><td>China</td><td>1995 </td><td> 7   </td></tr>
     <tr><td>Sudan</td><td>1995 </td><td>13   </td></tr>
-    <tr><td>USA  </td><td>1996 </td><td>12   </td></tr>
-    <tr><td>China</td><td>1996 </td><td>19   </td></tr>
-    <tr><td>Sudan</td><td>1996 </td><td> 8   </td></tr>
+    <tr><td>USA  </td><td>1996 </td><td> 9   </td></tr>
+    <tr><td>China</td><td>1996 </td><td> 5   </td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td>17   </td></tr>
 </tbody>
 </table></div>
 </div>
@@ -370,15 +372,15 @@ div.rendered_html tbody tr:hover {
 <table>
 <thead><tr><th scope=col>year</th><th scope=col>country</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>1994 </td><td>USA  </td><td> 3008</td></tr>
-    <tr><td>1995 </td><td>USA  </td><td> 9607</td></tr>
-    <tr><td>1996 </td><td>USA  </td><td>17985</td></tr>
-    <tr><td>1994 </td><td>China</td><td> 8168</td></tr>
-    <tr><td>1995 </td><td>China</td><td>17672</td></tr>
-    <tr><td>1996 </td><td>China</td><td> 5137</td></tr>
-    <tr><td>1994 </td><td>Sudan</td><td> 4683</td></tr>
-    <tr><td>1995 </td><td>Sudan</td><td> 1814</td></tr>
-    <tr><td>1996 </td><td>Sudan</td><td>16546</td></tr>
+    <tr><td>1994 </td><td>USA  </td><td>19235</td></tr>
+    <tr><td>1995 </td><td>USA  </td><td>11634</td></tr>
+    <tr><td>1996 </td><td>USA  </td><td>14550</td></tr>
+    <tr><td>1994 </td><td>China</td><td> 2261</td></tr>
+    <tr><td>1995 </td><td>China</td><td> 2489</td></tr>
+    <tr><td>1996 </td><td>China</td><td> 1660</td></tr>
+    <tr><td>1994 </td><td>Sudan</td><td> 6835</td></tr>
+    <tr><td>1995 </td><td>Sudan</td><td>16237</td></tr>
+    <tr><td>1996 </td><td>Sudan</td><td>15625</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -389,15 +391,15 @@ div.rendered_html tbody tr:hover {
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>democracy_score</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>China</td><td>1994 </td><td> 0   </td><td> 8168</td></tr>
-    <tr><td>China</td><td>1995 </td><td>16   </td><td>17672</td></tr>
-    <tr><td>China</td><td>1996 </td><td>19   </td><td> 5137</td></tr>
-    <tr><td>Sudan</td><td>1994 </td><td>18   </td><td> 4683</td></tr>
-    <tr><td>Sudan</td><td>1995 </td><td>13   </td><td> 1814</td></tr>
-    <tr><td>Sudan</td><td>1996 </td><td> 8   </td><td>16546</td></tr>
-    <tr><td>USA  </td><td>1994 </td><td> 4   </td><td> 3008</td></tr>
-    <tr><td>USA  </td><td>1995 </td><td>11   </td><td> 9607</td></tr>
-    <tr><td>USA  </td><td>1996 </td><td>12   </td><td>17985</td></tr>
+    <tr><td>China</td><td>1994 </td><td> 8   </td><td> 2261</td></tr>
+    <tr><td>China</td><td>1995 </td><td> 7   </td><td> 2489</td></tr>
+    <tr><td>China</td><td>1996 </td><td> 5   </td><td> 1660</td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td> 2   </td><td> 6835</td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td>13   </td><td>16237</td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td>17   </td><td>15625</td></tr>
+    <tr><td>USA  </td><td>1994 </td><td> 6   </td><td>19235</td></tr>
+    <tr><td>USA  </td><td>1995 </td><td> 2   </td><td>11634</td></tr>
+    <tr><td>USA  </td><td>1996 </td><td> 9   </td><td>14550</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -425,13 +427,13 @@ div.rendered_html tbody tr:hover {
 <table>
 <thead><tr><th></th><th scope=col>year</th><th scope=col>country</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><th scope=row>1</th><td>1994 </td><td>USA  </td><td> 3008</td></tr>
-    <tr><th scope=row>2</th><td>1995 </td><td>USA  </td><td> 9607</td></tr>
-    <tr><th scope=row>3</th><td>1996 </td><td>USA  </td><td>17985</td></tr>
-    <tr><th scope=row>4</th><td>1994 </td><td>China</td><td> 8168</td></tr>
-    <tr><th scope=row>6</th><td>1996 </td><td>China</td><td> 5137</td></tr>
-    <tr><th scope=row>7</th><td>1994 </td><td>Sudan</td><td> 4683</td></tr>
-    <tr><th scope=row>8</th><td>1995 </td><td>Sudan</td><td> 1814</td></tr>
+    <tr><th scope=row>1</th><td>1994 </td><td>USA  </td><td>19235</td></tr>
+    <tr><th scope=row>2</th><td>1995 </td><td>USA  </td><td>11634</td></tr>
+    <tr><th scope=row>3</th><td>1996 </td><td>USA  </td><td>14550</td></tr>
+    <tr><th scope=row>4</th><td>1994 </td><td>China</td><td> 2261</td></tr>
+    <tr><th scope=row>6</th><td>1996 </td><td>China</td><td> 1660</td></tr>
+    <tr><th scope=row>7</th><td>1994 </td><td>Sudan</td><td> 6835</td></tr>
+    <tr><th scope=row>8</th><td>1995 </td><td>Sudan</td><td>16237</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -460,13 +462,13 @@ div.rendered_html tbody tr:hover {
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>democracy_score</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>China</td><td>1994 </td><td> 0   </td><td> 8168</td></tr>
-    <tr><td>China</td><td>1996 </td><td>19   </td><td> 5137</td></tr>
-    <tr><td>Sudan</td><td>1994 </td><td>18   </td><td> 4683</td></tr>
-    <tr><td>Sudan</td><td>1995 </td><td>13   </td><td> 1814</td></tr>
-    <tr><td>USA  </td><td>1994 </td><td> 4   </td><td> 3008</td></tr>
-    <tr><td>USA  </td><td>1995 </td><td>11   </td><td> 9607</td></tr>
-    <tr><td>USA  </td><td>1996 </td><td>12   </td><td>17985</td></tr>
+    <tr><td>China</td><td>1994 </td><td> 8   </td><td> 2261</td></tr>
+    <tr><td>China</td><td>1996 </td><td> 5   </td><td> 1660</td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td> 2   </td><td> 6835</td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td>13   </td><td>16237</td></tr>
+    <tr><td>USA  </td><td>1994 </td><td> 6   </td><td>19235</td></tr>
+    <tr><td>USA  </td><td>1995 </td><td> 2   </td><td>11634</td></tr>
+    <tr><td>USA  </td><td>1996 </td><td> 9   </td><td>14550</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -477,15 +479,15 @@ div.rendered_html tbody tr:hover {
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>democracy_score</th><th scope=col>gdp_pc</th></tr></thead>
 <tbody>
-    <tr><td>USA  </td><td>1994 </td><td> 4   </td><td> 3008</td></tr>
-    <tr><td>USA  </td><td>1995 </td><td>11   </td><td> 9607</td></tr>
-    <tr><td>USA  </td><td>1996 </td><td>12   </td><td>17985</td></tr>
-    <tr><td>China</td><td>1994 </td><td> 0   </td><td> 8168</td></tr>
-    <tr><td>China</td><td>1995 </td><td>16   </td><td>   NA</td></tr>
-    <tr><td>China</td><td>1996 </td><td>19   </td><td> 5137</td></tr>
-    <tr><td>Sudan</td><td>1994 </td><td>18   </td><td> 4683</td></tr>
-    <tr><td>Sudan</td><td>1995 </td><td>13   </td><td> 1814</td></tr>
-    <tr><td>Sudan</td><td>1996 </td><td> 8   </td><td>   NA</td></tr>
+    <tr><td>USA  </td><td>1994 </td><td> 6   </td><td>19235</td></tr>
+    <tr><td>USA  </td><td>1995 </td><td> 2   </td><td>11634</td></tr>
+    <tr><td>USA  </td><td>1996 </td><td> 9   </td><td>14550</td></tr>
+    <tr><td>China</td><td>1994 </td><td> 8   </td><td> 2261</td></tr>
+    <tr><td>China</td><td>1995 </td><td> 7   </td><td>   NA</td></tr>
+    <tr><td>China</td><td>1996 </td><td> 5   </td><td> 1660</td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td> 2   </td><td> 6835</td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td>13   </td><td>16237</td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td>17   </td><td>   NA</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -520,15 +522,15 @@ div.rendered_html tbody tr:hover {
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>democracy_score</th></tr></thead>
 <tbody>
-    <tr><td>USA  </td><td>1994 </td><td> 3   </td></tr>
-    <tr><td>China</td><td>1994 </td><td> 6   </td></tr>
-    <tr><td>Sudan</td><td>1994 </td><td> 3   </td></tr>
-    <tr><td>USA  </td><td>1995 </td><td> 3   </td></tr>
-    <tr><td>China</td><td>1995 </td><td>10   </td></tr>
-    <tr><td>Sudan</td><td>1995 </td><td>19   </td></tr>
-    <tr><td>USA  </td><td>1996 </td><td> 4   </td></tr>
-    <tr><td>China</td><td>1996 </td><td>10   </td></tr>
-    <tr><td>Sudan</td><td>1996 </td><td>13   </td></tr>
+    <tr><td>USA  </td><td>1994 </td><td>20   </td></tr>
+    <tr><td>China</td><td>1994 </td><td> 2   </td></tr>
+    <tr><td>Sudan</td><td>1994 </td><td> 6   </td></tr>
+    <tr><td>USA  </td><td>1995 </td><td> 7   </td></tr>
+    <tr><td>China</td><td>1995 </td><td>20   </td></tr>
+    <tr><td>Sudan</td><td>1995 </td><td> 4   </td></tr>
+    <tr><td>USA  </td><td>1996 </td><td> 7   </td></tr>
+    <tr><td>China</td><td>1996 </td><td>19   </td></tr>
+    <tr><td>Sudan</td><td>1996 </td><td> 4   </td></tr>
 </tbody>
 </table></div>
 </div>
@@ -562,15 +564,15 @@ div.rendered_html tbody tr:hover {
 <table>
 <thead><tr><th scope=col>country</th><th scope=col>year</th><th scope=col>democracy_score</th><th scope=col>region</th></tr></thead>
 <tbody>
-    <tr><td>China  </td><td>1994   </td><td> 6     </td><td>Asia   </td></tr>
-    <tr><td>China  </td><td>1995   </td><td>10     </td><td>Asia   </td></tr>
-    <tr><td>China  </td><td>1996   </td><td>10     </td><td>Asia   </td></tr>
-    <tr><td>Sudan  </td><td>1995   </td><td>19     </td><td>Africa </td></tr>
-    <tr><td>Sudan  </td><td>1994   </td><td> 3     </td><td>Africa </td></tr>
-    <tr><td>Sudan  </td><td>1996   </td><td>13     </td><td>Africa </td></tr>
-    <tr><td>USA    </td><td>1994   </td><td> 3     </td><td>America</td></tr>
-    <tr><td>USA    </td><td>1996   </td><td> 4     </td><td>America</td></tr>
-    <tr><td>USA    </td><td>1995   </td><td> 3     </td><td>America</td></tr>
+    <tr><td>China  </td><td>1994   </td><td> 2     </td><td>Asia   </td></tr>
+    <tr><td>China  </td><td>1995   </td><td>20     </td><td>Asia   </td></tr>
+    <tr><td>China  </td><td>1996   </td><td>19     </td><td>Asia   </td></tr>
+    <tr><td>Sudan  </td><td>1995   </td><td> 4     </td><td>Africa </td></tr>
+    <tr><td>Sudan  </td><td>1994   </td><td> 6     </td><td>Africa </td></tr>
+    <tr><td>Sudan  </td><td>1996   </td><td> 4     </td><td>Africa </td></tr>
+    <tr><td>USA    </td><td>1994   </td><td>20     </td><td>America</td></tr>
+    <tr><td>USA    </td><td>1996   </td><td> 7     </td><td>America</td></tr>
+    <tr><td>USA    </td><td>1995   </td><td> 7     </td><td>America</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -716,20 +718,20 @@ The following objects are masked from ‘package:base’:
 <li class="toctree-l1"><a class="reference internal" href="vectors.html">Vectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dataset-basics.html">Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modifying-data.html">Manipulating Data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Merging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="collapsing-data.html">Collapsing Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="for-loops.html">For Loops</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Merging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing-functions.html">Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html">Tables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wide-and-long.html">Reshaping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="writing-functions.html">Functions</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="for-loops.html" title="previous chapter">For Loops</a></li>
-      <li>Next: <a href="tables-in-r.html" title="next chapter">Tables in R</a></li>
+      <li>Previous: <a href="modifying-data.html" title="previous chapter">Modifying Data</a></li>
+      <li>Next: <a href="collapsing-data.html" title="next chapter">Collapsing Data</a></li>
   </ul></li>
 </ul>
 </div>

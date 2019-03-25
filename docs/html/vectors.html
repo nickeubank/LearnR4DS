@@ -747,16 +747,16 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 </div>
 <div class="output_area rendered_html docutils container">
 <ol class=list-inline>
-    <li>74</li>
-    <li>85</li>
-    <li>82</li>
     <li>76</li>
-    <li>46</li>
-    <li>13</li>
-    <li>42</li>
-    <li>17</li>
-    <li>18</li>
-    <li>12</li>
+    <li>70</li>
+    <li>15</li>
+    <li>31</li>
+    <li>28</li>
+    <li>23</li>
+    <li>81</li>
+    <li>83</li>
+    <li>38</li>
+    <li>41</li>
 </ol></div>
 </div>
 <p>The function takes a vector of values (often successive integer values) and an argument that specifies how many values to draw at random from this vector. We can use the resulting values as indeces to subset another vector:</p>
@@ -775,11 +775,11 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 </div>
 <div class="output_area rendered_html docutils container">
 <ol class=list-inline>
-    <li>'banana'</li>
     <li>'apple'</li>
-    <li>'orange'</li>
     <li>'apple'</li>
     <li>'banana'</li>
+    <li>'apple'</li>
+    <li>'apple'</li>
 </ol></div>
 </div>
 <p>Here, we’re drawing a random sample of five elements from the vector <code class="docutils literal notranslate"><span class="pre">fruits</span></code>. Why did I specify <code class="docutils literal notranslate"><span class="pre">1:30</span></code>? Well, <code class="docutils literal notranslate"><span class="pre">fruits</span></code> consists of 30 elements, so specifying something like <code class="docutils literal notranslate"><span class="pre">1:100</span></code> likely would have resulted in sampled values outside the bounds of the vector (e.g., <code class="docutils literal notranslate"><span class="pre">fruits[35]</span></code> doesn’t exist). Specifying <code class="docutils literal notranslate"><span class="pre">1:30</span></code> gives every element in <code class="docutils literal notranslate"><span class="pre">fruits</span></code> an equal chance of being included in the sample.</p>
@@ -1126,16 +1126,16 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 </div>
 <div class="output_area rendered_html docutils container">
 <ol class=list-inline>
-    <li>656</li>
-    <li>977</li>
-    <li>930</li>
-    <li>800</li>
-    <li>413</li>
-    <li>868</li>
-    <li>692</li>
-    <li>988</li>
-    <li>190</li>
-    <li>843</li>
+    <li>853</li>
+    <li>213</li>
+    <li>668</li>
+    <li>12</li>
+    <li>277</li>
+    <li>166</li>
+    <li>176</li>
+    <li>332</li>
+    <li>182</li>
+    <li>149</li>
 </ol></div>
 </div>
 <div class="nboutput docutils container">
@@ -1154,43 +1154,43 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-988</div>
+853</div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-190</div>
+12</div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-7357</div>
+3028</div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-735.7</div>
+302.8</div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-821.5</div>
+197.5</div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-66996.6777777778</div>
+67030.8444444444</div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-258.837164599247</div>
+258.903156497646</div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
@@ -1198,15 +1198,15 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 <div class="output_area rendered_html docutils container">
 <dl class=dl-horizontal>
     <dt>0%</dt>
-            <dd>190</dd>
+            <dd>12</dd>
     <dt>25%</dt>
-            <dd>665</dd>
+            <dd>168.5</dd>
     <dt>50%</dt>
-            <dd>821.5</dd>
+            <dd>197.5</dd>
     <dt>75%</dt>
-            <dd>914.5</dd>
+            <dd>318.25</dd>
     <dt>100%</dt>
-            <dd>988</dd>
+            <dd>853</dd>
 </dl></div>
 </div>
 <div class="nboutput docutils container">
@@ -1215,35 +1215,35 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 <div class="output_area rendered_html docutils container">
 <dl class=dl-horizontal>
     <dt>0%</dt>
-            <dd>190</dd>
+            <dd>12</dd>
     <dt>10%</dt>
-            <dd>390.7</dd>
+            <dd>135.3</dd>
     <dt>20%</dt>
-            <dd>607.4</dd>
+            <dd>162.6</dd>
     <dt>30%</dt>
-            <dd>681.2</dd>
+            <dd>173</dd>
     <dt>40%</dt>
-            <dd>756.8</dd>
+            <dd>179.6</dd>
     <dt>50%</dt>
-            <dd>821.5</dd>
+            <dd>197.5</dd>
     <dt>60%</dt>
-            <dd>853</dd>
+            <dd>238.6</dd>
     <dt>70%</dt>
-            <dd>886.6</dd>
+            <dd>293.5</dd>
     <dt>80%</dt>
-            <dd>939.4</dd>
+            <dd>399.2</dd>
     <dt>90%</dt>
-            <dd>978.1</dd>
+            <dd>686.5</dd>
     <dt>100%</dt>
-            <dd>988</dd>
+            <dd>853</dd>
 </dl></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span> Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
-190.0   665.0   821.5   735.7   914.5   988.0
+<span></span>Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+12.0   168.5   197.5   302.8   318.2   853.0
 </pre></div>
 </div>
 </div>
@@ -1276,11 +1276,11 @@ General note about ``%in%``: This operator is extremely useful as an alternative
 </div>
 <div class="output_area rendered_html docutils container">
 <ol class=list-inline>
-    <li>'banana'</li>
-    <li>'apple'</li>
-    <li>'apple'</li>
     <li>'orange'</li>
     <li>'apple'</li>
+    <li>'orange'</li>
+    <li>'banana'</li>
+    <li>'banana'</li>
 </ol></div>
 </div>
 <p>The third line, where we create <code class="docutils literal notranslate"><span class="pre">random_sample</span></code>, is not very general. Why? In this case, <code class="docutils literal notranslate"><span class="pre">fruits</span></code> has 30 elements. What if it instead had 50 elements? <em>Then the third line would not give us a random sample.</em> Or more precisely, this line would give us a random sample of the 30 first elements of fruits — the last 20 elements would not have a chance of being included. We could modify the third line to read <code class="docutils literal notranslate"><span class="pre">random_sample</span> <span class="pre">&lt;-</span> <span class="pre">fruits[sample(1:50,</span> <span class="pre">size</span> <span class="pre">=</span> <span class="pre">5)]</span></code>. But if we then modified <code class="docutils literal notranslate"><span class="pre">fruits</span></code>
@@ -1315,10 +1315,10 @@ to have a different number of elements again we’d end up with the same problem
 </div>
 <div class="output_area rendered_html docutils container">
 <ol class=list-inline>
-    <li>'banana'</li>
     <li>'apple'</li>
-    <li>'orange'</li>
-    <li>'orange'</li>
+    <li>'banana'</li>
+    <li>'banana'</li>
+    <li>'banana'</li>
     <li>'orange'</li>
 </ol></div>
 </div>
@@ -1370,12 +1370,12 @@ to have a different number of elements again we’d end up with the same problem
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Vectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dataset-basics.html">Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modifying-data.html">Manipulating Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="merging-appending.html">Merging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="collapsing-data.html">Collapsing Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="for-loops.html">For Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="merging-appending.html">Merging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing-functions.html">Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tables-in-r.html">Tables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wide-and-long.html">Reshaping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="writing-functions.html">Functions</a></li>
 </ul>
 
 <div class="relations">
