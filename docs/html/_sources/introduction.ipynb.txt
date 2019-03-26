@@ -438,7 +438,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 33,
+   "execution_count": 65,
    "metadata": {},
    "outputs": [
     {
@@ -468,7 +468,12 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "It's worth pausing to note something a little weird about the order in which things happen here: when we assign something to a variable by writing `variable_name = some_expression`, R evaluates the expression *first*, *then* assigns the results of that expression to the variable on the left hand side. Given how we normally read left-to-right, this can be a little confusing. So what R did here was *first* calculate `nick_pet_dinosaurs + 1` (which is the same as `2 + 1`), *then* assigned the value to the variable `nick_pet_dinsoaurs`, replacing the old value of 2. "
+    "Note there's something a little weird about the order in which things happen here: when we assign something to a variable by writing `variable_name = [some expression]`, **R evaluates the expression on the right first, then assigns the results of that expression to the variable on the left hand side.**\n",
+    "    \n",
+    "Given how we normally read left-to-right, this can be a little confusing. So what R did here was:\n",
+    "\n",
+    "- *first* calculate `nick_pet_dinosaurs + 1` (which is the same as `2 + 1`),\n",
+    "- *then* assigned the value of that expression (`3`) to the variable `nick_pet_dinsoaurs`, replacing the old value of `2`. "
    ]
   },
   {

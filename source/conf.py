@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'LearnR4ds'
+project = 'LearnR4DS'
 copyright = '2019, Nick Eubank'
 author = 'Nick Eubank'
 

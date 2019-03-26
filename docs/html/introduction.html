@@ -19,7 +19,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Vectors" href="vectors.html" />
-    <link rel="prev" title="Welcome to Learn R for Data Science!" href="index.html" />
+    <link rel="prev" title="Learn R for Data Science!" href="index.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -457,7 +457,7 @@ easiest and one of the most popular.</p>
 </div>
 <p>Now if we ask R for the value of <code class="docutils literal notranslate"><span class="pre">nick_pet_dinosaurs</span></code>, we’ll see it has increased by 1:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[65]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -471,8 +471,12 @@ easiest and one of the most popular.</p>
 <div class="output_area rendered_html docutils container">
 3</div>
 </div>
-<p>It’s worth pausing to note something a little weird about the order in which things happen here: when we assign something to a variable by writing <code class="docutils literal notranslate"><span class="pre">variable_name</span> <span class="pre">=</span> <span class="pre">some_expression</span></code>, R evaluates the expression <em>first</em>, <em>then</em> assigns the results of that expression to the variable on the left hand side. Given how we normally read left-to-right, this can be a little confusing. So what R did here was <em>first</em> calculate <code class="docutils literal notranslate"><span class="pre">nick_pet_dinosaurs</span> <span class="pre">+</span> <span class="pre">1</span></code> (which is the same as <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">+</span> <span class="pre">1</span></code>), <em>then</em> assigned the
-value to the variable <code class="docutils literal notranslate"><span class="pre">nick_pet_dinsoaurs</span></code>, replacing the old value of 2.</p>
+<p>Note there’s something a little weird about the order in which things happen here: when we assign something to a variable by writing <code class="docutils literal notranslate"><span class="pre">variable_name</span> <span class="pre">=</span> <span class="pre">[some</span> <span class="pre">expression]</span></code>, <strong>R evaluates the expression on the right first, then assigns the results of that expression to the variable on the left hand side.</strong></p>
+<p>Given how we normally read left-to-right, this can be a little confusing. So what R did here was:</p>
+<ul class="simple">
+<li><em>first</em> calculate <code class="docutils literal notranslate"><span class="pre">nick_pet_dinosaurs</span> <span class="pre">+</span> <span class="pre">1</span></code> (which is the same as <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">+</span> <span class="pre">1</span></code>),</li>
+<li><em>then</em> assigned the value of that expression (<code class="docutils literal notranslate"><span class="pre">3</span></code>) to the variable <code class="docutils literal notranslate"><span class="pre">nick_pet_dinsoaurs</span></code>, replacing the old value of <code class="docutils literal notranslate"><span class="pre">2</span></code>.</li>
+</ul>
 <div class="section" id="Variable-Exercises">
 <h3>Variable Exercises<a class="headerlink" href="#Variable-Exercises" title="Permalink to this headline">¶</a></h3>
 <p>OK, this is a great time to pause and try a few exercises for yourself.</p>
@@ -749,7 +753,7 @@ FALSE</div>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="index.html" title="previous chapter">Welcome to Learn R for Data Science!</a></li>
+      <li>Previous: <a href="index.html" title="previous chapter">Learn R for Data Science!</a></li>
       <li>Next: <a href="vectors.html" title="next chapter">Vectors</a></li>
   </ul></li>
 </ul>
