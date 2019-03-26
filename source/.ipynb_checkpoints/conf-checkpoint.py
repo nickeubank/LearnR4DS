@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'LearnR4ds'
+project = 'LearnR4DS'
 copyright = '2019, Nick Eubank'
 author = 'Nick Eubank'
 
@@ -82,8 +82,10 @@ html_theme = 'alabaster'
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
-#
-# html_theme_options = {}
+
+html_theme_options = {
+    'font_family': 'Garamond'
+}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -104,7 +106,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'RforDataSciencedoc'
+htmlhelp_basename = 'LearnR4DS'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -131,8 +133,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'RforDataScience.tex', 'R for Data Science Documentation',
-     'Simon Ejdemyr and Nick Eubank', 'manual'),
+    (master_doc, 'LearnR4DS.tex', 'Learn R for Data Science',
+     'Nick Eubank', 'manual'),
 ]
 
 
